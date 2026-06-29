@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Level 3 Rooftop | Port Harcourt</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --burgundy:#6B0F1A;--burgundy-deep:#4A0A12;--burgundy-mid:#8B1A28;
+  --burgundy-light:#C4394F;--gold:#C9A96E;--gold-light:#E8D5A3;
+  --black:#0A0A0A;--charcoal:#1A1A1A;--white:#FFFFFF;
+  --font-serif:'Cormorant Garamond',Georgia,serif;
+  --font-display:'Cinzel',serif;--font-sans:'Jost',sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-sans);font-weight:300;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 4rem;background:rgba(10,10,10,0.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,169,110,0.15);transition:all 0.4s;}
+nav.scrolled{padding:0.85rem 4rem;background:rgba(10,10,10,0.97);}
+.nav-logo{font-family:var(--font-display);font-size:1.05rem;letter-spacing:0.25em;color:var(--gold);text-decoration:none;}
+.nav-logo span{display:block;font-family:var(--font-sans);font-size:0.55rem;letter-spacing:0.5em;color:rgba(255,255,255,0.45);font-weight:300;text-align:center;margin-top:2px;}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{text-decoration:none;font-family:var(--font-sans);font-size:0.72rem;letter-spacing:0.2em;font-weight:400;color:rgba(255,255,255,0.65);text-transform:uppercase;transition:color 0.3s;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+.nav-cta{background:var(--burgundy)!important;color:var(--white)!important;padding:0.55rem 1.5rem!important;border:1px solid var(--burgundy-light);transition:background 0.3s!important;}
+.nav-cta:hover{background:var(--burgundy-mid)!important;}
+.nav-ham{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.nav-ham span{display:block;width:24px;height:1px;background:rgba(255,255,255,0.7);transition:all 0.3s;}
+@media(max-width:900px){nav{padding:1rem 1.5rem;}.nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,10,10,0.98);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;z-index:999;}.nav-links.open{display:flex;}.nav-links a{font-size:1rem;}.nav-ham{display:flex;z-index:1001;}}
+
+/* HERO */
+#hero{position:relative;height:100vh;min-height:700px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,rgba(107,15,26,0.55) 0%,transparent 50%),linear-gradient(to bottom,rgba(10,10,10,0.3),rgba(10,10,10,0.72)),url('https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?w=1800&q=80') center/cover;}
+.hero-content{position:relative;z-index:2;text-align:center;padding:0 2rem;animation:fadeUp 1.4s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.hero-eyebrow{font-family:var(--font-sans);font-size:0.7rem;letter-spacing:0.5em;color:var(--gold);text-transform:uppercase;margin-bottom:1.5rem;font-weight:400;display:block;}
+.hero-title{font-family:var(--font-display);font-size:clamp(3rem,8vw,7rem);font-weight:400;line-height:1.05;letter-spacing:0.05em;color:var(--white);margin-bottom:0.25rem;}
+.hero-title .accent{color:var(--gold);}
+.hero-sub{font-family:var(--font-serif);font-size:clamp(1rem,2vw,1.4rem);font-weight:300;color:rgba(255,255,255,0.6);letter-spacing:0.3em;text-transform:uppercase;font-style:italic;margin-bottom:2rem;}
+.hero-line{width:80px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto 2rem;}
+.hero-desc{font-family:var(--font-serif);font-size:1.1rem;color:rgba(255,255,255,0.65);max-width:520px;margin:0 auto 3rem;line-height:1.85;}
+.hero-btns{display:flex;gap:1.25rem;justify-content:center;flex-wrap:wrap;}
+.btn-primary{display:inline-block;padding:0.9rem 2.5rem;background:var(--burgundy);color:var(--white);text-decoration:none;font-family:var(--font-sans);font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;font-weight:400;border:1px solid var(--burgundy-light);transition:all 0.3s;}
+.btn-primary:hover{background:var(--burgundy-mid);transform:translateY(-2px);}
+.btn-outline{display:inline-block;padding:0.9rem 2.5rem;background:transparent;color:var(--white);text-decoration:none;font-family:var(--font-sans);font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;border:1px solid rgba(255,255,255,0.3);transition:all 0.3s;}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px);}
+.scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;color:rgba(255,255,255,0.4);font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;animation:pulse 2s ease-in-out infinite;}
+.scroll-hint .line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,0.4),transparent);}
+@keyframes pulse{0%,100%{opacity:0.4}50%{opacity:1}}
+
+/* SHARED */
+section{padding:7rem 0;}
+.container{max-width:1200px;margin:0 auto;padding:0 4rem;}
+.eyebrow{font-family:var(--font-sans);font-size:0.65rem;letter-spacing:0.5em;color:var(--gold);text-transform:uppercase;font-weight:400;margin-bottom:1rem;display:block;}
+.sec-title{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.5rem);font-weight:400;line-height:1.1;margin-bottom:1.5rem;letter-spacing:0.03em;}
+.sec-title .gold{color:var(--gold);}
+.gold-bar{width:60px;height:1px;background:var(--gold);margin-bottom:2rem;}
+.body-text{font-family:var(--font-serif);font-size:1.05rem;line-height:1.9;color:rgba(255,255,255,0.6);}
+
+/* ABOUT */
+#about{background:var(--charcoal);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+.about-img-wrap{position:relative;}
+.about-img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;}
+.about-border{position:absolute;top:-20px;right:-20px;width:60%;aspect-ratio:3/4;border:1px solid var(--gold);z-index:-1;}
+.about-badge{position:absolute;bottom:-25px;left:-25px;width:130px;height:130px;background:var(--burgundy);border:1px solid var(--burgundy-light);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1rem;}
+.badge-num{font-family:var(--font-display);font-size:2.5rem;color:var(--gold);line-height:1;}
+.badge-txt{font-family:var(--font-sans);font-size:0.6rem;letter-spacing:0.2em;color:rgba(255,255,255,0.6);text-transform:uppercase;margin-top:0.25rem;}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.stat{border-left:1px solid rgba(201,169,110,0.3);padding-left:1.25rem;}
+.stat-n{font-family:var(--font-display);font-size:2rem;color:var(--gold);}
+.stat-l{font-family:var(--font-sans);font-size:0.65rem;letter-spacing:0.2em;color:rgba(255,255,255,0.45);text-transform:uppercase;margin-top:0.25rem;}
+
+/* EXPERIENCES GRID */
+#experiences{background:var(--black);}
+.exp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;}
+.exp-card{position:relative;overflow:hidden;aspect-ratio:4/3;cursor:pointer;}
+.exp-card.tall{aspect-ratio:4/5;}
+.exp-img{width:100%;height:100%;object-fit:cover;transition:transform 0.7s ease;}
+.exp-card:hover .exp-img{transform:scale(1.06);}
+.exp-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,0.9) 0%,transparent 55%);display:flex;flex-direction:column;justify-content:flex-end;padding:2.5rem;}
+.exp-card:hover .exp-overlay{background:linear-gradient(to top,rgba(107,15,26,0.85) 0%,rgba(10,10,10,0.3) 100%);}
+.exp-tag{font-family:var(--font-sans);font-size:0.6rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;}
+.exp-name{font-family:var(--font-display);font-size:1.8rem;color:var(--white);margin-bottom:0.75rem;}
+.exp-desc{font-family:var(--font-serif);font-size:0.95rem;color:rgba(255,255,255,0.6);line-height:1.6;max-width:340px;margin-bottom:1.25rem;}
+.exp-link{font-family:var(--font-sans);font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,169,110,0.4);padding-bottom:2px;transition:all 0.3s;}
+.exp-link:hover{border-color:var(--gold);}
+
+/* RESERVE */
+#reserve{background:var(--burgundy-deep);text-align:center;}
+
+/* FOOTER */
+footer{background:#050505;border-top:1px solid rgba(201,169,110,0.12);padding:5rem 0 2.5rem;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;margin-bottom:4rem;}
+.f-brand{font-family:var(--font-display);font-size:1.4rem;color:var(--gold);letter-spacing:0.2em;margin-bottom:0.5rem;}
+.f-sub{font-family:var(--font-sans);font-size:0.6rem;letter-spacing:0.5em;color:rgba(255,255,255,0.25);text-transform:uppercase;margin-bottom:1.5rem;}
+.f-tagline{font-family:var(--font-serif);font-size:0.95rem;color:rgba(255,255,255,0.4);line-height:1.8;max-width:260px;}
+.f-col-title{font-family:var(--font-sans);font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;font-weight:400;}
+.f-links{list-style:none;display:flex;flex-direction:column;gap:0.75rem;}
+.f-links a{font-family:var(--font-sans);font-size:0.82rem;color:rgba(255,255,255,0.4);text-decoration:none;font-weight:300;transition:color 0.3s;}
+.f-links a:hover{color:var(--gold);}
+.f-contact p{font-family:var(--font-sans);font-size:0.82rem;color:rgba(255,255,255,0.4);line-height:2;font-weight:300;}
+.f-social{display:flex;gap:0.75rem;margin-top:1.75rem;}
+.soc-btn{width:38px;height:38px;border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:border-color 0.3s;}
+.soc-btn:hover{border-color:var(--gold);}
+.soc-btn svg{width:16px;height:16px;fill:rgba(255,255,255,0.45);transition:fill 0.3s;}
+.soc-btn:hover svg{fill:var(--gold);}
+.f-bottom{border-top:1px solid rgba(255,255,255,0.05);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;}
+.f-copy{font-family:var(--font-sans);font-size:0.72rem;color:rgba(255,255,255,0.2);font-weight:300;}
+.f-legal{display:flex;gap:2rem;}
+.f-legal a{font-family:var(--font-sans);font-size:0.72rem;color:rgba(255,255,255,0.2);text-decoration:none;}
+.f-legal a:hover{color:rgba(255,255,255,0.45);}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.75s ease,transform 0.75s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:900px){
+  .container{padding:0 1.5rem;}
+  .about-grid{grid-template-columns:1fr;}
+  .about-img-wrap{order:-1;}
+  .exp-grid{grid-template-columns:1fr;}
+  .exp-card.tall{aspect-ratio:4/3;}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2rem;}
+}
+@media(max-width:600px){
+  .footer-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">LEVEL 3<span>Rooftop · Port Harcourt</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="restaurant.html">Restaurant</a></li>
+    <li><a href="shows.html">Shows</a></li>
+    <li><a href="club.html">The Club</a></li>
+    <li><a href="index.html#reserve" class="nav-cta">Reserve</a></li>
+  </ul>
+  <button class="nav-ham" id="ham" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Port Harcourt · Nigeria</span>
+    <h1 class="hero-title">Level <span class="accent">3</span></h1>
+    <p class="hero-sub">Rooftop Experience</p>
+    <div class="hero-line"></div>
+    <p class="hero-desc">Where refined dining meets the electric pulse of the city. Port Harcourt's premier rooftop destination for those who demand the extraordinary.</p>
+    <div class="hero-btns">
+      <a href="index.html#reserve" class="btn-primary">Book a Table</a>
+      <a href="index.html#about" class="btn-outline">Discover More</a>
+    </div>
+  </div>
+  <div class="scroll-hint"><div class="line"></div><span>Scroll</span></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal">
+        <img class="about-img" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" alt="Level 3 Rooftop ambiance">
+        <div class="about-border"></div>
+        <div class="about-badge"><span class="badge-num">3</span><span class="badge-txt">Floors Above The City</span></div>
+      </div>
+      <div class="reveal" style="padding-left:1rem;">
+        <span class="eyebrow">Our Story</span>
+        <h2 class="sec-title">About <span class="gold">Level 3</span></h2>
+        <div class="gold-bar"></div>
+        <p class="body-text">Perched above the vibrant heart of Port Harcourt, Level 3 Rooftop is a sanctuary of sophistication. We are more than a venue — we are an experience crafted for those who appreciate the finer things in life.</p>
+        <p class="body-text" style="margin-top:1.25rem;">From the moment you ascend to our rooftop, the city unfolds beneath you while our world of culinary excellence, live performances, and nightlife royalty comes alive. Every evening is an occasion. Every night is a memory.</p>
+        <div class="stats">
+          <div class="stat"><div class="stat-n">200+</div><div class="stat-l">Covers Nightly</div></div>
+          <div class="stat"><div class="stat-n">15+</div><div class="stat-l">Signature Dishes</div></div>
+          <div class="stat"><div class="stat-n">360°</div><div class="stat-l">City Views</div></div>
+        </div>
+        <a href="menu.html" class="btn-primary" style="display:inline-block;margin-top:3rem;">Explore Our Menu</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCES -->
+<section id="experiences">
+  <div class="container" style="margin-bottom:3rem;">
+    <div style="text-align:center;">
+      <span class="eyebrow">Everything We Offer</span>
+      <h2 class="sec-title" style="margin-bottom:0;">Curated <span class="gold">Experiences</span></h2>
+    </div>
+  </div>
+  <div class="exp-grid">
+    <div class="exp-card reveal">
+      <img class="exp-img" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=900&q=80" alt="Restaurant">
+      <div class="exp-overlay">
+        <div class="exp-tag">Fine Dining</div>
+        <div class="exp-name">Our Restaurant</div>
+        <div class="exp-desc">An elevated dining space with panoramic city views, world-class chefs, and a menu that blends global mastery with local soul.</div>
+        <a href="restaurant.html" class="exp-link">Explore Restaurant →</a>
+      </div>
+    </div>
+    <div class="exp-card reveal">
+      <img class="exp-img" src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=900&q=80" alt="Menu">
+      <div class="exp-overlay">
+        <div class="exp-tag">Culinary</div>
+        <div class="exp-name">Our Menu</div>
+        <div class="exp-desc">From fresh oysters and wagyu to handcrafted cocktails and artisan desserts — every dish is a performance in itself.</div>
+        <a href="menu.html" class="exp-link">View Full Menu →</a>
+      </div>
+    </div>
+    <div class="exp-card reveal">
+      <img class="exp-img" src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=900&q=80" alt="Shows">
+      <div class="exp-overlay">
+        <div class="exp-tag">Entertainment</div>
+        <div class="exp-name">Our Shows</div>
+        <div class="exp-desc">Live jazz, dinnertainment, Afrobeats, and international performances — the stage is set every weekend.</div>
+        <a href="shows.html" class="exp-link">See What's On →</a>
+      </div>
+    </div>
+    <div class="exp-card reveal">
+      <img class="exp-img" src="https://images.unsplash.com/photo-1516997121675-4c2d1684aa3e?w=900&q=80" alt="The Club">
+      <div class="exp-overlay">
+        <div class="exp-tag">After Midnight</div>
+        <div class="exp-name">The Club</div>
+        <div class="exp-desc">When the city sleeps, Level 3 awakens. Port Harcourt's most exclusive rooftop nightlife destination.</div>
+        <a href="club.html" class="exp-link">Enter The Club →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVE -->
+<section id="reserve" style="background:var(--burgundy-deep);padding:6rem 0;text-align:center;">
+  <div class="container">
+    <span class="eyebrow">Join Us Tonight</span>
+    <h2 class="sec-title">Make a <span class="gold">Reservation</span></h2>
+    <div class="gold-bar" style="margin:0 auto 2rem;"></div>
+    <p class="body-text" style="max-width:500px;margin:0 auto 3rem;">Secure your table at Port Harcourt's most sought-after rooftop experience.</p>
+    <div style="display:flex;gap:1.25rem;justify-content:center;flex-wrap:wrap;">
+      <a href="tel:+2348000000000" class="btn-primary">Call to Reserve</a>
+      <a href="mailto:reservations@level3rooftop.com" class="btn-outline">Email Us</a>
+    </div>
+    <p style="margin-top:2rem;font-family:var(--font-sans);font-size:0.72rem;color:rgba(255,255,255,0.3);letter-spacing:0.15em;">+234 800 000 0000 · reservations@level3rooftop.com</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="f-brand">LEVEL 3</div>
+        <div class="f-sub">Rooftop · Port Harcourt</div>
+        <p class="f-tagline">Where elevated dining meets the pulse of Port Harcourt's finest nights.</p>
+        <div class="f-social">
+          <a href="#" class="soc-btn" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          <a href="#" class="soc-btn" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a href="#" class="soc-btn" aria-label="X/Twitter"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <div class="f-col-title">Navigate</div>
+        <ul class="f-links">
+          <li><a href="index.html#about">About Us</a></li>
+          <li><a href="menu.html">Our Menu</a></li>
+          <li><a href="restaurant.html">Restaurant</a></li>
+          <li><a href="shows.html">Shows</a></li>
+          <li><a href="club.html">The Club</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="f-col-title">Experience</div>
+        <ul class="f-links">
+          <li><a href="index.html#reserve">Book a Table</a></li>
+          <li><a href="#">Private Events</a></li>
+          <li><a href="#">VIP Membership</a></li>
+          <li><a href="#">Corporate Dining</a></li>
+          <li><a href="#">Gift Cards</a></li>
+        </ul>
+      </div>
+      <div class="f-contact">
+        <div class="f-col-title">Find Us</div>
+        <p>3rd Floor, GRA District<br>Port Harcourt, Rivers State<br>Nigeria</p>
+        <p style="margin-top:1rem;">+234 800 000 0000</p>
+        <p>reservations@level3rooftop.com</p>
+        <p style="margin-top:1rem;color:rgba(255,255,255,0.25);font-size:0.78rem;">Tue–Sun · Restaurant 6PM–11PM<br>Club Thu–Sat 1AM–6AM</p>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <p class="f-copy">© 2025 Level 3 Rooftop, Port Harcourt. All rights reserved.</p>
+      <div class="f-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>80));
+const ham=document.getElementById('ham'),links=document.getElementById('navLinks');
+ham.addEventListener('click',()=>links.classList.toggle('open'));
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

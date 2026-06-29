@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Shows | Level 3 Rooftop Port Harcourt</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--burgundy:#6B0F1A;--burgundy-deep:#4A0A12;--burgundy-mid:#8B1A28;--burgundy-light:#C4394F;--gold:#C9A96E;--black:#0A0A0A;--charcoal:#1A1A1A;--white:#FFFFFF;--font-serif:'Cormorant Garamond',Georgia,serif;--font-display:'Cinzel',serif;--font-sans:'Jost',sans-serif;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-sans);font-weight:300;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 4rem;background:rgba(10,10,10,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,169,110,0.15);transition:all 0.4s;}
+nav.scrolled{padding:0.85rem 4rem;}
+.nav-logo{font-family:var(--font-display);font-size:1.05rem;letter-spacing:0.25em;color:var(--gold);text-decoration:none;}
+.nav-logo span{display:block;font-family:var(--font-sans);font-size:0.55rem;letter-spacing:0.5em;color:rgba(255,255,255,0.4);text-align:center;margin-top:2px;}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{text-decoration:none;font-family:var(--font-sans);font-size:0.72rem;letter-spacing:0.2em;font-weight:400;color:rgba(255,255,255,0.6);text-transform:uppercase;transition:color 0.3s;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+.nav-cta{background:var(--burgundy)!important;color:var(--white)!important;padding:0.55rem 1.5rem!important;border:1px solid var(--burgundy-light);}
+.nav-ham{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.nav-ham span{display:block;width:24px;height:1px;background:rgba(255,255,255,0.7);transition:all 0.3s;}
+@media(max-width:900px){nav{padding:1rem 1.5rem;}.nav-links{display:none;position:fixed;inset:0;background:rgba(10,10,10,0.98);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;z-index:999;}.nav-links.open{display:flex;}.nav-links a{font-size:1rem;}.nav-ham{display:flex;z-index:1001;}}
+.container{max-width:1200px;margin:0 auto;padding:0 4rem;}
+.eyebrow{font-family:var(--font-sans);font-size:0.65rem;letter-spacing:0.5em;color:var(--gold);text-transform:uppercase;font-weight:400;display:block;}
+.sec-title{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.8rem);font-weight:400;line-height:1.1;letter-spacing:0.03em;}
+.gold{color:var(--gold);}
+.gold-bar{width:60px;height:1px;background:var(--gold);}
+.body-text{font-family:var(--font-serif);font-size:1.05rem;line-height:1.9;color:rgba(255,255,255,0.6);}
+.btn-primary{display:inline-block;padding:0.9rem 2.5rem;background:var(--burgundy);color:var(--white);text-decoration:none;font-family:var(--font-sans);font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;font-weight:400;border:1px solid var(--burgundy-light);transition:all 0.3s;}
+.btn-primary:hover{background:var(--burgundy-mid);transform:translateY(-2px);}
+.btn-outline{display:inline-block;padding:0.9rem 2.5rem;background:transparent;color:var(--white);text-decoration:none;font-family:var(--font-sans);font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;border:1px solid rgba(255,255,255,0.28);transition:all 0.3s;}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.75s ease,transform 0.75s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:680px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,0.45) 0%,rgba(10,10,10,0.75) 60%,rgba(10,10,10,0.92) 100%),url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1800&q=80') center/cover;}
+.hero-content{position:relative;z-index:2;padding:0 2rem;padding-top:80px;max-width:800px;}
+.breadcrumb{display:flex;gap:0.75rem;align-items:center;justify-content:center;margin-bottom:2rem;}
+.breadcrumb a,.breadcrumb span{font-family:var(--font-sans);font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.38);text-decoration:none;}
+.breadcrumb a:hover{color:var(--gold);}
+.breadcrumb .sep{color:rgba(255,255,255,0.18);}
+.hero-tag{font-family:var(--font-sans);font-size:0.68rem;letter-spacing:0.5em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem;display:block;}
+.hero-title{font-family:var(--font-display);font-size:clamp(3.5rem,8vw,7rem);font-weight:400;line-height:1;margin-bottom:1.25rem;}
+.hero-line{width:80px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto 1.75rem;}
+.hero-desc{font-family:var(--font-serif);font-size:1.2rem;color:rgba(255,255,255,0.65);line-height:1.8;max-width:580px;margin:0 auto 3rem;}
+.hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;color:rgba(255,255,255,0.35);font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;animation:pulse 2s ease-in-out infinite;}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,0.35),transparent);}
+@keyframes pulse{0%,100%{opacity:0.4}50%{opacity:1}}
+
+/* WEEKLY LINEUP */
+.lineup{padding:7rem 0;background:var(--charcoal);}
+.lineup-header{text-align:center;margin-bottom:5rem;}
+.lineup-header .eyebrow{margin-bottom:0.75rem;}
+.lineup-header .sec-title{margin-bottom:1rem;}
+.lineup-header .gold-bar{margin:0 auto;}
+
+.show-card{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:3px;overflow:hidden;min-height:480px;}
+.show-card:nth-child(even) .show-img-side{order:2;}
+.show-card:nth-child(even) .show-text-side{order:1;}
+.show-img-side{position:relative;overflow:hidden;}
+.show-img-side img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.7s ease;}
+.show-card:hover .show-img-side img{transform:scale(1.05);}
+.show-text-side{background:var(--black);padding:4rem;display:flex;flex-direction:column;justify-content:center;}
+.show-card:nth-child(odd) .show-text-side{background:var(--charcoal);}
+.show-day-badge{display:inline-block;background:var(--burgundy);border:1px solid var(--burgundy-light);font-family:var(--font-sans);font-size:0.62rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--white);padding:0.45rem 1rem;margin-bottom:1.75rem;}
+.show-title{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:400;margin-bottom:1rem;}
+.show-time{font-family:var(--font-sans);font-size:0.72rem;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:1.5rem;}
+.show-desc{font-family:var(--font-serif);font-size:1.1rem;color:rgba(255,255,255,0.6);line-height:1.85;margin-bottom:2rem;}
+.show-tags{display:flex;gap:0.65rem;flex-wrap:wrap;margin-bottom:2rem;}
+.show-tag{font-family:var(--font-sans);font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.45);border:1px solid rgba(255,255,255,0.15);padding:0.35rem 0.85rem;}
+.show-cta{display:inline-block;padding:0.75rem 2rem;border:1px solid var(--gold);color:var(--gold);font-family:var(--font-sans);font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;text-decoration:none;transition:all 0.3s;align-self:flex-start;}
+.show-cta:hover{background:var(--gold);color:var(--black);}
+
+/* SPECIAL EVENTS */
+.specials{padding:7rem 0;background:var(--black);}
+.specials-header{text-align:center;margin-bottom:5rem;}
+.specials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.special-card{border:1px solid rgba(255,255,255,0.07);overflow:hidden;transition:border-color 0.3s,transform 0.3s;}
+.special-card:hover{border-color:rgba(201,169,110,0.4);transform:translateY(-6px);}
+.special-img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;}
+.special-body{padding:1.75rem;}
+.special-label{font-family:var(--font-sans);font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--burgundy-light);margin-bottom:0.75rem;display:block;}
+.special-title{font-family:var(--font-serif);font-size:1.4rem;font-weight:500;margin-bottom:0.6rem;}
+.special-desc{font-family:var(--font-sans);font-size:0.78rem;color:rgba(255,255,255,0.45);line-height:1.65;}
+.special-cta{display:inline-block;margin-top:1.25rem;padding:0.6rem 1.5rem;border:1px solid rgba(201,169,110,0.5);color:var(--gold);font-family:var(--font-sans);font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;transition:all 0.3s;}
+.special-cta:hover{background:var(--gold);color:var(--black);}
+
+/* PRIVATE EVENTS */
+.private-events{padding:7rem 0;background:var(--burgundy-deep);}
+.pe-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+.pe-img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;}
+
+/* RESERVE */
+.reserve-strip{padding:6rem 0;text-align:center;background:var(--charcoal);}
+
+/* FOOTER */
+footer{background:#050505;border-top:1px solid rgba(201,169,110,0.12);padding:5rem 0 2.5rem;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;margin-bottom:4rem;}
+.f-brand{font-family:var(--font-display);font-size:1.4rem;color:var(--gold);letter-spacing:0.2em;margin-bottom:0.5rem;}
+.f-sub{font-family:var(--font-sans);font-size:0.6rem;letter-spacing:0.5em;color:rgba(255,255,255,0.25);text-transform:uppercase;margin-bottom:1.5rem;}
+.f-tagline{font-family:var(--font-serif);font-size:0.95rem;color:rgba(255,255,255,0.4);line-height:1.8;max-width:260px;}
+.f-col-title{font-family:var(--font-display);font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;}
+.f-links{list-style:none;display:flex;flex-direction:column;gap:0.75rem;}
+.f-links a{font-family:var(--font-sans);font-size:0.82rem;color:rgba(255,255,255,0.4);text-decoration:none;font-weight:300;transition:color 0.3s;}
+.f-links a:hover{color:var(--gold);}
+.f-contact p{font-family:var(--font-sans);font-size:0.82rem;color:rgba(255,255,255,0.4);line-height:2;font-weight:300;}
+.f-social{display:flex;gap:0.75rem;margin-top:1.75rem;}
+.soc-btn{width:38px;height:38px;border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:border-color 0.3s;}
+.soc-btn:hover{border-color:var(--gold);}
+.soc-btn svg{width:16px;height:16px;fill:rgba(255,255,255,0.4);transition:fill 0.3s;}
+.soc-btn:hover svg{fill:var(--gold);}
+.f-bottom{border-top:1px solid rgba(255,255,255,0.05);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;}
+.f-copy{font-family:var(--font-sans);font-size:0.72rem;color:rgba(255,255,255,0.2);}
+.f-legal{display:flex;gap:2rem;}
+.f-legal a{font-family:var(--font-sans);font-size:0.72rem;color:rgba(255,255,255,0.2);text-decoration:none;}
+
+@media(max-width:900px){.container{padding:0 1.5rem;}.show-card{grid-template-columns:1fr;min-height:auto;}.show-card:nth-child(even) .show-img-side{order:0;}.show-card:nth-child(even) .show-text-side{order:0;}.show-img-side img{aspect-ratio:16/9;height:auto;}.show-text-side{padding:2.5rem 1.5rem;}.specials-grid{grid-template-columns:1fr 1fr;}.pe-grid{grid-template-columns:1fr;}.footer-grid{grid-template-columns:1fr 1fr;gap:2rem;}}
+@media(max-width:600px){.specials-grid{grid-template-columns:1fr;}.footer-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">LEVEL 3<span>Rooftop · Port Harcourt</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="restaurant.html">Restaurant</a></li>
+    <li><a href="shows.html" class="active">Shows</a></li>
+    <li><a href="club.html">The Club</a></li>
+    <li><a href="#reserve" class="nav-cta">Reserve</a></li>
+  </ul>
+  <button class="nav-ham" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">›</span><span>Shows</span></div>
+    <span class="hero-tag">Entertainment &amp; Live Performances</span>
+    <h1 class="hero-title">Our <span class="gold">Shows</span></h1>
+    <div class="hero-line"></div>
+    <p class="hero-desc">Where fine dining meets world-class performance. The stage is set every week — your table awaits.</p>
+    <a href="#lineup" class="btn-primary">See the Lineup</a>
+  </div>
+  <div class="hero-scroll"><div class="scroll-line"></div><span>Scroll</span></div>
+</section>
+
+<!-- WEEKLY LINEUP -->
+<section class="lineup" id="lineup">
+  <div class="container">
+    <div class="lineup-header reveal">
+      <span class="eyebrow" style="margin-bottom:0.75rem;">Every Week</span>
+      <h2 class="sec-title">Weekly <span class="gold">Lineup</span></h2>
+      <div class="gold-bar"></div>
+    </div>
+  </div>
+
+  <!-- THURSDAY -->
+  <div class="show-card reveal">
+    <div class="show-img-side">
+      <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=900&q=80" alt="Jazz & Dine">
+    </div>
+    <div class="show-text-side">
+      <div class="show-day-badge">Every Thursday</div>
+      <h2 class="show-title">Jazz <span class="gold">&amp; Dine</span></h2>
+      <div class="show-time">Doors 7:00 PM · Show 8:30 PM</div>
+      <p class="show-desc">A live jazz quartet performs as you dine under the stars. Soul, melody, and masterfully crafted food come together in an evening of effortless elegance. Intimate seating, low lighting, world-class sound.</p>
+      <div class="show-tags">
+        <span class="show-tag">Live Jazz</span>
+        <span class="show-tag">Quartet</span>
+        <span class="show-tag">Fine Dining</span>
+        <span class="show-tag">Intimate</span>
+      </div>
+      <a href="#reserve" class="show-cta">Reserve for Thursday</a>
+    </div>
+  </div>
+
+  <!-- FRIDAY -->
+  <div class="show-card reveal">
+    <div class="show-img-side">
+      <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=900&q=80" alt="Dinnertainment">
+    </div>
+    <div class="show-text-side">
+      <div class="show-day-badge">Every Friday</div>
+      <h2 class="show-title">Dinner<span class="gold">tainment</span></h2>
+      <div class="show-time">Doors 7:30 PM · Show 9:00 PM</div>
+      <p class="show-desc">Our flagship entertainment evening. Live dancers, acrobats, and spectacular performers take the stage as a curated 4-course dinner service unfolds around them. Every table has the best seat in the house.</p>
+      <div class="show-tags">
+        <span class="show-tag">Live Dance</span>
+        <span class="show-tag">Acrobatics</span>
+        <span class="show-tag">4-Course Dinner</span>
+        <span class="show-tag">Spectacular</span>
+      </div>
+      <a href="#reserve" class="show-cta">Reserve for Friday</a>
+    </div>
+  </div>
+
+  <!-- SATURDAY -->
+  <div class="show-card reveal">
+    <div class="show-img-side">
+      <img src="https://images.unsplash.com/photo-1555169062-013468b47731?w=900&q=80" alt="Afrobeats Night">
+    </div>
+    <div class="show-text-side">
+      <div class="show-day-badge">Every Saturday</div>
+      <h2 class="show-title">Afro<span class="gold">beats</span> Saturday</h2>
+      <div class="show-time">Doors 8:00 PM · Show 10:00 PM</div>
+      <p class="show-desc">The week's grand finale. Top DJs and live vocalists bring the very best of Afrobeats, Amapiano, and the newest Naija sounds to our rooftop stage. Dining transitions seamlessly into dancing — the night is limitless.</p>
+      <div class="show-tags">
+        <span class="show-tag">Afrobeats</span>
+        <span class="show-tag">Amapiano</span>
+        <span class="show-tag">Live Vocalists</span>
+        <span class="show-tag">Top DJs</span>
+      </div>
+      <a href="#reserve" class="show-cta">Reserve for Saturday</a>
+    </div>
+  </div>
+
+  <!-- SUNDAY -->
+  <div class="show-card reveal">
+    <div class="show-img-side">
+      <img src="https://images.unsplash.com/photo-1470338745628-171cf53de3a8?w=900&q=80" alt="Sunday Sessions">
+    </div>
+    <div class="show-text-side">
+      <div class="show-day-badge">Every Sunday</div>
+      <h2 class="show-title">Sunday <span class="gold">Sessions</span></h2>
+      <div class="show-time">Doors 5:00 PM · Music 6:30 PM</div>
+      <p class="show-desc">Wind down in style. Acoustic sets, soft R&amp;B, and our special Sunday brunch menu make this the most relaxed and romantic evening of the week. Rooftop sundowners with the city fading into twilight.</p>
+      <div class="show-tags">
+        <span class="show-tag">Acoustic</span>
+        <span class="show-tag">R&amp;B</span>
+        <span class="show-tag">Sundowners</span>
+        <span class="show-tag">Relaxed</span>
+      </div>
+      <a href="#reserve" class="show-cta">Reserve for Sunday</a>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIAL EVENTS -->
+<section class="specials">
+  <div class="container">
+    <div class="specials-header reveal">
+      <span class="eyebrow" style="margin-bottom:0.75rem;">Beyond the Ordinary</span>
+      <h2 class="sec-title">Special <span class="gold">Events</span></h2>
+      <div class="gold-bar" style="margin:1rem auto 0;"></div>
+    </div>
+    <div class="specials-grid">
+      <div class="special-card reveal">
+        <img class="special-img" src="https://images.unsplash.com/photo-1543007630-9710e4a00a20?w=700&q=80" alt="New Year's Eve">
+        <div class="special-body">
+          <span class="special-label">Annual</span>
+          <div class="special-title">New Year's Eve Gala</div>
+          <p class="special-desc">The city's most anticipated evening. A black-tie countdown with live entertainment, champagne tower, and fireworks over the Port Harcourt skyline.</p>
+          <a href="#reserve" class="special-cta">Get on the List</a>
+        </div>
+      </div>
+      <div class="special-card reveal">
+        <img class="special-img" src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=700&q=80" alt="Chef's Table">
+        <div class="special-body">
+          <span class="special-label">Monthly</span>
+          <div class="special-title">The Chef's Table</div>
+          <p class="special-desc">A monthly 8-course tasting menu with wine pairings, prepared and narrated by our Executive Chef. Limited to 12 guests.</p>
+          <a href="#reserve" class="special-cta">Reserve a Spot</a>
+        </div>
+      </div>
+      <div class="special-card reveal">
+        <img class="special-img" src="https://images.unsplash.com/photo-1516997121675-4c2d1684aa3e?w=700&q=80" alt="Guest Artists">
+        <div class="special-body">
+          <span class="special-label">Quarterly</span>
+          <div class="special-title">Guest Artist Nights</div>
+          <p class="special-desc">Internationally acclaimed musicians and performers take our stage for exclusive one-night-only performances. Follow us for announcements.</p>
+          <a href="#reserve" class="special-cta">Stay Updated</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVATE EVENTS -->
+<section class="private-events">
+  <div class="container">
+    <div class="pe-grid">
+      <div class="reveal">
+        <span class="eyebrow" style="margin-bottom:1rem;">Host with Us</span>
+        <h2 class="sec-title" style="margin-bottom:1.5rem;">Private <span class="gold">Events</span></h2>
+        <div class="gold-bar" style="margin-bottom:2rem;"></div>
+        <p class="body-text">Level 3 is the city's most coveted private event destination. Whether a corporate launch, birthday extravaganza, product reveal, or intimate gathering — our events team will create an experience as extraordinary as the occasion.</p>
+        <p class="body-text" style="margin-top:1.25rem;">We provide full-service event planning: entertainment programming, custom menus, décor, AV production, and dedicated service staff. No request is too grand.</p>
+        <a href="mailto:events@level3rooftop.com" class="btn-primary" style="display:inline-block;margin-top:2.5rem;">Enquire About Private Events</a>
+      </div>
+      <div class="reveal">
+        <img class="pe-img" src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80" alt="Private event">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-top:3px;">
+          <img src="https://images.unsplash.com/photo-1470338745628-171cf53de3a8?w=500&q=80" alt="Entertainment" style="width:100%;aspect-ratio:3/2;object-fit:cover;">
+          <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=500&q=80" alt="Show" style="width:100%;aspect-ratio:3/2;object-fit:cover;">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVE -->
+<section class="reserve-strip" id="reserve">
+  <div class="container reveal">
+    <span class="eyebrow" style="margin-bottom:0.85rem;">Don't Miss a Show</span>
+    <h2 class="sec-title" style="margin-bottom:1.5rem;">Book Your <span class="gold">Evening</span></h2>
+    <div class="gold-bar" style="margin:0 auto 2rem;"></div>
+    <p class="body-text" style="max-width:480px;margin:0 auto 3rem;">Show nights sell out fast. Secure your table and your spot for Port Harcourt's most talked-about entertainment evenings.</p>
+    <div style="display:flex;gap:1.25rem;justify-content:center;flex-wrap:wrap;">
+      <a href="tel:+2348000000000" class="btn-primary">Call to Reserve</a>
+      <a href="mailto:reservations@level3rooftop.com" class="btn-outline">Email Us</a>
+    </div>
+    <p style="margin-top:2rem;font-family:var(--font-sans);font-size:0.72rem;color:rgba(255,255,255,0.28);letter-spacing:0.12em;">+234 800 000 0000 · reservations@level3rooftop.com</p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="f-brand">LEVEL 3</div><div class="f-sub">Rooftop · Port Harcourt</div><p class="f-tagline">Where elevated dining meets the pulse of Port Harcourt's finest nights.</p>
+        <div class="f-social">
+          <a href="#" class="soc-btn"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          <a href="#" class="soc-btn"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a href="#" class="soc-btn"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        </div>
+      </div>
+      <div><div class="f-col-title">Navigate</div><ul class="f-links"><li><a href="index.html#about">About Us</a></li><li><a href="menu.html">Our Menu</a></li><li><a href="restaurant.html">Restaurant</a></li><li><a href="shows.html">Shows</a></li><li><a href="club.html">The Club</a></li></ul></div>
+      <div><div class="f-col-title">Experience</div><ul class="f-links"><li><a href="#reserve">Book a Table</a></li><li><a href="#">Private Events</a></li><li><a href="#">VIP Membership</a></li><li><a href="#">Corporate Dining</a></li></ul></div>
+      <div class="f-contact"><div class="f-col-title">Find Us</div><p>3rd Floor, GRA District<br>Port Harcourt, Rivers State<br>Nigeria</p><p style="margin-top:1rem;">+234 800 000 0000</p><p>reservations@level3rooftop.com</p></div>
+    </div>
+    <div class="f-bottom"><p class="f-copy">© 2025 Level 3 Rooftop, Port Harcourt. All rights reserved.</p><div class="f-legal"><a href="#">Privacy</a><a href="#">Terms</a></div></div>
+  </div>
+</footer>
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>80));
+const ham=document.getElementById('ham'),links=document.getElementById('navLinks');
+ham.addEventListener('click',()=>links.classList.toggle('open'));
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

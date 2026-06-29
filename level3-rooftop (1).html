@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Level 3 Rooftop — Port Harcourt</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --burg:#6B1428;--burg-deep:#4A0D1C;--burg-light:#8C1A33;
+  --gold:#C9A84C;--gold-light:#E8D09A;
+  --white:#FAF7F2;--black:#0A0A0A;--dark:#111111;--gray:#1A1A1A;
+  --text-muted:#9A9082;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.4rem 3rem;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,10,.97);border-bottom:1px solid rgba(201,168,76,.15)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;letter-spacing:.15em;color:var(--white);cursor:pointer}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(250,247,242,.65);text-decoration:none;transition:color .3s;cursor:pointer}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-cta{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;border:1px solid var(--gold);color:var(--gold);padding:.55rem 1.3rem;cursor:pointer;transition:all .3s;background:transparent;font-family:'Montserrat',sans-serif}
+.nav-cta:hover{background:var(--gold);color:var(--black)}
+
+/* PAGE VISIBILITY */
+.page{display:none}.page.active{display:block}
+
+/* HERO */
+.hero{height:100vh;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&q=80') center/cover no-repeat;filter:brightness(.32)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,.1) 0%,rgba(74,13,28,.2) 50%,rgba(10,10,10,.92) 100%)}
+.hero-content{position:relative;text-align:center;padding:0 2rem}
+.hero-eyebrow{font-size:.6rem;letter-spacing:.45em;text-transform:uppercase;color:var(--gold);margin-bottom:1.8rem}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,9vw,7.5rem);font-weight:300;line-height:.95;letter-spacing:.03em;margin-bottom:1.2rem}
+.hero-title em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:.65rem;letter-spacing:.35em;text-transform:uppercase;color:rgba(250,247,242,.5);margin-bottom:3.5rem}
+.hero-actions{display:flex;gap:1.5rem;justify-content:center}
+.btn-burg{background:var(--burg);color:var(--white);border:none;padding:.9rem 2.5rem;font-family:'Montserrat',sans-serif;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:background .3s}
+.btn-burg:hover{background:var(--burg-light)}
+.btn-ghost{background:transparent;color:var(--white);border:1px solid rgba(250,247,242,.35);padding:.9rem 2.5rem;font-family:'Montserrat',sans-serif;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:all .3s}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.6rem;opacity:.4}
+.scroll-hint span{font-size:.52rem;letter-spacing:.3em;text-transform:uppercase}
+.scroll-line{width:1px;height:55px;background:var(--gold);animation:scPulse 2s infinite}
+@keyframes scPulse{0%,100%{transform:scaleY(.4);opacity:.3}50%{transform:scaleY(1);opacity:1}}
+
+/* SECTION COMMON */
+.sec-tag{font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;line-height:1.12;margin-bottom:1.2rem}
+.sec-title em{font-style:italic;color:var(--gold)}
+.divider{width:44px;height:1px;background:var(--gold);margin:1.4rem 0}
+.body-text{font-size:.78rem;line-height:1.95;color:rgba(250,247,242,.62);margin-bottom:1.2rem}
+
+/* HOME — ABOUT STRIP */
+.home-about{padding:8rem 4rem;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.about-img-wrap{position:relative}
+.about-img{width:100%;height:520px;object-fit:cover;filter:brightness(.82)}
+.about-accent{position:absolute;bottom:-1.8rem;left:-1.8rem;width:55%;height:180px;object-fit:cover;border:3px solid var(--dark)}
+
+/* FEATURES BAR */
+.feat-bar{background:var(--burg-deep);display:grid;grid-template-columns:repeat(4,1fr)}
+.feat-cell{padding:2.2rem;border-right:1px solid rgba(201,168,76,.12);text-align:center}
+.feat-cell:last-child{border-right:none}
+.feat-ico{font-size:1.4rem;color:var(--gold);margin-bottom:.6rem}
+.feat-name{font-family:'Cormorant Garamond',serif;font-size:1.15rem;margin-bottom:.25rem}
+.feat-sub{font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text-muted)}
+
+/* VENUE PREVIEW GRID */
+.venues{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--black)}
+.vc{position:relative;height:58vh;overflow:hidden;cursor:pointer}
+.vc img{width:100%;height:100%;object-fit:cover;filter:brightness(.45);transition:all .6s}
+.vc:hover img{filter:brightness(.65);transform:scale(1.04)}
+.vc-info{position:absolute;bottom:0;left:0;right:0;padding:2.2rem;background:linear-gradient(to top,rgba(10,10,10,.88),transparent)}
+.vc-tag{font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+.vc-name{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:300}
+.vc-cta{display:inline-block;margin-top:.8rem;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid var(--gold);padding-bottom:2px;opacity:0;transform:translateY(8px);transition:all .3s}
+.vc:hover .vc-cta{opacity:1;transform:translateY(0)}
+
+/* PAGE HERO */
+.ph{height:52vh;position:relative;display:flex;align-items:flex-end;padding:3.5rem 4rem}
+.ph-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.28)}
+.ph-fade{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,1) 0%,transparent 55%)}
+.ph-content{position:relative;z-index:1}
+.ph-tag{font-size:.57rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem}
+.ph-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,4.8rem);font-weight:300;line-height:1}
+.ph-title em{font-style:italic;color:var(--gold)}
+
+/* ABOUT PAGE */
+.about-content{padding:5rem 4rem;max-width:1200px;margin:0 auto}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-bottom:5rem}
+.about-story p{font-size:.82rem;line-height:1.95;color:rgba(250,247,242,.68);margin-bottom:1.2rem}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.stat-box{border:1px solid rgba(201,168,76,.18);padding:1.8rem;text-align:center}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:3.2rem;color:var(--gold);line-height:1}
+.stat-lbl{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text-muted);margin-top:.4rem}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2rem}
+.team-card img{width:100%;height:290px;object-fit:cover;filter:brightness(.78);margin-bottom:.8rem}
+.team-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem}
+.team-role{font-size:.57rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-top:.25rem}
+
+/* MENU PAGE */
+.menu-content{padding:3rem 4rem;max-width:1300px;margin:0 auto}
+.menu-tabs{display:flex;gap:2rem;flex-wrap:wrap;border-bottom:1px solid rgba(201,168,76,.12);padding-bottom:1.2rem;margin-bottom:2.5rem}
+.mtab{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;color:var(--text-muted);padding-bottom:.8rem;border:none;border-bottom:2px solid transparent;background:none;transition:all .3s;font-family:'Montserrat',sans-serif}
+.mtab.active,.mtab:hover{color:var(--gold);border-bottom-color:var(--gold)}
+.mcat{display:none}.mcat.active{display:block}
+.mcat-title{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-style:italic;color:var(--gold);margin-bottom:2.2rem;border-bottom:1px solid rgba(201,168,76,.18);padding-bottom:.8rem}
+.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:2rem}
+.mcard{background:var(--gray);overflow:hidden;transition:transform .3s}
+.mcard:hover{transform:translateY(-4px)}
+.mcard img{width:100%;height:190px;object-fit:cover;filter:brightness(.83)}
+.mcard-body{padding:1.1rem}
+.mcard-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;margin-bottom:.35rem}
+.mcard-desc{font-size:.68rem;line-height:1.72;color:var(--text-muted)}
+.mcard-badge{display:inline-block;margin-top:.6rem;font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,.28);padding:.18rem .55rem}
+.simple-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1rem}
+.simple-item{padding:.9rem;border:1px solid rgba(201,168,76,.1);background:var(--gray)}
+.simple-name{font-family:'Cormorant Garamond',serif;font-size:.98rem;color:var(--gold-light)}
+.simple-desc{font-size:.65rem;color:var(--text-muted);margin-top:.25rem;line-height:1.6}
+
+/* RESTAURANT PAGE */
+.rest-content{padding:4rem;max-width:1300px;margin:0 auto}
+.rest-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:3.5rem;align-items:center;margin-bottom:5rem}
+.rest-img-main{width:100%;height:480px;object-fit:cover;filter:brightness(.82)}
+.rest-img-stack{position:relative}
+.rest-img-accent{position:absolute;bottom:-1.8rem;right:-1.8rem;width:48%;height:190px;object-fit:cover;border:4px solid var(--dark);filter:brightness(.82)}
+.feat-list .fr{display:flex;align-items:center;gap:.9rem;padding:.7rem 0;border-bottom:1px solid rgba(201,168,76,.08)}
+.feat-list .dot{width:5px;height:5px;background:var(--gold);border-radius:50%;flex-shrink:0}
+.feat-list .ft{font-size:.72rem;color:rgba(250,247,242,.65)}
+.exp-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:4rem;background:rgba(201,168,76,.08)}
+.exp-cell{padding:2.8rem 2rem;background:var(--dark);text-align:center}
+.exp-ico{font-size:1.8rem;color:var(--gold);margin-bottom:.8rem}
+.exp-title{font-family:'Cormorant Garamond',serif;font-size:1.35rem;margin-bottom:.4rem}
+.exp-desc{font-size:.68rem;color:var(--text-muted);line-height:1.72}
+.rest-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin:3rem 0}
+.rest-gallery img{width:100%;height:230px;object-fit:cover;filter:brightness(.78)}
+
+/* SHOWS PAGE */
+.shows-content{padding:4rem;max-width:1300px;margin:0 auto}
+.shows-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:3rem 0 3.5rem}
+.scard{position:relative;overflow:hidden;cursor:pointer;height:310px}
+.scard img{width:100%;height:100%;object-fit:cover;filter:brightness(.42);transition:all .5s}
+.scard:hover img{filter:brightness(.62);transform:scale(1.03)}
+.scard-over{position:absolute;inset:0;padding:2rem;display:flex;flex-direction:column;justify-content:flex-end}
+.scard-type{font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+.scard-name{font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:300}
+.scard-date{font-size:.62rem;color:rgba(250,247,242,.55);margin-top:.4rem}
+.shows-stat-strip{display:grid;grid-template-columns:repeat(3,1fr);background:var(--burg-deep);padding:3rem}
+.ss-item{text-align:center}
+.ss-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:var(--gold-light)}
+.ss-lbl{font-size:.57rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(250,247,242,.45);margin-top:.25rem}
+
+/* CLUB PAGE */
+.club-content{padding:4rem;max-width:1300px;margin:0 auto}
+.club-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;align-items:center;margin-bottom:5rem}
+.club-imgs{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.cimg{width:100%;height:210px;object-fit:cover;filter:brightness(.72)}
+.cimg.tall{height:290px;grid-column:1/-1}
+.vip-section{background:var(--gray);border:1px solid rgba(201,168,76,.13);padding:3rem}
+.vip-title{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--gold);margin-bottom:.8rem}
+.vip-sub{font-size:.72rem;color:var(--text-muted)}
+.vip-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2rem}
+.vip-tier{padding:2rem;border:1px solid rgba(201,168,76,.18);text-align:center}
+.vip-name{font-family:'Cormorant Garamond',serif;font-size:1.45rem;color:var(--gold-light);margin-bottom:.4rem}
+.vip-bar{width:28px;height:1px;background:var(--gold);margin:.4rem auto .7rem}
+.vip-desc{font-size:.68rem;color:var(--text-muted);line-height:1.7}
+
+/* RESERVATION MODAL */
+.modal{position:fixed;inset:0;background:rgba(10,10,10,.96);z-index:2000;display:none;align-items:center;justify-content:center}
+.modal.open{display:flex}
+.mbox{background:var(--dark);border:1px solid rgba(201,168,76,.18);padding:3rem;max-width:480px;width:92%;position:relative}
+.mclose{position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--white);font-size:1.4rem;cursor:pointer;line-height:1;font-family:'Montserrat',sans-serif}
+.mbox-title{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--gold);margin-bottom:.3rem}
+.mbox-sub{font-size:.68rem;color:var(--text-muted);margin-bottom:2rem}
+.flabel{font-size:.57rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.35rem;display:block}
+.finput{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(201,168,76,.18);color:var(--white);padding:.68rem 1rem;font-family:'Montserrat',sans-serif;font-size:.78rem;outline:none;margin-bottom:1.1rem}
+.finput:focus{border-color:var(--gold)}
+.frow2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.fsubmit{width:100%;background:var(--burg);border:none;color:var(--white);padding:.95rem;font-family:'Montserrat',sans-serif;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;margin-top:.5rem;transition:background .3s}
+.fsubmit:hover{background:var(--burg-light)}
+
+/* FOOTER */
+footer{background:var(--dark);border-top:1px solid rgba(201,168,76,.12);padding:5rem 4rem 3rem}
+.fg{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:4rem;margin-bottom:4rem}
+.fb-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;margin-bottom:.3rem}
+.fb-sub{font-size:.57rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.fb-desc{font-size:.7rem;color:var(--text-muted);line-height:1.82}
+.fsoc{display:flex;gap:.8rem;margin-top:1rem}
+.fsoc-btn{width:34px;height:34px;border:1px solid rgba(201,168,76,.28);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;font-size:.62rem;color:var(--gold);font-family:'Montserrat',sans-serif}
+.fsoc-btn:hover{background:var(--gold);color:var(--black)}
+.ftitle{font-size:.57rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem}
+.flinks{list-style:none;display:flex;flex-direction:column;gap:.65rem}
+.flinks a{font-size:.7rem;color:var(--text-muted);text-decoration:none;cursor:pointer;transition:color .3s}
+.flinks a:hover{color:var(--white)}
+.fcontact{font-size:.7rem;color:var(--text-muted);line-height:2}
+.fbot{border-top:1px solid rgba(201,168,76,.08);padding-top:2rem;display:flex;justify-content:space-between;align-items:center}
+.fcopy{font-size:.58rem;color:var(--text-muted)}
+.ftagline{font-family:'Cormorant Garamond',serif;font-size:.88rem;font-style:italic;color:var(--gold)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo" onclick="go('home')">LEVEL <span>3</span> ROOFTOP</div>
+  <ul class="nav-links">
+    <li><a onclick="go('about')" id="nl-about">About</a></li>
+    <li><a onclick="go('menu')" id="nl-menu">Menu</a></li>
+    <li><a onclick="go('restaurant')" id="nl-restaurant">Restaurant</a></li>
+    <li><a onclick="go('shows')" id="nl-shows">Shows</a></li>
+    <li><a onclick="go('club')" id="nl-club">The Club</a></li>
+  </ul>
+  <button class="nav-cta" onclick="openModal()">Reserve a Table</button>
+</nav>
+
+<!-- ==================== HOME ==================== -->
+<div id="p-home" class="page active">
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Port Harcourt's Premier Rooftop Experience</p>
+    <h1 class="hero-title">Where the<br><em>Elite</em> Ascend</h1>
+    <p class="hero-sub">Level 3 Rooftop &nbsp;·&nbsp; Port Harcourt</p>
+    <div class="hero-actions">
+      <button class="btn-burg" onclick="openModal()">Request Access</button>
+      <button class="btn-ghost" onclick="go('menu')">View Menu</button>
+    </div>
+  </div>
+  <div class="scroll-hint"><div class="scroll-line"></div><span>Scroll</span></div>
+</div>
+
+<div class="home-about">
+  <div class="about-img-wrap">
+    <img class="about-img" src="https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?w=900&q=80" alt="Level 3 Interior">
+    <img class="about-accent" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="Fine Dining">
+  </div>
+  <div>
+    <p class="sec-tag">Our Story</p>
+    <h2 class="sec-title">Above the City,<br><em>Beyond Ordinary</em></h2>
+    <div class="divider"></div>
+    <p class="body-text">Level 3 Rooftop is Port Harcourt's most exclusive dining and nightlife destination — a curated experience for those who appreciate the extraordinary. We are not merely a venue; we are a statement.</p>
+    <p class="body-text">Perched above the city skyline, we offer an intimate world of premium cuisine, handcrafted cocktails, live entertainment, and an electric club atmosphere — all within one sophisticated address. Access is by invitation and discernment alone.</p>
+    <button class="btn-ghost" style="margin-top:1rem" onclick="go('about')">Discover More</button>
+  </div>
+</div>
+
+<div class="feat-bar">
+  <div class="feat-cell"><div class="feat-ico">✦</div><div class="feat-name">Fine Dining</div><div class="feat-sub">Premium Cuisine</div></div>
+  <div class="feat-cell"><div class="feat-ico">♦</div><div class="feat-name">Live Shows</div><div class="feat-sub">Curated Performances</div></div>
+  <div class="feat-cell"><div class="feat-ico">◈</div><div class="feat-name">The Club</div><div class="feat-sub">Exclusive Access</div></div>
+  <div class="feat-cell"><div class="feat-ico">❋</div><div class="feat-name">Skyline Views</div><div class="feat-sub">Port Harcourt Rooftop</div></div>
+</div>
+
+<div class="venues">
+  <div class="vc" onclick="go('restaurant')">
+    <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?w=900&q=80" alt="Restaurant">
+    <div class="vc-info"><div class="vc-tag">Culinary Experience</div><div class="vc-name">The Restaurant</div><div class="vc-cta">Explore →</div></div>
+  </div>
+  <div class="vc" onclick="go('shows')">
+    <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=900&q=80" alt="Shows">
+    <div class="vc-info"><div class="vc-tag">Entertainment</div><div class="vc-name">Live Shows</div><div class="vc-cta">Explore →</div></div>
+  </div>
+  <div class="vc" onclick="go('club')">
+    <img src="https://images.unsplash.com/photo-1566737236500-c8ac43014a67?w=900&q=80" alt="Club">
+    <div class="vc-info"><div class="vc-tag">Nightlife</div><div class="vc-name">The Club</div><div class="vc-cta">Explore →</div></div>
+  </div>
+</div>
+
+<footer>
+  <div class="fg">
+    <div>
+      <div class="fb-name">Level 3 Rooftop</div>
+      <div class="fb-sub">Port Harcourt</div>
+      <p class="fb-desc">Port Harcourt's most exclusive rooftop dining, nightlife, and entertainment destination. An experience reserved for few.</p>
+      <div class="fsoc"><div class="fsoc-btn">IG</div><div class="fsoc-btn">TW</div><div class="fsoc-btn">FB</div></div>
+    </div>
+    <div><div class="ftitle">Explore</div><ul class="flinks"><li><a onclick="go('about')">About Us</a></li><li><a onclick="go('menu')">Our Menu</a></li><li><a onclick="go('restaurant')">The Restaurant</a></li><li><a onclick="go('shows')">Shows</a></li><li><a onclick="go('club')">The Club</a></li></ul></div>
+    <div><div class="ftitle">Hours</div><div class="fcontact">Tue – Thu: 6PM – 2AM<br>Fri – Sat: 6PM – 4AM<br>Sunday: 4PM – 12AM<br>Monday: Closed</div></div>
+    <div><div class="ftitle">Contact</div><div class="fcontact">Port Harcourt,<br>Rivers State, Nigeria<br><br>+234 800 000 0000<br>info@level3rooftop.com</div></div>
+  </div>
+  <div class="fbot"><div class="fcopy">© 2025 Level 3 Rooftop. All rights reserved.</div><div class="ftagline">Where the elite ascend.</div></div>
+</footer>
+</div>
+
+<!-- ==================== ABOUT ==================== -->
+<div id="p-about" class="page">
+<div class="ph">
+  <div class="ph-bg" style="background-image:url('https://images.unsplash.com/photo-1563911302283-d2bc129e7570?w=1600&q=80')"></div>
+  <div class="ph-fade"></div>
+  <div class="ph-content">
+    <div class="ph-tag">Our Identity</div>
+    <h1 class="ph-title">About <em>Level 3</em></h1>
+  </div>
+</div>
+<div class="about-content">
+  <div class="about-grid">
+    <div class="about-story">
+      <p class="sec-tag">The Vision</p>
+      <h2 class="sec-title">A New Standard<br><em>of Luxury</em></h2>
+      <div class="divider"></div>
+      <p>Level 3 Rooftop was conceived from a singular vision: to create Port Harcourt's most sophisticated and exclusive destination where culinary artistry, world-class entertainment, and breathtaking skyline views converge into one extraordinary experience.</p>
+      <p>We believe that true luxury is not merely opulence — it is the seamless orchestration of atmosphere, service, and experience. Every element of Level 3 has been crafted with intentional precision, from the curated menu of our executive chef to the architecture of sound in our club.</p>
+      <p>Entry to Level 3 is not simply a ticket — it is an invitation into an inner circle. We maintain an intimate capacity to ensure that every guest receives the immersive, personal experience they deserve.</p>
+    </div>
+    <div>
+      <div class="stats-grid">
+        <div class="stat-box"><div class="stat-num">3°</div><div class="stat-lbl">Floors Above the City</div></div>
+        <div class="stat-box"><div class="stat-num">250</div><div class="stat-lbl">Exclusive Capacity</div></div>
+        <div class="stat-box"><div class="stat-num">6</div><div class="stat-lbl">Menu Categories</div></div>
+        <div class="stat-box"><div class="stat-num">PHC</div><div class="stat-lbl">Port Harcourt's Finest</div></div>
+      </div>
+      <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=800&q=80" alt="Interior" style="width:100%;height:230px;object-fit:cover;margin-top:1.8rem;filter:brightness(.78)">
+    </div>
+  </div>
+  <div>
+    <p class="sec-tag">Our People</p>
+    <h2 class="sec-title">The Minds<br><em>Behind Level 3</em></h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <img src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?w=600&q=80" alt="Chef">
+        <div class="team-name">Executive Chef</div><div class="team-role">Culinary Director</div>
+      </div>
+      <div class="team-card">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Director">
+        <div class="team-name">Creative Director</div><div class="team-role">Brand & Experience</div>
+      </div>
+      <div class="team-card">
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=80" alt="Manager">
+        <div class="team-name">General Manager</div><div class="team-role">Operations & Hospitality</div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer><div class="fg"><div><div class="fb-name">Level 3 Rooftop</div><div class="fb-sub">Port Harcourt</div></div><div><div class="ftitle">Navigate</div><ul class="flinks"><li><a onclick="go('home')">Home</a></li><li><a onclick="go('menu')">Menu</a></li><li><a onclick="go('restaurant')">Restaurant</a></li><li><a onclick="go('shows')">Shows</a></li><li><a onclick="go('club')">The Club</a></li></ul></div><div><div class="ftitle">Hours</div><div class="fcontact">Tue–Thu: 6PM–2AM<br>Fri–Sat: 6PM–4AM<br>Sun: 4PM–12AM</div></div><div><div class="ftitle">Contact</div><div class="fcontact">Port Harcourt, Rivers State<br>+234 800 000 0000</div></div></div><div class="fbot"><div class="fcopy">© 2025 Level 3 Rooftop. All rights reserved.</div><div class="ftagline">Where the elite ascend.</div></div></footer>
+</div>
+
+<!-- ==================== MENU ==================== -->
+<div id="p-menu" class="page">
+<div class="ph">
+  <div class="ph-bg" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&q=80')"></div>
+  <div class="ph-fade"></div>
+  <div class="ph-content"><div class="ph-tag">Culinary Arts</div><h1 class="ph-title">Our <em>Menu</em></h1></div>
+</div>
+<div class="menu-content">
+  <div class="menu-tabs">
+    <button class="mtab active" onclick="mTab('starters',this)">Starters</button>
+    <button class="mtab" onclick="mTab('salads',this)">Salads</button>
+    <button class="mtab" onclick="mTab('pasta',this)">Pasta</button>
+    <button class="mtab" onclick="mTab('grills',this)">Grills</button>
+    <button class="mtab" onclick="mTab('seafood',this)">Seafood</button>
+    <button class="mtab" onclick="mTab('poultry',this)">Poultry</button>
+    <button class="mtab" onclick="mTab('sides',this)">Sides & Sauces</button>
+    <button class="mtab" onclick="mTab('desserts',this)">Desserts</button>
+  </div>
+
+  <!-- STARTERS -->
+  <div class="mcat active" id="mc-starters">
+    <div class="mcat-title">Starters</div>
+    <div class="mgrid">
+      <div class="mcard"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80" alt=""><div class="mcard-body"><div class="mcard-name">Golden Plantain Cups</div><div class="mcard-desc">Crisp plantain cups filled with smoked barbecue chicken, finished with roasted sweet pepper glaze.</div><span class="mcard-badge">Signature</span></div></div>
+      <div class="mcard"><img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&q=80" alt=""><div class="mcard-body"><div class="mcard-name">Crispy Calamari</div><div class="mcard-desc">Buttermilk calamari rings served with dynamite sauce and charred lemon.</div><span class="mcard-badge">Popular</span></div></div>
+      <div class="mcard"><img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=80" alt=""><div class="mcard-body"><div class="mcard-name">Tempura Prawns</div><div class="mcard-desc">Lightly battered king prawns served with spicy Japanese mayo.</div></div></div>
+      <div class="mcard"><img src="https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?w=600&q=80" alt=""><div class="mcard-body"><div class="mcard-name">Tomato Bruschetta</div><div class="mcard-desc">Toasted artisan bread topped with basil tomato concassé, olive oil, and shaved parmesan.</div></div></div>
+    </div>
+  </div>
+
+  <!-- SALADS -->
+  <div class="mcat" id="mc-salads">
+    <div class="mcat-title">Salads</div>
+    <div class="mgrid">
+      <div class="mcard"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80" alt=""><div class="mcard-body"><div class="mcard-name">Emerald Chicken Salad</div><div class="mcard-desc">Shredded chicken, avocado, Chinese cabbage, carrot ribbons, sesame seed, lettuce, soft egg, and bell peppers finished with house mayo dressing.</div><span class="mcard-badge">Chef's Pick</span></div></div>
+      <div class="mcard"><img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&q=80" alt=""><div class="mcard-body"><div class="mcard-name">Garden Harvest Salad</div><div class="mcard-desc">Beetroot, cucumber ribbons, pickled onions, almond crumble, baby lettuce, carrots, and citrus lemon vinaigrette.</div></div></div>
+    </div>
+  </div>
+
+  <!-- PASTA -->
+  <div class="mcat" id="mc-pasta">
+    <div class="mcat-title">Pasta</div>
+    <div class="mgrid">
+      <div class="mcard"><img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=600&q=80" alt=""><div class="mcard-body"><div class="mcard-name">Chili Salmon Alfredo</div><div class="mcard-desc">Creamy parmesan Alfredo tossed with pasta ribbons and finished with chili-glazed salmon.</div><span class="mcard-badge">Signature</span></div></div>
+      <div class="mcard"><img src="https://images.unsplash.com/photo-1551183053-bf91798d765f?w=600&q=80" alt=""><div class="mcard-body"><div class="mcard-name">Penne Arrabbiata</div><div class="mcard-desc">Penne pasta in spicy tomato sauce with beef meatballs, parmesan, and fresh herbs.</div></div></div>
+    </div>
+  </div>
+
+  <!-- GRILLS -->
+  <div class="mcat" id="mc-grills">
+    <div class="mcat-title">Grills</div>
+    <div class="mgrid">
+      <div class="mcard"><img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=600&q=80" alt=""><div class="mcard-body"><div class="mcard-name">24 Karat Tomahawk</div><div class="mcard-desc">1000g grilled tomahawk steak immersed in smoked brown butter essence, finished with edible gold and tableside cognac flambé.</div><span class="mcard-badge">Showstopper</span></div></div>
+      <div class="mcard"><img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&q=80" alt=""><div class="mcard-body"><div class="mcard-name">The Monarch T-Bone</div><div class="mcard-desc">Open air grilled T-bone steak finished with rosemary butter and red wine reduction.</div><span class="mcard-badge">Popular</span></div></div>
+      <div class="mcard"><img src="https://images.unsplash.com/photo-1558030006-450675393462?w=600&q=80" alt=""><div class="mcard-body"><div class="mcard-name">Imperial Tenderloin</div><div class="mcard-desc">Premium beef tenderloin served with charred broccoli and peppercorn jus.</div></div></div>
+      <div class="mcard"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80" alt=""><div class="mcard-body"><div class="mcard-name">Level 3 Signature Flambé</div><div class="mcard-desc">Sizzling grilled lamb chops glazed in smoked butter and finished with tableside cognac flambé.</div><span class="mcard-badge">Signature</span></div></div>
+      <div class="mcard"><img src="https://images.unsplash.com/photo-1615937657715-bc7b4b7962c1?w=600&q=80" alt=""><div class="mcard-body"><div class="mcard-name">Sirloin Steak Bites</div><div class="mcard-desc">Chargrilled sirloin bites served with creamy mashed potatoes, sautéed vegetables, and red wine jus.</div></div></div>
+      <div class="mcard"><img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80" alt=""><div class="mcard-body"><div class="mcard-name">Slow-Braised Lamb Shank</div><div class="mcard-desc">400g braised lamb shank served over creamy potato purée with peppercorn jus.</div></div></div>
+    </div>
+  </div>
+
+  <!-- SEAFOOD -->
+  <div class="mcat" id="mc-seafood">
+    <div class="mcat-title">Seafood</div>
+    <div class="mgrid">
+      <div class="mcard"><img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=600&q=80" alt=""><div class="mcard-body"><div class="mcard-name">Prawn-Stuffed Atlantic Salmon</div><div class="mcard-desc">Oven roasted salmon filled with creamy garlic prawns, served with buttered jasmine rice.</div><span class="mcard-badge">Chef's Pick</span></div></div>
+      <div class="mcard"><img src="https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=600&q=80" alt=""><div class="mcard-body"><div class="mcard-name">Fire-Grilled Prawn Skewers</div><div class="mcard-desc">Charred prawn kebabs served with butter potato wedges and pepper sauce.</div></div></div>
+      <div class="mcard"><img src="https://images.unsplash.com/photo-1580476262798-bddd9f4b7369?w=600&q=80" alt=""><div class="mcard-body"><div class="mcard-name">Coastal Flame Tilapia</div><div class="mcard-desc">Whole grilled tilapia served with smoky jollof rice and butter sautéed vegetables.</div><span class="mcard-badge">Local Favourite</span></div></div>
+    </div>
+  </div>
+
+  <!-- POULTRY -->
+  <div class="mcat" id="mc-poultry">
+    <div class="mcat-title">Poultry</div>
+    <div class="mgrid">
+      <div class="mcard"><img src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=600&q=80" alt=""><div class="mcard-body"><div class="mcard-name">Thai Coconut Curry</div><div class="mcard-desc">Slow simmered chicken curry in coconut cream with vegetables and steamed jasmine rice.</div></div></div>
+      <div class="mcard"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=80" alt=""><div class="mcard-body"><div class="mcard-name">Crispy Chicken Lava</div><div class="mcard-desc">Golden fried chicken breast covered with mozzarella, spicy arrabbiata sauce and French fries.</div><span class="mcard-badge">Popular</span></div></div>
+    </div>
+  </div>
+
+  <!-- SIDES & SAUCES -->
+  <div class="mcat" id="mc-sides">
+    <div class="mcat-title">Sides & Sauces</div>
+    <p class="body-text" style="margin-bottom:1.8rem">Complement your main with our selection of artisan sides and house sauces.</p>
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--gold-light);margin-bottom:.9rem">Sides</h3>
+    <div class="simple-grid" style="margin-bottom:2.5rem">
+      <div class="simple-item"><div class="simple-name">Golden Yam Batons</div><div class="simple-desc">Crisp fried yam batons with a golden crust</div></div>
+      <div class="simple-item"><div class="simple-name">Truffle Parmesan Frites</div><div class="simple-desc">French fries with truffle oil and shaved parmesan</div></div>
+      <div class="simple-item"><div class="simple-name">Smoky Party Jollof</div><div class="simple-desc">Signature smoky jollof rice</div></div>
+      <div class="simple-item"><div class="simple-name">Butter-Steamed Jasmine Rice</div><div class="simple-desc">Delicate jasmine rice finished in butter</div></div>
+    </div>
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--gold-light);margin-bottom:.9rem">Sauces</h3>
+    <div class="simple-grid">
+      <div class="simple-item"><div class="simple-name">Smoked Pepper Jus</div></div>
+      <div class="simple-item"><div class="simple-name">Peppercorn Sauce</div></div>
+      <div class="simple-item"><div class="simple-name">Creamy Mushroom Sauce</div></div>
+      <div class="simple-item"><div class="simple-name">Red Wine Reduction</div></div>
+      <div class="simple-item"><div class="simple-name">Chili Citrus Glaze</div></div>
+    </div>
+  </div>
+
+  <!-- DESSERTS -->
+  <div class="mcat" id="mc-desserts">
+    <div class="mcat-title">Desserts</div>
+    <div class="mgrid">
+      <div class="mcard"><img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&q=80" alt=""><div class="mcard-body"><div class="mcard-name">Level 3 Signature Dessert</div><div class="mcard-desc">White chocolate mousse layered with cookie crumble, finished with berries and delicate garnish.</div><span class="mcard-badge">Signature</span></div></div>
+      <div class="mcard"><img src="https://images.unsplash.com/photo-1614088685112-0a760b71a3c8?w=600&q=80" alt=""><div class="mcard-body"><div class="mcard-name">Churros</div><div class="mcard-desc">Golden crisp churros dusted lightly with sugar, finished with warm chocolate drizzle.</div></div></div>
+      <div class="mcard"><img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&q=80" alt=""><div class="mcard-body"><div class="mcard-name">Cookies and Ice Cream</div><div class="mcard-desc">Warm baked cookies served with premium vanilla ice cream, finished with chocolate sauce.</div></div></div>
+    </div>
+  </div>
+</div>
+<footer><div class="fg"><div><div class="fb-name">Level 3 Rooftop</div><div class="fb-sub">Port Harcourt</div></div><div><div class="ftitle">Navigate</div><ul class="flinks"><li><a onclick="go('home')">Home</a></li><li><a onclick="go('about')">About</a></li><li><a onclick="go('restaurant')">Restaurant</a></li><li><a onclick="go('shows')">Shows</a></li><li><a onclick="go('club')">The Club</a></li></ul></div><div><div class="ftitle">Hours</div><div class="fcontact">Tue–Thu: 6PM–2AM<br>Fri–Sat: 6PM–4AM<br>Sun: 4PM–12AM</div></div><div><div class="ftitle">Contact</div><div class="fcontact">Port Harcourt, Rivers State<br>+234 800 000 0000</div></div></div><div class="fbot"><div class="fcopy">© 2025 Level 3 Rooftop. All rights reserved.</div><div class="ftagline">Where the elite ascend.</div></div></footer>
+</div>
+
+<!-- ==================== RESTAURANT ==================== -->
+<div id="p-restaurant" class="page">
+<div class="ph">
+  <div class="ph-bg" style="background-image:url('https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1600&q=80')"></div>
+  <div class="ph-fade"></div>
+  <div class="ph-content"><div class="ph-tag">Fine Dining</div><h1 class="ph-title">The <em>Restaurant</em></h1></div>
+</div>
+<div class="rest-content">
+  <div class="rest-grid">
+    <div class="rest-img-stack">
+      <img class="rest-img-main" src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=900&q=80" alt="Restaurant Interior">
+      <img class="rest-img-accent" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="Plating">
+    </div>
+    <div>
+      <p class="sec-tag">Culinary Excellence</p>
+      <h2 class="sec-title">An Elevated<br><em>Dining Experience</em></h2>
+      <div class="divider"></div>
+      <p class="body-text">At Level 3's restaurant, every dish is a performance. Our executive chef leads a team devoted to the artistry of precision cooking — sourcing the finest ingredients and reimagining them through a lens of global technique and local soul.</p>
+      <p class="body-text">With sweeping views of Port Harcourt's night skyline and an intimate ambiance that sets the tone for memorable evenings, dining at Level 3 is not just a meal — it is a ritual.</p>
+      <div class="feat-list" style="margin-top:1.5rem">
+        <div class="fr"><div class="dot"></div><div class="ft">Tableside cognac flambé experience</div></div>
+        <div class="fr"><div class="dot"></div><div class="ft">Premium imported cuts and fresh seafood</div></div>
+        <div class="fr"><div class="dot"></div><div class="ft">Curated wine and champagne list</div></div>
+        <div class="fr"><div class="dot"></div><div class="ft">Private dining for intimate celebrations</div></div>
+        <div class="fr"><div class="dot"></div><div class="ft">Rooftop terrace with Port Harcourt skyline views</div></div>
+      </div>
+      <button class="btn-burg" style="margin-top:2rem" onclick="openModal()">Reserve Your Table</button>
+    </div>
+  </div>
+  <p class="sec-tag">Gallery</p>
+  <h2 class="sec-title" style="margin-bottom:1.5rem">Inside the <em>Experience</em></h2>
+  <div class="rest-gallery">
+    <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?w=600&q=80" alt="">
+    <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?w=600&q=80" alt="">
+    <img src="https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?w=600&q=80" alt="">
+  </div>
+  <div class="exp-strip">
+    <div class="exp-cell"><div class="exp-ico">✦</div><div class="exp-title">Tableside Theatre</div><div class="exp-desc">Cognac flambé and live plating performances that make every meal unforgettable</div></div>
+    <div class="exp-cell"><div class="exp-ico">♦</div><div class="exp-title">Private Dining</div><div class="exp-desc">Intimate spaces for corporate events, anniversaries, and exclusive celebrations</div></div>
+    <div class="exp-cell"><div class="exp-ico">◈</div><div class="exp-title">Wine & Spirits</div><div class="exp-desc">A hand-curated cellar of premium wines, champagne, and aged spirits</div></div>
+  </div>
+</div>
+<footer style="margin-top:4rem"><div class="fg"><div><div class="fb-name">Level 3 Rooftop</div><div class="fb-sub">Port Harcourt</div></div><div><div class="ftitle">Navigate</div><ul class="flinks"><li><a onclick="go('home')">Home</a></li><li><a onclick="go('about')">About</a></li><li><a onclick="go('menu')">Menu</a></li><li><a onclick="go('shows')">Shows</a></li><li><a onclick="go('club')">The Club</a></li></ul></div><div><div class="ftitle">Hours</div><div class="fcontact">Tue–Thu: 6PM–2AM<br>Fri–Sat: 6PM–4AM<br>Sun: 4PM–12AM</div></div><div><div class="ftitle">Reservations</div><div class="fcontact">+234 800 000 0000<br>info@level3rooftop.com</div></div></div><div class="fbot"><div class="fcopy">© 2025 Level 3 Rooftop. All rights reserved.</div><div class="ftagline">Where the elite ascend.</div></div></footer>
+</div>
+
+<!-- ==================== SHOWS ==================== -->
+<div id="p-shows" class="page">
+<div class="ph">
+  <div class="ph-bg" style="background-image:url('https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=1600&q=80')"></div>
+  <div class="ph-fade"></div>
+  <div class="ph-content"><div class="ph-tag">Entertainment</div><h1 class="ph-title">Live <em>Shows</em></h1></div>
+</div>
+<div class="shows-content">
+  <p class="sec-tag">Performances</p>
+  <h2 class="sec-title" style="margin-bottom:1rem">Curated <em>Entertainment</em></h2>
+  <p class="body-text" style="max-width:580px;margin-bottom:3rem">At Level 3, entertainment is never an afterthought. From intimate live jazz sessions to headline DJ performances, every show is handpicked to complement the atmosphere of Port Harcourt's most exclusive rooftop.</p>
+  <div class="shows-grid">
+    <div class="scard"><img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80" alt=""><div class="scard-over"><div class="scard-type">Every Friday</div><div class="scard-name">Live Band Night</div><div class="scard-date">Afrobeats · R&B · Soul — From 9PM</div></div></div>
+    <div class="scard"><img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&q=80" alt=""><div class="scard-over"><div class="scard-type">Every Saturday</div><div class="scard-name">Resident DJ Sessions</div><div class="scard-date">Afrohouse · Amapiano · Electronic — From 10PM</div></div></div>
+    <div class="scard"><img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=800&q=80" alt=""><div class="scard-over"><div class="scard-type">Monthly</div><div class="scard-name">Headline Artist Night</div><div class="scard-date">Special Guest Performances — Invite Only</div></div></div>
+    <div class="scard"><img src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=800&q=80" alt=""><div class="scard-over"><div class="scard-type">Wednesdays</div><div class="scard-name">Rooftop Jazz</div><div class="scard-date">Smooth Jazz Under the Stars — From 7PM</div></div></div>
+  </div>
+  <div class="shows-stat-strip">
+    <div class="ss-item"><div class="ss-num">4+</div><div class="ss-lbl">Nights Per Week</div></div>
+    <div class="ss-item"><div class="ss-num">Live</div><div class="ss-lbl">Performances Weekly</div></div>
+    <div class="ss-item"><div class="ss-num">PHC</div><div class="ss-lbl">Premier Venue</div></div>
+  </div>
+</div>
+<footer style="margin-top:4rem"><div class="fg"><div><div class="fb-name">Level 3 Rooftop</div><div class="fb-sub">Port Harcourt</div></div><div><div class="ftitle">Navigate</div><ul class="flinks"><li><a onclick="go('home')">Home</a></li><li><a onclick="go('about')">About</a></li><li><a onclick="go('menu')">Menu</a></li><li><a onclick="go('restaurant')">Restaurant</a></li><li><a onclick="go('club')">The Club</a></li></ul></div><div><div class="ftitle">Hours</div><div class="fcontact">Tue–Thu: 6PM–2AM<br>Fri–Sat: 6PM–4AM<br>Sun: 4PM–12AM</div></div><div><div class="ftitle">Contact</div><div class="fcontact">Port Harcourt, Rivers State<br>+234 800 000 0000</div></div></div><div class="fbot"><div class="fcopy">© 2025 Level 3 Rooftop. All rights reserved.</div><div class="ftagline">Where the elite ascend.</div></div></footer>
+</div>
+
+<!-- ==================== CLUB ==================== -->
+<div id="p-club" class="page">
+<div class="ph">
+  <div class="ph-bg" style="background-image:url('https://images.unsplash.com/photo-1566737236500-c8ac43014a67?w=1600&q=80')"></div>
+  <div class="ph-fade"></div>
+  <div class="ph-content"><div class="ph-tag">Exclusive Nightlife</div><h1 class="ph-title">The <em>Club</em></h1></div>
+</div>
+<div class="club-content">
+  <div class="club-grid">
+    <div>
+      <p class="sec-tag">The Inner Circle</p>
+      <h2 class="sec-title">Nightlife at its<br><em>Most Refined</em></h2>
+      <div class="divider"></div>
+      <p class="body-text">Level 3's club is not for everyone — by design. We maintain strict capacity limits, ensuring that those inside experience something genuinely rare: an exclusive space where energy, luxury, and discretion coexist.</p>
+      <p class="body-text">Our sound system was engineered for the rooftop environment. Our resident DJs are among the best in Nigeria. And our bar programme features handcrafted cocktails built by world-class mixologists.</p>
+      <p class="body-text">Entry to the club is by approval only. Guest list, bottle service, and VIP tables can be arranged through our team.</p>
+      <button class="btn-burg" style="margin-top:2rem" onclick="openModal()">Join the Guest List</button>
+    </div>
+    <div class="club-imgs">
+      <img class="cimg tall" src="https://images.unsplash.com/photo-1571266028243-e4733b0f0bb0?w=800&q=80" alt="Club">
+      <img class="cimg" src="https://images.unsplash.com/photo-1575444758702-4a6b9222336e?w=600&q=80" alt="Bar">
+      <img class="cimg" src="https://images.unsplash.com/photo-1559305616-3f99cd43e353?w=600&q=80" alt="Cocktails">
+    </div>
+  </div>
+  <div class="vip-section">
+    <div class="vip-title">VIP Table Packages</div>
+    <p class="vip-sub">Secure your space above the crowd. All packages include dedicated service, premium bottle selections, and priority entry.</p>
+    <div class="vip-grid">
+      <div class="vip-tier"><div class="vip-name">Onyx</div><div class="vip-bar"></div><div class="vip-desc">Entry-level VIP table for groups of up to 4. Includes 1 premium bottle and reserved seating.</div></div>
+      <div class="vip-tier" style="border-color:rgba(201,168,76,.45)"><div class="vip-name" style="color:var(--gold)">Gold</div><div class="vip-bar"></div><div class="vip-desc">Premium VIP table for up to 8 guests. Includes 2 bottles, dedicated host, and rooftop terrace access.</div></div>
+      <div class="vip-tier"><div class="vip-name">Platinum</div><div class="vip-bar"></div><div class="vip-desc">Our most exclusive tier. Full private booth, bespoke cocktail experience, and direct artist meet.</div></div>
+    </div>
+  </div>
+</div>
+<footer style="margin-top:4rem"><div class="fg"><div><div class="fb-name">Level 3 Rooftop</div><div class="fb-sub">Port Harcourt</div></div><div><div class="ftitle">Navigate</div><ul class="flinks"><li><a onclick="go('home')">Home</a></li><li><a onclick="go('about')">About</a></li><li><a onclick="go('menu')">Menu</a></li><li><a onclick="go('restaurant')">Restaurant</a></li><li><a onclick="go('shows')">Shows</a></li></ul></div><div><div class="ftitle">Club Hours</div><div class="fcontact">Club opens at 10PM<br>Fri–Sat until 4AM<br>Limited entry nightly</div></div><div><div class="ftitle">Guest List</div><div class="fcontact">+234 800 000 0000<br>info@level3rooftop.com</div></div></div><div class="fbot"><div class="fcopy">© 2025 Level 3 Rooftop. All rights reserved.</div><div class="ftagline">Where the elite ascend.</div></div></footer>
+</div>
+
+<!-- RESERVATION MODAL -->
+<div class="modal" id="resModal">
+  <div class="mbox">
+    <button class="mclose" onclick="closeModal()">✕</button>
+    <div class="mbox-title">Reserve</div>
+    <div class="mbox-sub">Complete the form and our team will confirm your reservation within 24 hours.</div>
+    <label class="flabel">Full Name</label>
+    <input type="text" class="finput" placeholder="Your name">
+    <div class="frow2">
+      <div><label class="flabel">Date</label><input type="date" class="finput"></div>
+      <div><label class="flabel">Guests</label><input type="number" class="finput" placeholder="2" min="1" max="20"></div>
+    </div>
+    <label class="flabel">Phone Number</label>
+    <input type="tel" class="finput" placeholder="+234 800 000 0000">
+    <label class="flabel">Occasion (optional)</label>
+    <input type="text" class="finput" placeholder="Birthday, anniversary, business dinner...">
+    <button class="fsubmit">Request Reservation</button>
+  </div>
+</div>
+
+<script>
+const pages = ['home','about','menu','restaurant','shows','club'];
+function go(page) {
+  pages.forEach(p => {
+    document.getElementById('p-'+p).classList.toggle('active', p===page);
+    const nl = document.getElementById('nl-'+p);
+    if(nl) nl.classList.toggle('active', p===page);
+  });
+  window.scrollTo({top:0,behavior:'instant'});
+}
+function mTab(cat, btn) {
+  document.querySelectorAll('.mtab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.mcat').forEach(c=>c.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('mc-'+cat).classList.add('active');
+}
+function openModal(){document.getElementById('resModal').classList.add('open')}
+function closeModal(){document.getElementById('resModal').classList.remove('open')}
+document.getElementById('resModal').addEventListener('click',function(e){if(e.target===this)closeModal()});
+</script>
+</body>
+</html>

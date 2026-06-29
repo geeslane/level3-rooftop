@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Club | Level 3 Rooftop Port Harcourt</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--burgundy:#6B0F1A;--burgundy-deep:#4A0A12;--burgundy-mid:#8B1A28;--burgundy-light:#C4394F;--gold:#C9A96E;--black:#0A0A0A;--charcoal:#1A1A1A;--white:#FFFFFF;--font-serif:'Cormorant Garamond',Georgia,serif;--font-display:'Cinzel',serif;--font-sans:'Jost',sans-serif;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-sans);font-weight:300;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 4rem;background:rgba(10,10,10,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,169,110,0.15);transition:all 0.4s;}
+nav.scrolled{padding:0.85rem 4rem;}
+.nav-logo{font-family:var(--font-display);font-size:1.05rem;letter-spacing:0.25em;color:var(--gold);text-decoration:none;}
+.nav-logo span{display:block;font-family:var(--font-sans);font-size:0.55rem;letter-spacing:0.5em;color:rgba(255,255,255,0.4);text-align:center;margin-top:2px;}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{text-decoration:none;font-family:var(--font-sans);font-size:0.72rem;letter-spacing:0.2em;font-weight:400;color:rgba(255,255,255,0.6);text-transform:uppercase;transition:color 0.3s;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+.nav-cta{background:var(--burgundy)!important;color:var(--white)!important;padding:0.55rem 1.5rem!important;border:1px solid var(--burgundy-light);}
+.nav-ham{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.nav-ham span{display:block;width:24px;height:1px;background:rgba(255,255,255,0.7);}
+@media(max-width:900px){nav{padding:1rem 1.5rem;}.nav-links{display:none;position:fixed;inset:0;background:rgba(10,10,10,0.98);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;z-index:999;}.nav-links.open{display:flex;}.nav-links a{font-size:1rem;}.nav-ham{display:flex;z-index:1001;}}
+.container{max-width:1200px;margin:0 auto;padding:0 4rem;}
+.eyebrow{font-family:var(--font-sans);font-size:0.65rem;letter-spacing:0.5em;color:var(--gold);text-transform:uppercase;font-weight:400;display:block;}
+.sec-title{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.8rem);font-weight:400;line-height:1.1;letter-spacing:0.03em;}
+.gold{color:var(--gold);}
+.gold-bar{width:60px;height:1px;background:var(--gold);}
+.body-text{font-family:var(--font-serif);font-size:1.05rem;line-height:1.9;color:rgba(255,255,255,0.6);}
+.btn-primary{display:inline-block;padding:0.9rem 2.5rem;background:var(--burgundy);color:var(--white);text-decoration:none;font-family:var(--font-sans);font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;font-weight:400;border:1px solid var(--burgundy-light);transition:all 0.3s;}
+.btn-primary:hover{background:var(--burgundy-mid);transform:translateY(-2px);}
+.btn-outline{display:inline-block;padding:0.9rem 2.5rem;background:transparent;color:var(--white);text-decoration:none;font-family:var(--font-sans);font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;border:1px solid rgba(255,255,255,0.28);transition:all 0.3s;}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.75s ease,transform 0.75s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* HERO — full bleed dark */
+.hero{position:relative;height:100vh;min-height:700px;display:flex;align-items:flex-end;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1516997121675-4c2d1684aa3e?w=1800&q=80') center/cover;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(107,15,26,0.6) 0%,rgba(10,10,10,0.5) 50%),linear-gradient(to top,rgba(10,10,10,0.95) 0%,rgba(10,10,10,0.2) 55%);}
+.hero-content{position:relative;z-index:2;padding:0 4rem 5rem;max-width:680px;}
+.breadcrumb{display:flex;gap:0.75rem;align-items:center;margin-bottom:2rem;}
+.breadcrumb a,.breadcrumb span{font-family:var(--font-sans);font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.38);text-decoration:none;}
+.breadcrumb a:hover{color:var(--gold);}
+.breadcrumb .sep{color:rgba(255,255,255,0.18);}
+.hero-live{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(107,15,26,0.6);border:1px solid var(--burgundy-light);font-family:var(--font-sans);font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--white);padding:0.4rem 1rem;margin-bottom:1.5rem;}
+.hero-live-dot{width:7px;height:7px;background:var(--burgundy-light);border-radius:50%;animation:blink 1.4s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero-title{font-family:var(--font-display);font-size:clamp(4rem,9vw,8rem);font-weight:400;line-height:0.95;margin-bottom:1.5rem;}
+.hero-line{width:60px;height:1px;background:var(--gold);margin-bottom:1.75rem;}
+.hero-desc{font-family:var(--font-serif);font-size:1.15rem;color:rgba(255,255,255,0.65);line-height:1.85;margin-bottom:2.5rem;max-width:520px;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+
+/* VIBE SECTION */
+.vibe{padding:0;background:var(--black);}
+.vibe-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;}
+.vibe-cell{position:relative;overflow:hidden;aspect-ratio:3/4;}
+.vibe-cell img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.7s ease;filter:grayscale(30%);}
+.vibe-cell:hover img{transform:scale(1.06);filter:grayscale(0%);}
+.vibe-cell-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,0.8) 0%,transparent 55%);}
+.vibe-cell-label{position:absolute;bottom:1.5rem;left:1.5rem;font-family:var(--font-display);font-size:1rem;color:var(--white);letter-spacing:0.1em;}
+
+/* NIGHTS SECTION */
+.nights{padding:7rem 0;background:var(--charcoal);}
+.nights-header{text-align:center;margin-bottom:5rem;}
+.nights-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
+.night-card{background:var(--black);overflow:hidden;transition:transform 0.3s;}
+.night-card:hover{transform:translateY(-6px);}
+.night-img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;}
+.night-body{padding:2rem;}
+.night-day{font-family:var(--font-sans);font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;display:block;}
+.night-title{font-family:var(--font-display);font-size:1.5rem;margin-bottom:0.75rem;}
+.night-time{font-family:var(--font-sans);font-size:0.72rem;color:rgba(255,255,255,0.4);letter-spacing:0.12em;margin-bottom:1rem;}
+.night-desc{font-family:var(--font-serif);font-size:0.98rem;color:rgba(255,255,255,0.55);line-height:1.7;}
+.night-tags{display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:1.25rem;}
+.night-tag{font-family:var(--font-sans);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);border:1px solid rgba(255,255,255,0.12);padding:0.3rem 0.7rem;}
+
+/* BOTTLE SERVICE */
+.bottle{padding:0;background:var(--black);}
+.bottle-inner{display:grid;grid-template-columns:1fr 1fr;min-height:600px;}
+.bottle-img{position:relative;overflow:hidden;}
+.bottle-img img{width:100%;height:100%;object-fit:cover;display:block;}
+.bottle-content{background:var(--burgundy-deep);padding:5rem;display:flex;flex-direction:column;justify-content:center;}
+.bottle-packages{display:flex;flex-direction:column;gap:1.25rem;margin-top:2.5rem;}
+.pkg{border:1px solid rgba(201,169,110,0.2);padding:1.5rem 1.75rem;transition:border-color 0.3s;cursor:pointer;}
+.pkg:hover,.pkg.featured{border-color:var(--gold);}
+.pkg.featured{background:rgba(201,169,110,0.06);}
+.pkg-name{font-family:var(--font-display);font-size:1rem;letter-spacing:0.1em;color:var(--white);margin-bottom:0.3rem;}
+.pkg-includes{font-family:var(--font-sans);font-size:0.72rem;color:rgba(255,255,255,0.45);line-height:1.6;}
+.pkg-price{font-family:var(--font-display);font-size:1.2rem;color:var(--gold);margin-top:0.5rem;}
+
+/* DRESS CODE */
+.dresscode{padding:5rem 0;background:var(--charcoal);border-top:1px solid rgba(255,255,255,0.06);}
+.dc-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.dc-rules{display:flex;flex-direction:column;gap:1.25rem;margin-top:2rem;}
+.dc-rule{display:flex;gap:1.25rem;align-items:flex-start;}
+.dc-icon{width:10px;height:10px;background:var(--gold);flex-shrink:0;margin-top:6px;}
+.dc-text{font-family:var(--font-serif);font-size:1rem;color:rgba(255,255,255,0.6);line-height:1.7;}
+.dc-text strong{color:var(--white);font-weight:500;}
+.dc-img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;}
+
+/* ENTRY INFO */
+.entry{padding:7rem 0;background:var(--black);}
+.entry-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
+.entry-card{background:var(--charcoal);padding:3rem 2.5rem;text-align:center;border-bottom:3px solid transparent;transition:border-color 0.3s;}
+.entry-card:hover{border-bottom-color:var(--gold);}
+.entry-icon{width:52px;height:52px;border:1px solid rgba(201,169,110,0.3);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;}
+.entry-icon svg{width:22px;height:22px;stroke:var(--gold);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+.entry-title{font-family:var(--font-display);font-size:1rem;letter-spacing:0.1em;color:var(--white);margin-bottom:0.75rem;}
+.entry-desc{font-family:var(--font-serif);font-size:0.98rem;color:rgba(255,255,255,0.5);line-height:1.7;}
+
+/* CTA */
+.cta-dark{position:relative;padding:8rem 0;text-align:center;overflow:hidden;}
+.cta-dark-bg{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,0.7),rgba(107,15,26,0.5),rgba(10,10,10,0.7)),url('https://images.unsplash.com/photo-1516997121675-4c2d1684aa3e?w=1200&q=80') center/cover;filter:blur(2px);transform:scale(1.05);}
+.cta-dark-content{position:relative;z-index:2;}
+
+/* FOOTER */
+footer{background:#050505;border-top:1px solid rgba(201,169,110,0.12);padding:5rem 0 2.5rem;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;margin-bottom:4rem;}
+.f-brand{font-family:var(--font-display);font-size:1.4rem;color:var(--gold);letter-spacing:0.2em;margin-bottom:0.5rem;}
+.f-sub{font-family:var(--font-sans);font-size:0.6rem;letter-spacing:0.5em;color:rgba(255,255,255,0.25);text-transform:uppercase;margin-bottom:1.5rem;}
+.f-tagline{font-family:var(--font-serif);font-size:0.95rem;color:rgba(255,255,255,0.4);line-height:1.8;max-width:260px;}
+.f-col-title{font-family:var(--font-display);font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;}
+.f-links{list-style:none;display:flex;flex-direction:column;gap:0.75rem;}
+.f-links a{font-family:var(--font-sans);font-size:0.82rem;color:rgba(255,255,255,0.4);text-decoration:none;font-weight:300;transition:color 0.3s;}
+.f-links a:hover{color:var(--gold);}
+.f-contact p{font-family:var(--font-sans);font-size:0.82rem;color:rgba(255,255,255,0.4);line-height:2;font-weight:300;}
+.f-social{display:flex;gap:0.75rem;margin-top:1.75rem;}
+.soc-btn{width:38px;height:38px;border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:border-color 0.3s;}
+.soc-btn:hover{border-color:var(--gold);}
+.soc-btn svg{width:16px;height:16px;fill:rgba(255,255,255,0.4);transition:fill 0.3s;}
+.soc-btn:hover svg{fill:var(--gold);}
+.f-bottom{border-top:1px solid rgba(255,255,255,0.05);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;}
+.f-copy{font-family:var(--font-sans);font-size:0.72rem;color:rgba(255,255,255,0.2);}
+.f-legal{display:flex;gap:2rem;}
+.f-legal a{font-family:var(--font-sans);font-size:0.72rem;color:rgba(255,255,255,0.2);text-decoration:none;}
+
+@media(max-width:900px){.container{padding:0 1.5rem;}.hero-content{padding:0 1.5rem 3rem;}.vibe-grid{grid-template-columns:1fr 1fr;}.nights-grid{grid-template-columns:1fr;}.bottle-inner{grid-template-columns:1fr;}.bottle-content{padding:3rem 1.5rem;}.dc-grid{grid-template-columns:1fr;}.entry-grid{grid-template-columns:1fr;}.footer-grid{grid-template-columns:1fr 1fr;gap:2rem;}}
+@media(max-width:600px){.vibe-grid{grid-template-columns:1fr 1fr;}.footer-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">LEVEL 3<span>Rooftop · Port Harcourt</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="restaurant.html">Restaurant</a></li>
+    <li><a href="shows.html">Shows</a></li>
+    <li><a href="club.html" class="active">The Club</a></li>
+    <li><a href="#vip" class="nav-cta">Book VIP</a></li>
+  </ul>
+  <button class="nav-ham" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">›</span><span>The Club</span></div>
+    <div class="hero-live"><span class="hero-live-dot"></span>Thu · Fri · Sat</div>
+    <h1 class="hero-title">The <span class="gold">Club</span></h1>
+    <div class="hero-line"></div>
+    <p class="hero-desc">When Port Harcourt sleeps, Level 3 awakens. The city's most exclusive rooftop nightlife destination — where after-midnight becomes a lifestyle.</p>
+    <div class="hero-btns">
+      <a href="#vip" class="btn-primary">Book VIP Table</a>
+      <a href="#nights" class="btn-outline">Club Nights</a>
+    </div>
+  </div>
+</section>
+
+<!-- VIBE MOSAIC -->
+<div class="vibe">
+  <div class="vibe-grid">
+    <div class="vibe-cell">
+      <img src="https://images.unsplash.com/photo-1516997121675-4c2d1684aa3e?w=600&q=80" alt="The Club">
+      <div class="vibe-cell-overlay"></div>
+      <div class="vibe-cell-label">The Floor</div>
+    </div>
+    <div class="vibe-cell">
+      <img src="https://images.unsplash.com/photo-1470338745628-171cf53de3a8?w=600&q=80" alt="Cocktails">
+      <div class="vibe-cell-overlay"></div>
+      <div class="vibe-cell-label">The Bar</div>
+    </div>
+    <div class="vibe-cell">
+      <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&q=80" alt="Ambiance">
+      <div class="vibe-cell-overlay"></div>
+      <div class="vibe-cell-label">The Vibe</div>
+    </div>
+    <div class="vibe-cell">
+      <img src="https://images.unsplash.com/photo-1543007630-9710e4a00a20?w=600&q=80" alt="Night view">
+      <div class="vibe-cell-overlay"></div>
+      <div class="vibe-cell-label">The City</div>
+    </div>
+  </div>
+</div>
+
+<!-- CLUB NIGHTS -->
+<section class="nights" id="nights">
+  <div class="container">
+    <div class="nights-header reveal">
+      <span class="eyebrow" style="margin-bottom:0.75rem;">After Midnight</span>
+      <h2 class="sec-title">Club <span class="gold">Nights</span></h2>
+      <div class="gold-bar" style="margin:1rem auto 0;"></div>
+    </div>
+    <div class="nights-grid">
+      <div class="night-card reveal">
+        <img class="night-img" src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=700&q=80" alt="Thursday">
+        <div class="night-body">
+          <span class="night-day">Every Thursday</span>
+          <div class="night-title">Throwback <span class="gold">Thursdays</span></div>
+          <div class="night-time">1:00 AM – 5:00 AM</div>
+          <p class="night-desc">Old school Afrobeats, R&B classics, and 2000s bangers. The mid-week escape for those who know the night isn't over at midnight.</p>
+          <div class="night-tags">
+            <span class="night-tag">Old School</span>
+            <span class="night-tag">R&B</span>
+            <span class="night-tag">Afrobeats</span>
+          </div>
+        </div>
+      </div>
+      <div class="night-card reveal">
+        <img class="night-img" src="https://images.unsplash.com/photo-1555169062-013468b47731?w=700&q=80" alt="Friday">
+        <div class="night-body">
+          <span class="night-day">Every Friday</span>
+          <div class="night-title">TGIF <span class="gold">Fridays</span></div>
+          <div class="night-time">1:00 AM – 6:00 AM</div>
+          <p class="night-desc">The city's most anticipated Friday night. Guest DJs, bottle service parades, and a crowd that defines the culture — the vibe is unmatched.</p>
+          <div class="night-tags">
+            <span class="night-tag">Guest DJs</span>
+            <span class="night-tag">Afrobeats</span>
+            <span class="night-tag">Hip-Hop</span>
+          </div>
+        </div>
+      </div>
+      <div class="night-card reveal">
+        <img class="night-img" src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=700&q=80" alt="Saturday">
+        <div class="night-body">
+          <span class="night-day">Every Saturday</span>
+          <div class="night-title">Level Up <span class="gold">Saturdays</span></div>
+          <div class="night-time">1:00 AM – 6:00 AM</div>
+          <p class="night-desc">The week's definitive crescendo. Amapiano, Afrobeats and electronic fusion, rooftop dancing beneath the stars with Port Harcourt lit below.</p>
+          <div class="night-tags">
+            <span class="night-tag">Amapiano</span>
+            <span class="night-tag">Electronic</span>
+            <span class="night-tag">House</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTLE SERVICE / VIP -->
+<div class="bottle" id="vip">
+  <div class="bottle-inner">
+    <div class="bottle-img reveal">
+      <img src="https://images.unsplash.com/photo-1524159730786-4e74a1b59a44?w=900&q=80" alt="VIP bottle service">
+    </div>
+    <div class="bottle-content reveal">
+      <span class="eyebrow" style="margin-bottom:1rem;">Elevated Access</span>
+      <h2 class="sec-title" style="margin-bottom:1.5rem;">VIP <span class="gold">&amp; Bottle Service</span></h2>
+      <div class="gold-bar" style="margin-bottom:1.75rem;"></div>
+      <p class="body-text">Reserve your exclusive territory at Level 3. VIP tables come with dedicated service, priority entry, bespoke bottle packages and your own slice of the rooftop — elevated above the rest.</p>
+      <div class="bottle-packages">
+        <div class="pkg">
+          <div class="pkg-name">The Standard</div>
+          <div class="pkg-includes">1 premium bottle, mixers, dedicated host, reserved table for up to 4</div>
+          <div class="pkg-price">From ₦120,000</div>
+        </div>
+        <div class="pkg featured">
+          <div class="pkg-name">The Monarch ✦</div>
+          <div class="pkg-includes">2 premium bottles, champagne on arrival, reserved rooftop cabana for up to 8, VIP entry</div>
+          <div class="pkg-price">From ₦280,000</div>
+        </div>
+        <div class="pkg">
+          <div class="pkg-name">The Level 3 Experience</div>
+          <div class="pkg-includes">4+ bottles, dedicated concierge, skyline cabana, personalised experience for up to 14</div>
+          <div class="pkg-price">From ₦600,000</div>
+        </div>
+      </div>
+      <a href="mailto:vip@level3rooftop.com" class="btn-primary" style="display:inline-block;margin-top:2.5rem;align-self:flex-start;">Book VIP Table</a>
+    </div>
+  </div>
+</div>
+
+<!-- DRESS CODE -->
+<section class="dresscode">
+  <div class="container">
+    <div class="dc-grid">
+      <div class="reveal">
+        <span class="eyebrow" style="margin-bottom:1rem;">Before You Arrive</span>
+        <h2 class="sec-title" style="margin-bottom:1.5rem;">Dress <span class="gold">Code</span></h2>
+        <div class="gold-bar" style="margin-bottom:2rem;"></div>
+        <p class="body-text">Level 3 is a space for those who take their evenings seriously. We uphold a smart elegant dress code that honours the calibre of the venue and the company you keep.</p>
+        <div class="dc-rules">
+          <div class="dc-rule"><div class="dc-icon"></div><div class="dc-text"><strong>Smart Elegant Required —</strong> cocktail dresses, tailored suits, elegant separates.</div></div>
+          <div class="dc-rule"><div class="dc-icon"></div><div class="dc-text"><strong>Sports Attire Not Permitted —</strong> no tracksuits, jerseys, or athletic wear.</div></div>
+          <div class="dc-rule"><div class="dc-icon"></div><div class="dc-text"><strong>Footwear —</strong> no open-toed sandals for gentlemen. Heels and dress shoes preferred.</div></div>
+          <div class="dc-rule"><div class="dc-icon"></div><div class="dc-text"><strong>Caps &amp; Hats —</strong> not permitted on the club floor after midnight.</div></div>
+          <div class="dc-rule"><div class="dc-icon"></div><div class="dc-text"><strong>Management reserves the right</strong> to refuse entry at their discretion.</div></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <img class="dc-img" src="https://images.unsplash.com/photo-1543007630-9710e4a00a20?w=800&q=80" alt="Dress code elegance">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENTRY INFO -->
+<section class="entry">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:4rem;" class="reveal">
+      <span class="eyebrow" style="margin-bottom:0.75rem;">Good to Know</span>
+      <h2 class="sec-title">Entry <span class="gold">Information</span></h2>
+      <div class="gold-bar" style="margin:1rem auto 0;"></div>
+    </div>
+    <div class="entry-grid reveal">
+      <div class="entry-card">
+        <div class="entry-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+        <div class="entry-title">Club Hours</div>
+        <div class="entry-desc">Thursday 1:00 AM – 5:00 AM<br>Friday &amp; Saturday 1:00 AM – 6:00 AM<br>Special events may vary</div>
+      </div>
+      <div class="entry-card">
+        <div class="entry-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div class="entry-title">Age Policy</div>
+        <div class="entry-desc">Entry strictly for guests aged 21 and above. Valid government-issued ID required at the door. No exceptions.</div>
+      </div>
+      <div class="entry-card">
+        <div class="entry-icon"><svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><path d="M1 10h22"/></svg></div>
+        <div class="entry-title">Entry Fees</div>
+        <div class="entry-desc">Complimentary entry before 2:00 AM with restaurant dining reservation. Entry charges apply thereafter. VIP tables always include entry.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DARK CTA -->
+<div class="cta-dark">
+  <div class="cta-dark-bg"></div>
+  <div class="cta-dark-content container reveal">
+    <span class="eyebrow" style="margin-bottom:1rem;">The Night Is Waiting</span>
+    <h2 class="sec-title" style="font-size:clamp(2.5rem,5vw,4.5rem);margin-bottom:1.5rem;">Secure Your <span class="gold">Place</span></h2>
+    <div class="gold-bar" style="margin:0 auto 2rem;"></div>
+    <p class="body-text" style="max-width:480px;margin:0 auto 3rem;">VIP tables go fast. Reserve now and guarantee your night at Port Harcourt's most exclusive rooftop club.</p>
+    <div style="display:flex;gap:1.25rem;justify-content:center;flex-wrap:wrap;">
+      <a href="mailto:vip@level3rooftop.com" class="btn-primary">Book VIP Table</a>
+      <a href="tel:+2348000000000" class="btn-outline">Call Now</a>
+    </div>
+    <p style="margin-top:2rem;font-family:var(--font-sans);font-size:0.72rem;color:rgba(255,255,255,0.28);letter-spacing:0.12em;">vip@level3rooftop.com · +234 800 000 0000</p>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="f-brand">LEVEL 3</div><div class="f-sub">Rooftop · Port Harcourt</div><p class="f-tagline">Where elevated dining meets the pulse of Port Harcourt's finest nights.</p>
+        <div class="f-social">
+          <a href="#" class="soc-btn"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          <a href="#" class="soc-btn"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a href="#" class="soc-btn"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        </div>
+      </div>
+      <div><div class="f-col-title">Navigate</div><ul class="f-links"><li><a href="index.html#about">About Us</a></li><li><a href="menu.html">Our Menu</a></li><li><a href="restaurant.html">Restaurant</a></li><li><a href="shows.html">Shows</a></li><li><a href="club.html">The Club</a></li></ul></div>
+      <div><div class="f-col-title">The Club</div><ul class="f-links"><li><a href="#vip">Book VIP Table</a></li><li><a href="#nights">Club Nights</a></li><li><a href="#">Guest DJs</a></li><li><a href="#">Private Hire</a></li></ul></div>
+      <div class="f-contact"><div class="f-col-title">Find Us</div><p>3rd Floor, GRA District<br>Port Harcourt, Rivers State<br>Nigeria</p><p style="margin-top:1rem;">+234 800 000 0000</p><p>vip@level3rooftop.com</p><p style="margin-top:1rem;color:rgba(255,255,255,0.25);font-size:0.78rem;">Club: Thu–Sat from 1:00 AM</p></div>
+    </div>
+    <div class="f-bottom"><p class="f-copy">© 2025 Level 3 Rooftop, Port Harcourt. All rights reserved.</p><div class="f-legal"><a href="#">Privacy</a><a href="#">Terms</a></div></div>
+  </div>
+</footer>
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>80));
+const ham=document.getElementById('ham'),links=document.getElementById('navLinks');
+ham.addEventListener('click',()=>links.classList.toggle('open'));
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

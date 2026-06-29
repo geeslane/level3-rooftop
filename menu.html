@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Menu | Level 3 Rooftop Port Harcourt</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--burgundy:#6B0F1A;--burgundy-deep:#4A0A12;--burgundy-mid:#8B1A28;--burgundy-light:#C4394F;--gold:#C9A96E;--black:#0A0A0A;--charcoal:#1A1A1A;--white:#FFFFFF;--font-serif:'Cormorant Garamond',Georgia,serif;--font-display:'Cinzel',serif;--font-sans:'Jost',sans-serif;}
+html{scroll-behavior:smooth;}body{background:var(--black);color:var(--white);font-family:var(--font-sans);font-weight:300;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 4rem;background:rgba(10,10,10,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,169,110,0.15);transition:all 0.4s;}
+nav.scrolled{padding:0.85rem 4rem;}
+.nav-logo{font-family:var(--font-display);font-size:1.05rem;letter-spacing:0.25em;color:var(--gold);text-decoration:none;}
+.nav-logo span{display:block;font-family:var(--font-sans);font-size:0.55rem;letter-spacing:0.5em;color:rgba(255,255,255,0.4);text-align:center;margin-top:2px;}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{text-decoration:none;font-family:var(--font-sans);font-size:0.72rem;letter-spacing:0.2em;font-weight:400;color:rgba(255,255,255,0.6);text-transform:uppercase;transition:color 0.3s;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+.nav-cta{background:var(--burgundy)!important;color:var(--white)!important;padding:0.55rem 1.5rem!important;border:1px solid var(--burgundy-light);}
+.nav-ham{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.nav-ham span{display:block;width:24px;height:1px;background:rgba(255,255,255,0.7);transition:all 0.3s;}
+@media(max-width:900px){nav{padding:1rem 1.5rem;}.nav-links{display:none;position:fixed;inset:0;background:rgba(10,10,10,0.98);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;z-index:999;}.nav-links.open{display:flex;}.nav-links a{font-size:1rem;}.nav-ham{display:flex;z-index:1001;}}
+.container{max-width:1200px;margin:0 auto;padding:0 4rem;}
+.eyebrow{font-family:var(--font-sans);font-size:0.65rem;letter-spacing:0.5em;color:var(--gold);text-transform:uppercase;font-weight:400;display:block;}
+.sec-title{font-family:var(--font-display);font-size:clamp(2rem,5vw,4rem);font-weight:400;line-height:1.1;letter-spacing:0.03em;}
+.sec-title .gold{color:var(--gold);}
+.gold-bar{width:60px;height:1px;background:var(--gold);}
+.body-text{font-family:var(--font-serif);font-size:1.05rem;line-height:1.9;color:rgba(255,255,255,0.6);}
+.btn-primary{display:inline-block;padding:0.9rem 2.5rem;background:var(--burgundy);color:var(--white);text-decoration:none;font-family:var(--font-sans);font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;font-weight:400;border:1px solid var(--burgundy-light);transition:all 0.3s;}
+.btn-primary:hover{background:var(--burgundy-mid);transform:translateY(-2px);}
+
+/* PAGE HERO */
+.page-hero{position:relative;height:52vh;min-height:440px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:5rem;overflow:hidden;}
+.page-hero-bg{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,0.35) 0%,rgba(10,10,10,0.85) 100%),url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1800&q=80') center/cover;}
+.page-hero-content{position:relative;z-index:2;text-align:center;padding:0 2rem;padding-top:80px;}
+.breadcrumb{display:flex;gap:0.75rem;align-items:center;justify-content:center;margin-bottom:1.25rem;}
+.breadcrumb a,.breadcrumb span{font-family:var(--font-sans);font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.38);text-decoration:none;}
+.breadcrumb a:hover{color:var(--gold);}
+.breadcrumb .sep{color:rgba(255,255,255,0.18);}
+
+/* STICKY TABS */
+.tabs-bar{position:sticky;top:64px;z-index:100;background:rgba(10,10,10,0.96);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,0.07);}
+.tabs-inner{max-width:1200px;margin:0 auto;padding:0 4rem;display:flex;overflow-x:auto;scrollbar-width:none;}
+.tabs-inner::-webkit-scrollbar{display:none;}
+.tab-btn{padding:1.1rem 1.6rem;font-family:var(--font-sans);font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.4);cursor:pointer;border:none;border-bottom:2px solid transparent;background:none;font-weight:400;transition:all 0.3s;white-space:nowrap;}
+.tab-btn:hover{color:rgba(255,255,255,0.75);}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold);}
+
+/* SECTION WRAPPER */
+.menu-section{display:none;}
+.menu-section.active{display:block;}
+
+/* CATEGORY INTRO */
+.cat-intro{text-align:center;padding:4.5rem 0 3.5rem;}
+.cat-intro .eyebrow{margin-bottom:0.75rem;}
+.cat-intro .sec-title{font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem;}
+.cat-intro .gold-bar{margin:0 auto 1.5rem;}
+.cat-intro .body-text{max-width:520px;margin:0 auto;}
+
+/* CARD GRID */
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:2px;}
+.m-card{position:relative;overflow:hidden;cursor:pointer;background:var(--charcoal);}
+.m-card-img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform 0.65s ease;}
+.m-card:hover .m-card-img{transform:scale(1.07);}
+.m-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,0.93) 0%,transparent 52%);display:flex;flex-direction:column;justify-content:flex-end;padding:1.75rem;transition:background 0.35s;}
+.m-card:hover .m-card-overlay{background:linear-gradient(to top,rgba(107,15,26,0.9) 0%,rgba(10,10,10,0.25) 100%);}
+.m-name{font-family:var(--font-serif);font-size:1.2rem;font-weight:500;color:var(--white);margin-bottom:0.35rem;}
+.m-desc{font-family:var(--font-sans);font-size:0.71rem;color:rgba(255,255,255,0.55);line-height:1.55;letter-spacing:0.02em;}
+.m-badge{position:absolute;top:1rem;right:1rem;background:var(--burgundy);border:1px solid var(--burgundy-light);font-family:var(--font-sans);font-size:0.56rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--white);padding:0.3rem 0.7rem;}
+
+/* ELEGANT LIST for sauces/sides/salads */
+.list-section{padding:4.5rem 0;}
+.list-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid rgba(255,255,255,0.07);}
+.list-item{padding:1.6rem 2.5rem 1.6rem 0;border-bottom:1px solid rgba(255,255,255,0.06);}
+.list-item:nth-child(even){padding-left:2.5rem;padding-right:0;border-left:1px solid rgba(255,255,255,0.06);}
+.list-name{font-family:var(--font-serif);font-size:1.1rem;font-weight:500;margin-bottom:0.3rem;}
+.list-desc{font-family:var(--font-sans);font-size:0.72rem;color:rgba(255,255,255,0.45);line-height:1.5;}
+
+/* DIVIDER */
+.section-divider{height:1px;background:linear-gradient(to right,transparent,rgba(201,169,110,0.3),transparent);margin:0;}
+
+/* DESSERT SPECIAL */
+.dessert-feature{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:2px;}
+
+/* FOOTER */
+footer{background:#050505;border-top:1px solid rgba(201,169,110,0.12);padding:5rem 0 2.5rem;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;margin-bottom:4rem;}
+.f-brand{font-family:var(--font-display);font-size:1.4rem;color:var(--gold);letter-spacing:0.2em;margin-bottom:0.5rem;}
+.f-sub{font-family:var(--font-sans);font-size:0.6rem;letter-spacing:0.5em;color:rgba(255,255,255,0.25);text-transform:uppercase;margin-bottom:1.5rem;}
+.f-tagline{font-family:var(--font-serif);font-size:0.95rem;color:rgba(255,255,255,0.4);line-height:1.8;max-width:260px;}
+.f-col-title{font-family:var(--font-display);font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;font-weight:400;}
+.f-links{list-style:none;display:flex;flex-direction:column;gap:0.75rem;}
+.f-links a{font-family:var(--font-sans);font-size:0.82rem;color:rgba(255,255,255,0.4);text-decoration:none;font-weight:300;transition:color 0.3s;}
+.f-links a:hover{color:var(--gold);}
+.f-contact p{font-family:var(--font-sans);font-size:0.82rem;color:rgba(255,255,255,0.4);line-height:2;font-weight:300;}
+.f-social{display:flex;gap:0.75rem;margin-top:1.75rem;}
+.soc-btn{width:38px;height:38px;border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:border-color 0.3s;}
+.soc-btn:hover{border-color:var(--gold);}
+.soc-btn svg{width:16px;height:16px;fill:rgba(255,255,255,0.4);transition:fill 0.3s;}
+.soc-btn:hover svg{fill:var(--gold);}
+.f-bottom{border-top:1px solid rgba(255,255,255,0.05);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;}
+.f-copy{font-family:var(--font-sans);font-size:0.72rem;color:rgba(255,255,255,0.2);}
+.f-legal{display:flex;gap:2rem;}
+.f-legal a{font-family:var(--font-sans);font-size:0.72rem;color:rgba(255,255,255,0.2);text-decoration:none;}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:900px){.container{padding:0 1.5rem;}.tabs-inner{padding:0 1.5rem;}.list-grid{grid-template-columns:1fr;}.list-item:nth-child(even){padding-left:0;border-left:none;}.footer-grid{grid-template-columns:1fr 1fr;gap:2rem;}.dessert-feature{grid-template-columns:1fr;}}
+@media(max-width:600px){.menu-grid{grid-template-columns:1fr;}.footer-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">LEVEL 3<span>Rooftop · Port Harcourt</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="menu.html" class="active">Menu</a></li>
+    <li><a href="restaurant.html">Restaurant</a></li>
+    <li><a href="shows.html">Shows</a></li>
+    <li><a href="club.html">The Club</a></li>
+    <li><a href="index.html#reserve" class="nav-cta">Reserve</a></li>
+  </ul>
+  <button class="nav-ham" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-content">
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">›</span><span>Our Menu</span></div>
+    <span class="eyebrow" style="margin-bottom:0.85rem;">Culinary Excellence</span>
+    <h1 class="sec-title" style="font-size:clamp(2.8rem,6vw,5.5rem);margin-bottom:0.5rem;">Our <span class="gold">Menu</span></h1>
+    <div class="gold-bar" style="margin:1rem auto 0;"></div>
+  </div>
+</div>
+
+<div class="tabs-bar">
+  <div class="tabs-inner">
+    <button class="tab-btn active" data-tab="starters">Starters</button>
+    <button class="tab-btn" data-tab="salads">Salads</button>
+    <button class="tab-btn" data-tab="pasta">Pasta</button>
+    <button class="tab-btn" data-tab="grills">Grills</button>
+    <button class="tab-btn" data-tab="seafood">Seafood</button>
+    <button class="tab-btn" data-tab="poultry">Poultry</button>
+    <button class="tab-btn" data-tab="sides">Sides &amp; Sauces</button>
+    <button class="tab-btn" data-tab="desserts">Desserts</button>
+  </div>
+</div>
+
+<!-- ── STARTERS ── -->
+<div class="menu-section active" id="tab-starters">
+  <div class="container">
+    <div class="cat-intro reveal">
+      <span class="eyebrow">To Begin</span>
+      <h2 class="sec-title">Starters</h2>
+      <div class="gold-bar"></div>
+      <p class="body-text">Bold flavours crafted to open the palate and set the tone for the evening ahead.</p>
+    </div>
+  </div>
+  <div class="menu-grid" style="max-width:100%;">
+    <div class="m-card reveal">
+      <img class="m-card-img" src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=700&q=80" alt="Golden Plantain Cups">
+      <div class="m-card-overlay">
+        <div class="m-badge">Signature</div>
+        <div class="m-name">Golden Plantain Cups</div>
+        <div class="m-desc">Crisp plantain cups filled with smoked barbecue chicken, finished with roasted sweet pepper glaze</div>
+      </div>
+    </div>
+    <div class="m-card reveal">
+      <img class="m-card-img" src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=700&q=80" alt="Crispy Calamari">
+      <div class="m-card-overlay">
+        <div class="m-name">Crispy Calamari</div>
+        <div class="m-desc">Buttermilk calamari rings served with dynamite sauce and charred lemon</div>
+      </div>
+    </div>
+    <div class="m-card reveal">
+      <img class="m-card-img" src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=700&q=80" alt="Tempura Prawns">
+      <div class="m-card-overlay">
+        <div class="m-name">Tempura Prawns</div>
+        <div class="m-desc">Lightly battered king prawns served with spicy Japanese mayo</div>
+      </div>
+    </div>
+    <div class="m-card reveal">
+      <img class="m-card-img" src="https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?w=700&q=80" alt="Tomato Bruschetta">
+      <div class="m-card-overlay">
+        <div class="m-name">Tomato Bruschetta</div>
+        <div class="m-desc">Toasted artisan bread topped with basil tomato concassé, olive oil, and shaved parmesan</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SALADS ── -->
+<div class="menu-section" id="tab-salads">
+  <div class="container">
+    <div class="cat-intro reveal">
+      <span class="eyebrow">Fresh &amp; Vibrant</span>
+      <h2 class="sec-title">Salads</h2>
+      <div class="gold-bar"></div>
+      <p class="body-text">Crisp, colourful, and carefully composed — our salads are far from an afterthought.</p>
+    </div>
+  </div>
+  <div class="menu-grid" style="max-width:100%;grid-template-columns:repeat(2,1fr);">
+    <div class="m-card reveal">
+      <img class="m-card-img" src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=900&q=80" alt="Emerald Chicken Salad" style="aspect-ratio:3/2;">
+      <div class="m-card-overlay">
+        <div class="m-badge">Favourite</div>
+        <div class="m-name">Emerald Chicken Salad</div>
+        <div class="m-desc">Shredded chicken, avocado, Chinese cabbage, carrot ribbons, sesame seed, lettuce, soft egg and bell peppers — finished with house mayo dressing</div>
+      </div>
+    </div>
+    <div class="m-card reveal">
+      <img class="m-card-img" src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=900&q=80" alt="Garden Harvest Salad" style="aspect-ratio:3/2;">
+      <div class="m-card-overlay">
+        <div class="m-name">Garden Harvest Salad</div>
+        <div class="m-desc">Beetroot, cucumber ribbons, pickled onions, almond crumble, baby lettuce, carrots and citrus lemon vinaigrette</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PASTA ── -->
+<div class="menu-section" id="tab-pasta">
+  <div class="container">
+    <div class="cat-intro reveal">
+      <span class="eyebrow">Comfort &amp; Craft</span>
+      <h2 class="sec-title">Pasta</h2>
+      <div class="gold-bar"></div>
+      <p class="body-text">House-perfected sauces, premium proteins and perfectly cooked pasta — elevated simplicity.</p>
+    </div>
+  </div>
+  <div class="menu-grid" style="max-width:100%;grid-template-columns:repeat(2,1fr);">
+    <div class="m-card reveal">
+      <img class="m-card-img" src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=900&q=80" alt="Chili Salmon Alfredo" style="aspect-ratio:3/2;">
+      <div class="m-card-overlay">
+        <div class="m-badge">Chef's Pick</div>
+        <div class="m-name">Chili Salmon Alfredo</div>
+        <div class="m-desc">Creamy parmesan Alfredo tossed with pasta ribbons and finished with chili-glazed salmon</div>
+      </div>
+    </div>
+    <div class="m-card reveal">
+      <img class="m-card-img" src="https://images.unsplash.com/photo-1608219992759-8d74ed8d76eb?w=900&q=80" alt="Penne Arrabbiata" style="aspect-ratio:3/2;">
+      <div class="m-card-overlay">
+        <div class="m-name">Penne Arrabbiata</div>
+        <div class="m-desc">Penne pasta in spicy tomato sauce with beef meatballs, parmesan and fresh herbs</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── GRILLS ── -->
+<div class="menu-section" id="tab-grills">
+  <div class="container">
+    <div class="cat-intro reveal">
+      <span class="eyebrow">Fire &amp; Mastery</span>
+      <h2 class="sec-title">From <span class="gold">the Grill</span></h2>
+      <div class="gold-bar"></div>
+      <p class="body-text">Premium cuts and bold theatre — from tableside flambé to edible gold, every grill dish is an occasion.</p>
+    </div>
+  </div>
+  <div class="menu-grid" style="max-width:100%;">
+    <div class="m-card reveal">
+      <img class="m-card-img" src="https://images.unsplash.com/photo-1546964124-0cce460f38ef?w=700&q=80" alt="24 Karat Tomahawk">
+      <div class="m-card-overlay">
+        <div class="m-badge">Showstopper</div>
+        <div class="m-name">24 Karat Tomahawk</div>
+        <div class="m-desc">1000g grilled tomahawk immersed in smoked brown butter, finished with edible gold and tableside cognac flambé</div>
+      </div>
+    </div>
+    <div class="m-card reveal">
+      <img class="m-card-img" src="https://images.unsplash.com/photo-1558030006-450675393462?w=700&q=80" alt="The Monarch T-Bone">
+      <div class="m-card-overlay">
+        <div class="m-name">The Monarch T-Bone</div>
+        <div class="m-desc">Open air grilled T-bone steak finished with rosemary butter and red wine reduction</div>
+      </div>
+    </div>
+    <div class="m-card reveal">
+      <img class="m-card-img" src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=700&q=80" alt="Imperial Tenderloin">
+      <div class="m-card-overlay">
+        <div class="m-name">Imperial Tenderloin</div>
+        <div class="m-desc">Premium beef tenderloin with charred broccoli and peppercorn jus</div>
+      </div>
+    </div>
+    <div class="m-card reveal">
+      <img class="m-card-img" src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=700&q=80" alt="Level 3 Signature Flambé">
+      <div class="m-card-overlay">
+        <div class="m-badge">Signature</div>
+        <div class="m-name">Level 3 Signature Flambé</div>
+        <div class="m-desc">Sizzling grilled lamb chops glazed in smoked butter, finished with tableside cognac flambé</div>
+      </div>
+    </div>
+    <div class="m-card reveal">
+      <img class="m-card-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=700&q=80" alt="Sirloin Steak Bites">
+      <div class="m-card-overlay">
+        <div class="m-name">Sirloin Steak Bites</div>
+        <div class="m-desc">Chargrilled sirloin bites with creamy mashed potatoes, sautéed vegetables and red wine jus</div>
+      </div>
+    </div>
+    <div class="m-card reveal">
+      <img class="m-card-img" src="https://images.unsplash.com/photo-1555243896-c709bfa0b564?w=700&q=80" alt="Slow-Braised Lamb Shank">
+      <div class="m-card-overlay">
+        <div class="m-name">Slow-Braised Lamb Shank</div>
+        <div class="m-desc">400g braised lamb shank over creamy potato purée with peppercorn jus</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SEAFOOD ── -->
+<div class="menu-section" id="tab-seafood">
+  <div class="container">
+    <div class="cat-intro reveal">
+      <span class="eyebrow">Ocean Fresh</span>
+      <h2 class="sec-title"><span class="gold">Seafood</span></h2>
+      <div class="gold-bar"></div>
+      <p class="body-text">Sourced fresh and cooked with care — the finest the sea has to offer, served with flair.</p>
+    </div>
+  </div>
+  <div class="menu-grid" style="max-width:100%;">
+    <div class="m-card reveal">
+      <img class="m-card-img" src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=700&q=80" alt="Prawn-Stuffed Atlantic Salmon">
+      <div class="m-card-overlay">
+        <div class="m-badge">Chef's Pick</div>
+        <div class="m-name">Prawn-Stuffed Atlantic Salmon</div>
+        <div class="m-desc">Oven roasted salmon filled with creamy garlic prawns, served with buttered jasmine rice</div>
+      </div>
+    </div>
+    <div class="m-card reveal">
+      <img class="m-card-img" src="https://images.unsplash.com/photo-1519984388953-d2406bc725e1?w=700&q=80" alt="Fire-Grilled Prawn Skewers">
+      <div class="m-card-overlay">
+        <div class="m-name">Fire-Grilled Prawn Skewers</div>
+        <div class="m-desc">Charred prawn kebabs served with butter potato wedges and pepper sauce</div>
+      </div>
+    </div>
+    <div class="m-card reveal">
+      <img class="m-card-img" src="https://images.unsplash.com/photo-1534482421-64566f976cfa?w=700&q=80" alt="Coastal Flame Tilapia">
+      <div class="m-card-overlay">
+        <div class="m-name">Coastal Flame Tilapia</div>
+        <div class="m-desc">Whole grilled tilapia with smoky jollof rice and butter sautéed vegetables</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── POULTRY ── -->
+<div class="menu-section" id="tab-poultry">
+  <div class="container">
+    <div class="cat-intro reveal">
+      <span class="eyebrow">Feathered Perfection</span>
+      <h2 class="sec-title">Poultry</h2>
+      <div class="gold-bar"></div>
+      <p class="body-text">Free-range, full flavour — our poultry dishes are anything but ordinary.</p>
+    </div>
+  </div>
+  <div class="menu-grid" style="max-width:100%;grid-template-columns:repeat(2,1fr);">
+    <div class="m-card reveal">
+      <img class="m-card-img" src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=900&q=80" alt="Thai Coconut Curry" style="aspect-ratio:3/2;">
+      <div class="m-card-overlay">
+        <div class="m-name">Thai Coconut Curry</div>
+        <div class="m-desc">Slow simmered chicken curry in coconut cream with vegetables and steamed jasmine rice</div>
+      </div>
+    </div>
+    <div class="m-card reveal">
+      <img class="m-card-img" src="https://images.unsplash.com/photo-1501200291289-c5a76c232e5f?w=900&q=80" alt="Crispy Chicken Lava" style="aspect-ratio:3/2;">
+      <div class="m-card-overlay">
+        <div class="m-badge">Favourite</div>
+        <div class="m-name">Crispy Chicken Lava</div>
+        <div class="m-desc">Golden fried chicken breast covered with mozzarella, spicy arrabbiata sauce and French fries</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SIDES & SAUCES ── -->
+<div class="menu-section" id="tab-sides">
+  <div class="container">
+    <div class="cat-intro reveal">
+      <span class="eyebrow">Complete Your Plate</span>
+      <h2 class="sec-title">Sides <span class="gold">&amp; Sauces</span></h2>
+      <div class="gold-bar"></div>
+      <p class="body-text">Thoughtfully crafted accompaniments and house sauces to round out every dish.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;margin-bottom:5rem;" class="reveal">
+      <!-- SIDES -->
+      <div>
+        <div style="font-family:var(--font-display);font-size:0.85rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);padding-bottom:1rem;border-bottom:1px solid rgba(201,169,110,0.25);margin-bottom:0;">Sides</div>
+        <div style="border-top:none;">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:1.4rem 0;border-bottom:1px solid rgba(255,255,255,0.06);">
+            <div>
+              <div style="font-family:var(--font-serif);font-size:1.1rem;font-weight:500;">Golden Yam Batons</div>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:1.4rem 0;border-bottom:1px solid rgba(255,255,255,0.06);">
+            <div><div style="font-family:var(--font-serif);font-size:1.1rem;font-weight:500;">Truffle Parmesan Frites</div></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:1.4rem 0;border-bottom:1px solid rgba(255,255,255,0.06);">
+            <div><div style="font-family:var(--font-serif);font-size:1.1rem;font-weight:500;">Smoky Party Jollof</div></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:1.4rem 0;border-bottom:1px solid rgba(255,255,255,0.06);">
+            <div><div style="font-family:var(--font-serif);font-size:1.1rem;font-weight:500;">Butter-Steamed Jasmine Rice</div></div>
+          </div>
+        </div>
+      </div>
+      <!-- SAUCES -->
+      <div>
+        <div style="font-family:var(--font-display);font-size:0.85rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);padding-bottom:1rem;border-bottom:1px solid rgba(201,169,110,0.25);">Sauces</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:1.4rem 0;border-bottom:1px solid rgba(255,255,255,0.06);"><div><div style="font-family:var(--font-serif);font-size:1.1rem;font-weight:500;">Smoked Pepper Jus</div></div></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:1.4rem 0;border-bottom:1px solid rgba(255,255,255,0.06);"><div><div style="font-family:var(--font-serif);font-size:1.1rem;font-weight:500;">Peppercorn Sauce</div></div></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:1.4rem 0;border-bottom:1px solid rgba(255,255,255,0.06);"><div><div style="font-family:var(--font-serif);font-size:1.1rem;font-weight:500;">Creamy Mushroom Sauce</div></div></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:1.4rem 0;border-bottom:1px solid rgba(255,255,255,0.06);"><div><div style="font-family:var(--font-serif);font-size:1.1rem;font-weight:500;">Red Wine Reduction</div></div></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:1.4rem 0;border-bottom:1px solid rgba(255,255,255,0.06);"><div><div style="font-family:var(--font-serif);font-size:1.1rem;font-weight:500;">Chili Citrus Glaze</div></div></div>
+      </div>
+    </div>
+
+    <div style="text-align:center;padding-bottom:5rem;" class="reveal">
+      <a href="index.html#reserve" class="btn-primary">Reserve Your Table</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── DESSERTS ── -->
+<div class="menu-section" id="tab-desserts">
+  <div class="container">
+    <div class="cat-intro reveal">
+      <span class="eyebrow">Sweet Finales</span>
+      <h2 class="sec-title">Desserts</h2>
+      <div class="gold-bar"></div>
+      <p class="body-text">The final act — indulgent, precise, and designed to linger long after the last bite.</p>
+    </div>
+  </div>
+  <div class="menu-grid" style="max-width:100%;">
+    <div class="m-card reveal">
+      <img class="m-card-img" src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=700&q=80" alt="Level 3 Signature Dessert">
+      <div class="m-card-overlay">
+        <div class="m-badge">Signature</div>
+        <div class="m-name">Level 3 Signature Dessert</div>
+        <div class="m-desc">White chocolate mousse layered with cookie crumble, finished with berries and delicate garnish</div>
+      </div>
+    </div>
+    <div class="m-card reveal">
+      <img class="m-card-img" src="https://images.unsplash.com/photo-1624353365286-3f8d62daad51?w=700&q=80" alt="Churros">
+      <div class="m-card-overlay">
+        <div class="m-name">Churros</div>
+        <div class="m-desc">Golden crisp churros dusted lightly with sugar, finished with warm chocolate drizzle</div>
+      </div>
+    </div>
+    <div class="m-card reveal">
+      <img class="m-card-img" src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=700&q=80" alt="Cookies and Ice Cream">
+      <div class="m-card-overlay">
+        <div class="m-name">Cookies and Ice Cream</div>
+        <div class="m-desc">Warm baked cookies served with premium vanilla ice cream, finished with chocolate sauce</div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;padding:5rem 0;" class="reveal">
+    <a href="index.html#reserve" class="btn-primary">Book Your Table</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="f-brand">LEVEL 3</div><div class="f-sub">Rooftop · Port Harcourt</div><p class="f-tagline">Where elevated dining meets the pulse of Port Harcourt's finest nights.</p>
+        <div class="f-social">
+          <a href="#" class="soc-btn"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          <a href="#" class="soc-btn"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a href="#" class="soc-btn"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        </div>
+      </div>
+      <div><div class="f-col-title">Navigate</div><ul class="f-links"><li><a href="index.html#about">About Us</a></li><li><a href="menu.html">Our Menu</a></li><li><a href="restaurant.html">Restaurant</a></li><li><a href="shows.html">Shows</a></li><li><a href="club.html">The Club</a></li></ul></div>
+      <div><div class="f-col-title">Experience</div><ul class="f-links"><li><a href="index.html#reserve">Book a Table</a></li><li><a href="#">Private Events</a></li><li><a href="#">VIP Membership</a></li><li><a href="#">Corporate Dining</a></li></ul></div>
+      <div class="f-contact"><div class="f-col-title">Find Us</div><p>3rd Floor, GRA District<br>Port Harcourt, Rivers State<br>Nigeria</p><p style="margin-top:1rem;">+234 800 000 0000</p><p>reservations@level3rooftop.com</p></div>
+    </div>
+    <div class="f-bottom"><p class="f-copy">© 2025 Level 3 Rooftop, Port Harcourt. All rights reserved.</p><div class="f-legal"><a href="#">Privacy</a><a href="#">Terms</a></div></div>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>80));
+const ham=document.getElementById('ham'),links=document.getElementById('navLinks');
+ham.addEventListener('click',()=>links.classList.toggle('open'));
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.menu-section').forEach(s=>s.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-'+btn.dataset.tab).classList.add('active');
+    window.scrollTo({top:document.querySelector('.tabs-bar').offsetTop-64,behavior:'smooth'});
+  });
+});
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
