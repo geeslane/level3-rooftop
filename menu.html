@@ -175,25 +175,27 @@ links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.clas
 
 const menuRoot=document.getElementById('menu-root');
 const menuTabs=document.getElementById('menuTabs');
-renderMenu(menuRoot);
-
-menuTabs.innerHTML=FOOD_MENU.map((category,i)=>{
-  const sectionId='menu-'+category.group.toLowerCase().replace(/\s+/g,'-');
-  return `<button class="tab-btn${i===0?' active':''}" data-target="${sectionId}">${category.group}</button>`;
-}).join('');
-
-menuTabs.querySelectorAll('.tab-btn').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    menuTabs.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    const target=document.getElementById(btn.dataset.target);
-    if(target)window.scrollTo({top:target.offsetTop-120,behavior:'smooth'});
-  });
-});
-
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.08});
 function observeReveals(){document.querySelectorAll('.reveal:not(.visible)').forEach(el=>obs.observe(el));}
-observeReveals();
+
+loadMenu().then(()=>{
+  renderMenu(menuRoot);
+  menuTabs.innerHTML=FOOD_MENU.map((category,i)=>{
+    const sectionId='menu-'+category.group.toLowerCase().replace(/\s+/g,'-');
+    return `<button class="tab-btn${i===0?' active':''}" data-target="${sectionId}">${category.group}</button>`;
+  }).join('');
+  menuTabs.querySelectorAll('.tab-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      menuTabs.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const target=document.getElementById(btn.dataset.target);
+      if(target)window.scrollTo({top:target.offsetTop-120,behavior:'smooth'});
+    });
+  });
+  observeReveals();
+}).catch(()=>{
+  menuRoot.innerHTML='<div class="container" style="text-align:center;padding:4rem 0;"><p class="body-text">Unable to load the menu. Please try again later.</p></div>';
+});
 </script>
 </body>
 </html>

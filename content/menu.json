@@ -1,0 +1,202 @@
+{
+  "categories": [
+    {
+      "group": "Starters",
+      "eyebrow": "To Begin",
+      "intro": "Bold flavours crafted to open the palate and set the tone for the evening ahead.",
+      "items": [
+        {
+          "name": "Golden Plantain Cups",
+          "desc": "Crisp plantain cups filled with smoked barbecue chicken, finished with roasted sweet pepper glaze.",
+          "image": "food/Starters -20260701T024731Z-3-001/Starters/Golden Plantain Cups_.jpg",
+          "badge": "Signature"
+        },
+        {
+          "name": "Crispy Calamari",
+          "desc": "Buttermilk calamari rings served with dynamite sauce and charred lemon.",
+          "image": "food/Starters -20260701T024731Z-3-001/Starters/Crispy Calamari_.jpg"
+        },
+        {
+          "name": "Tempura Prawns",
+          "desc": "Lightly battered king prawns served with spicy Japanese mayo.",
+          "image": "food/Starters -20260701T024731Z-3-001/Starters/Tempura Prawns_.jpg"
+        },
+        {
+          "name": "Tomato Bruschetta",
+          "desc": "Toasted artisan bread topped with basil tomato concassé, olive oil, and shaved parmesan.",
+          "image": "food/Starters -20260701T024731Z-3-001/Starters/Tomato Bruschetta.jpg"
+        }
+      ]
+    },
+    {
+      "group": "Salads",
+      "eyebrow": "Fresh & Vibrant",
+      "intro": "Crisp, colourful, and carefully composed — our salads are far from an afterthought.",
+      "items": [
+        {
+          "name": "Emerald Chicken Salad",
+          "desc": "Shredded chicken, avocado, Chinese cabbage, carrot ribbons, sesame seed, lettuce, soft egg and bell peppers — finished with house mayo dressing.",
+          "image": "food/Salads-20260701T024729Z-3-001/Salads/Emerald Chicken Salad_.jpg",
+          "badge": "Favourite"
+        },
+        {
+          "name": "Garden Harvest Salad",
+          "desc": "Beetroot, cucumber ribbons, pickled onions, almond crumble, baby lettuce, carrots and citrus lemon vinaigrette.",
+          "image": "food/Salads-20260701T024729Z-3-001/Salads/Garden Harvest.png"
+        }
+      ]
+    },
+    {
+      "group": "Pasta",
+      "eyebrow": "Comfort & Craft",
+      "intro": "House-perfected sauces, premium proteins and perfectly cooked pasta — elevated simplicity.",
+      "items": [
+        {
+          "name": "Chili Salmon Alfredo",
+          "desc": "Creamy parmesan Alfredo tossed with pasta ribbons and finished with chili-glazed salmon.",
+          "image": "food/Pasta-20260701T024725Z-3-001/Pasta/Chili Salmon Alfredo_.png",
+          "badge": "Chef's Pick"
+        },
+        {
+          "name": "Penne Arrabbiata",
+          "desc": "Penne pasta in spicy tomato sauce with beef meatballs, parmesan and fresh herbs.",
+          "image": "food/Pasta-20260701T024725Z-3-001/Pasta/Penne Arrabbiata.jpg"
+        }
+      ]
+    },
+    {
+      "group": "Grills",
+      "eyebrow": "Fire & Mastery",
+      "intro": "Premium cuts and bold theatre — from tableside flambé to edible gold, every grill dish is an occasion.",
+      "items": [
+        {
+          "name": "24 Karat Tomahawk",
+          "desc": "1000g grilled tomahawk immersed in smoked brown butter, finished with edible gold and tableside cognac flambé.",
+          "image": "food/Grills-20260701T024723Z-3-001/Grills/24 karat Tomahawk_.jpg",
+          "badge": "Showstopper"
+        },
+        {
+          "name": "The Monarch T-Bone",
+          "desc": "Open air grilled T-bone steak finished with rosemary butter and red wine reduction.",
+          "image": "food/Grills-20260701T024723Z-3-001/Grills/The Monarch T-Bone.png"
+        },
+        {
+          "name": "Imperial Tenderloin",
+          "desc": "Premium beef tenderloin with charred broccoli and peppercorn jus.",
+          "image": "food/Grills-20260701T024723Z-3-001/Grills/Imperial tenderloin.png"
+        },
+        {
+          "name": "Level 3 Signature Flambé",
+          "desc": "Sizzling grilled lamb chops glazed in smoked butter, finished with tableside cognac flambé.",
+          "image": "food/Grills-20260701T024723Z-3-001/Grills/Level 3 signature flambles.png",
+          "badge": "Signature"
+        },
+        {
+          "name": "Sirloin Steak Bites",
+          "desc": "Chargrilled sirloin bites with creamy mashed potatoes, sautéed vegetables and red wine jus.",
+          "image": "food/Grills-20260701T024723Z-3-001/Grills/Sir loin steak bites.png"
+        },
+        {
+          "name": "Slow-Braised Lamb Shank",
+          "desc": "400g braised lamb shank over creamy potato purée with peppercorn jus.",
+          "image": "food/Grills-20260701T024723Z-3-001/Grills/Slow braised lamb shank.png"
+        }
+      ]
+    },
+    {
+      "group": "Seafood",
+      "eyebrow": "Ocean Fresh",
+      "intro": "Sourced fresh and cooked with care — the finest the sea has to offer, served with flair.",
+      "items": [
+        {
+          "name": "Prawn-Stuffed Atlantic Salmon",
+          "desc": "Oven roasted salmon filled with creamy garlic prawns, served with buttered jasmine rice.",
+          "image": "food/Seafood-20260701T024722Z-3-001/Seafood/Prawn stuffed Atlantic salmon.png",
+          "badge": "Chef's Pick"
+        },
+        {
+          "name": "Fire-Grilled Prawn Skewers",
+          "desc": "Charred prawn kebabs served with butter potato wedges and pepper sauce.",
+          "image": "food/Seafood-20260701T024722Z-3-001/Seafood/Fire grilled prawn skewers_.png"
+        },
+        {
+          "name": "Coastal Flame Tilapia",
+          "desc": "Whole grilled tilapia with smoky jollof rice and butter sautéed vegetables.",
+          "image": "food/Seafood-20260701T024722Z-3-001/Seafood/Costal Flame Tilaplia.jpg"
+        }
+      ]
+    },
+    {
+      "group": "Poultry",
+      "eyebrow": "Feathered Perfection",
+      "intro": "Free-range, full flavour — our poultry dishes are anything but ordinary.",
+      "items": [
+        {
+          "name": "Thai Coconut Curry",
+          "desc": "Slow simmered chicken curry in coconut cream with vegetables and steamed jasmine rice.",
+          "image": "food/Poultry -20260701T024721Z-3-001/Poultry/Tai coconut curry_.png"
+        },
+        {
+          "name": "Crispy Chicken Lava",
+          "desc": "Golden fried chicken breast covered with mozzarella, spicy arrabbiata sauce and French fries.",
+          "image": "food/Poultry -20260701T024721Z-3-001/Poultry/Crispy chicken lava.jpg",
+          "badge": "Favourite"
+        }
+      ]
+    },
+    {
+      "group": "Side Dish",
+      "eyebrow": "Complete Your Plate",
+      "intro": "Thoughtfully crafted accompaniments to round out every dish.",
+      "items": [
+        {
+          "name": "Truffle Parmesan Frites",
+          "desc": "Crispy hand-cut fries tossed with truffle oil, parmesan, and fresh herbs.",
+          "image": "food/Side dish-20260701T024714Z-3-001/Side dish/Truffle Parmesan Frites_.jpg"
+        },
+        {
+          "name": "Smoky Party Jollof",
+          "desc": "Long-grain rice slow-cooked in a rich, smoky tomato and pepper base.",
+          "image": "food/Side dish-20260701T024714Z-3-001/Side dish/Smoky Party Jollof _.png"
+        },
+        {
+          "name": "Butter-Steamed Jasmine Rice",
+          "desc": "Fragrant jasmine rice steamed with butter for a light, silky finish.",
+          "image": "food/Side dish-20260701T024714Z-3-001/Side dish/Butter Steamed Jasmine rice.jpg"
+        }
+      ]
+    },
+    {
+      "group": "Sauce",
+      "eyebrow": "House Sauces",
+      "intro": "Signature sauces crafted to elevate every grill, seafood, and poultry dish.",
+      "items": [
+        {
+          "name": "Smoked Pepper Jus",
+          "desc": "Rich, smoky pepper jus with depth and warmth — perfect for steaks and grills.",
+          "image": "food/Sauce-20260701T024718Z-3-001/Sauce/Smoked Pepper Jus_.png"
+        },
+        {
+          "name": "Peppercorn Sauce",
+          "desc": "Creamy cracked peppercorn sauce with a bold, aromatic finish.",
+          "image": "food/Sauce-20260701T024718Z-3-001/Sauce/Peppercorn sauce_.jpg"
+        },
+        {
+          "name": "Creamy Mushroom Sauce",
+          "desc": "Silky mushroom reduction with herbs — an elegant companion to tender cuts.",
+          "image": "food/Sauce-20260701T024718Z-3-001/Sauce/Creamy Mushroom sauce.png"
+        },
+        {
+          "name": "Red Wine Reduction",
+          "desc": "Classic red wine glaze, slow-reduced for depth and glossy richness.",
+          "image": "food/Sauce-20260701T024718Z-3-001/Sauce/Red Wine Reduction.png"
+        },
+        {
+          "name": "Chili Citrus Glaze",
+          "desc": "Bright citrus notes balanced with gentle heat — a vibrant finishing glaze.",
+          "image": "food/Sauce-20260701T024718Z-3-001/Sauce/Chili Citrus Glaze.png"
+        }
+      ]
+    }
+  ]
+}

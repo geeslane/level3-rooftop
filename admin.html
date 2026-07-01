@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Menu Admin | Level 3 Rooftop</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Cinzel&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--burgundy:#6B0F1A;--gold:#C9A96E;--black:#0A0A0A;--charcoal:#1A1A1A;--white:#fff;--font-serif:'Cormorant Garamond',Georgia,serif;--font-display:'Cinzel',serif;--font-sans:'Jost',sans-serif;}
+body{background:var(--black);color:var(--white);font-family:var(--font-sans);font-weight:300;min-height:100vh;}
+a{color:var(--gold);}
+header{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 2rem;border-bottom:1px solid rgba(201,169,110,0.15);}
+.logo{font-family:var(--font-display);font-size:0.95rem;letter-spacing:0.2em;color:var(--gold);text-decoration:none;}
+.wrap{max-width:900px;margin:0 auto;padding:2rem;}
+h1{font-family:var(--font-display);font-size:1.6rem;font-weight:400;margin-bottom:0.5rem;}
+.sub{color:rgba(255,255,255,0.45);font-size:0.9rem;line-height:1.6;margin-bottom:2rem;}
+.panel{background:var(--charcoal);border:1px solid rgba(255,255,255,0.08);padding:2rem;margin-bottom:1.5rem;}
+label{display:block;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;}
+input[type=text],input[type=password],textarea{width:100%;background:#111;border:1px solid rgba(255,255,255,0.12);color:var(--white);padding:0.75rem 1rem;font-family:var(--font-sans);font-size:0.9rem;margin-bottom:1rem;}
+textarea{min-height:80px;resize:vertical;}
+.btn{display:inline-block;padding:0.75rem 1.5rem;background:var(--burgundy);border:1px solid #C4394F;color:var(--white);font-family:var(--font-sans);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;text-decoration:none;}
+.btn:hover{opacity:0.9;}
+.btn-ghost{background:transparent;border-color:rgba(255,255,255,0.2);}
+.btn-sm{padding:0.45rem 0.9rem;font-size:0.62rem;}
+.btn-danger{border-color:#8B1A28;background:#4A0A12;}
+.toolbar{display:flex;flex-wrap:wrap;gap:0.75rem;margin-bottom:1.5rem;}
+.notice{background:rgba(201,169,110,0.08);border:1px solid rgba(201,169,110,0.25);padding:1rem 1.25rem;font-size:0.85rem;line-height:1.65;color:rgba(255,255,255,0.65);margin-bottom:1.5rem;}
+.cat{border:1px solid rgba(255,255,255,0.08);margin-bottom:1rem;}
+.cat-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.25rem;background:#141414;cursor:pointer;}
+.cat-head h2{font-family:var(--font-serif);font-size:1.15rem;font-weight:500;}
+.cat-body{padding:1.25rem;display:none;}
+.cat.open .cat-body{display:block;}
+.item{border-top:1px solid rgba(255,255,255,0.06);padding:1.25rem 0;}
+.item:first-child{border-top:none;padding-top:0;}
+.item-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 1rem;}
+.item-preview{width:100%;max-width:140px;aspect-ratio:4/3;object-fit:cover;margin-bottom:1rem;border:1px solid rgba(255,255,255,0.1);}
+.item-actions{display:flex;gap:0.5rem;margin-top:0.5rem;}
+.err{color:#C4394F;font-size:0.85rem;margin-top:0.5rem;}
+.ok{color:#7cb87c;font-size:0.85rem;}
+.status{font-size:0.85rem;margin-bottom:1rem;min-height:1.25rem;}
+.hidden{display:none;}
+@media(max-width:700px){.item-grid{grid-template-columns:1fr;}.wrap{padding:1.25rem;}}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">LEVEL 3 ADMIN</a>
+  <div id="headerActions"></div>
+</header>
+
+<div class="wrap">
+  <div id="loginView">
+    <h1>Menu Admin</h1>
+    <p class="sub">Sign in to edit the restaurant menu. Click <strong>Save to site</strong> to publish changes immediately.</p>
+    <div class="panel">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter admin password" autocomplete="current-password">
+      <p class="err hidden" id="loginErr">Incorrect password.</p>
+      <button class="btn" type="button" id="loginBtn">Sign In</button>
+    </div>
+  </div>
+
+  <div id="editorView" class="hidden">
+    <h1>Edit Menu</h1>
+    <p class="sub">Update dishes below, then click <strong>Save to site</strong>. Changes go live right away on the menu page.</p>
+
+    <div class="notice">
+      <strong>Save to site</strong> updates the live menu immediately (no file download needed).<br><br>
+      <strong>New photos:</strong> add images to the <code>food/</code> folder in GitHub first, then paste the path in the image field and save.<br><br>
+      <strong>Backup:</strong> use <em>Download menu.json</em> if you ever want a local copy.
+    </div>
+
+    <p class="status" id="statusMsg"></p>
+
+    <div class="toolbar">
+      <button class="btn" type="button" id="saveBtn">Save to Site</button>
+      <button class="btn btn-ghost" type="button" id="downloadBtn">Download menu.json</button>
+      <button class="btn btn-ghost" type="button" id="addCatBtn">+ Category</button>
+      <a class="btn btn-ghost" href="menu.html" target="_blank">Preview Menu</a>
+      <button class="btn btn-ghost" type="button" id="logoutBtn">Sign Out</button>
+    </div>
+
+    <div id="categories"></div>
+  </div>
+</div>
+
+<script>
+// Fallback password for local preview only (no API). On Vercel, use ADMIN_PASSWORD env var.
+const LOCAL_ADMIN_PASSWORD = "level3menu";
+
+const SESSION_KEY = "level3_menu_admin";
+let menuData = { categories: [] };
+let useLocalAuth = false;
+
+const loginView = document.getElementById("loginView");
+const editorView = document.getElementById("editorView");
+const headerActions = document.getElementById("headerActions");
+const categoriesEl = document.getElementById("categories");
+const statusMsg = document.getElementById("statusMsg");
+
+function setStatus(msg, type) {
+  statusMsg.textContent = msg;
+  statusMsg.className = "status" + (type === "err" ? " err" : type === "ok" ? " ok" : "");
+}
+
+function isLoggedIn() {
+  return sessionStorage.getItem(SESSION_KEY) === "1";
+}
+
+function showLogin() {
+  loginView.classList.remove("hidden");
+  editorView.classList.add("hidden");
+  headerActions.innerHTML = "";
+}
+
+function showEditor() {
+  loginView.classList.add("hidden");
+  editorView.classList.remove("hidden");
+}
+
+async function loadMenuData() {
+  try {
+    const res = await fetch("/api/menu");
+    if (res.ok) {
+      menuData = await res.json();
+      if (!menuData.categories) menuData = { categories: menuData };
+      return;
+    }
+  } catch (_) {}
+
+  const res = await fetch("content/menu.json");
+  if (!res.ok) throw new Error("Could not load menu");
+  menuData = await res.json();
+  if (!menuData.categories) menuData = { categories: menuData };
+}
+
+function esc(str) {
+  return String(str ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+function renderCategories() {
+  categoriesEl.innerHTML = menuData.categories.map((cat, ci) => `
+    <div class="cat${ci === 0 ? " open" : ""}" data-ci="${ci}">
+      <div class="cat-head" data-toggle>
+        <h2>${esc(cat.group)} <span style="color:rgba(255,255,255,0.35);font-size:0.85rem;">(${cat.items.length} items)</span></h2>
+        <span style="color:var(--gold);font-size:0.75rem;">▼</span>
+      </div>
+      <div class="cat-body">
+        <div class="item-grid">
+          <div>
+            <label>Category name</label>
+            <input type="text" data-field="group" value="${esc(cat.group)}">
+          </div>
+          <div>
+            <label>Eyebrow</label>
+            <input type="text" data-field="eyebrow" value="${esc(cat.eyebrow)}">
+          </div>
+        </div>
+        <label>Intro</label>
+        <textarea data-field="intro">${esc(cat.intro)}</textarea>
+        <div class="item-actions" style="margin-bottom:1.25rem;">
+          <button class="btn btn-sm" type="button" data-add-item>Add Dish</button>
+          <button class="btn btn-sm btn-danger" type="button" data-remove-cat>Remove Category</button>
+        </div>
+        <div data-items>
+          ${cat.items.map((item, ii) => itemTemplate(ci, ii, item)).join("")}
+        </div>
+      </div>
+    </div>
+  `).join("");
+
+  categoriesEl.querySelectorAll("[data-toggle]").forEach(head => {
+    head.addEventListener("click", () => head.closest(".cat").classList.toggle("open"));
+  });
+
+  categoriesEl.querySelectorAll(".cat").forEach(catEl => {
+    const ci = Number(catEl.dataset.ci);
+
+    catEl.querySelectorAll("[data-field]").forEach(input => {
+      input.addEventListener("input", () => {
+        menuData.categories[ci][input.dataset.field] = input.value;
+        if (input.dataset.field === "group") {
+          catEl.querySelector(".cat-head h2").innerHTML =
+            `${esc(input.value)} <span style="color:rgba(255,255,255,0.35);font-size:0.85rem;">(${menuData.categories[ci].items.length} items)</span>`;
+        }
+      });
+    });
+
+    catEl.querySelector("[data-add-item]").addEventListener("click", () => {
+      menuData.categories[ci].items.push({ name: "", desc: "", image: "" });
+      renderCategories();
+      categoriesEl.querySelectorAll(".cat")[ci].classList.add("open");
+    });
+
+    catEl.querySelector("[data-remove-cat]").addEventListener("click", () => {
+      if (!confirm(`Remove "${menuData.categories[ci].group}" and all its dishes?`)) return;
+      menuData.categories.splice(ci, 1);
+      renderCategories();
+    });
+
+    catEl.querySelectorAll("[data-item]").forEach(itemEl => {
+      const ii = Number(itemEl.dataset.ii);
+      itemEl.querySelectorAll("[data-item-field]").forEach(input => {
+        input.addEventListener("input", () => {
+          const field = input.dataset.itemField;
+          const value = input.value.trim();
+          if (field === "badge" && !value) {
+            delete menuData.categories[ci].items[ii].badge;
+          } else {
+            menuData.categories[ci].items[ii][field] = input.value;
+          }
+          if (field === "image") {
+            const img = itemEl.querySelector(".item-preview");
+            if (img) img.src = encodeImagePath(input.value);
+          }
+        });
+      });
+      itemEl.querySelector("[data-remove-item]").addEventListener("click", () => {
+        menuData.categories[ci].items.splice(ii, 1);
+        renderCategories();
+        categoriesEl.querySelectorAll(".cat")[ci].classList.add("open");
+      });
+    });
+  });
+}
+
+function encodeImagePath(path) {
+  return path.split("/").map(encodeURIComponent).join("/");
+}
+
+function itemTemplate(ci, ii, item) {
+  return `
+    <div class="item" data-item data-ci="${ci}" data-ii="${ii}">
+      ${item.image ? `<img class="item-preview" src="${encodeImagePath(item.image)}" alt="" onerror="this.style.display='none'">` : ""}
+      <label>Dish name</label>
+      <input type="text" data-item-field="name" value="${esc(item.name)}">
+      <label>Description</label>
+      <textarea data-item-field="desc">${esc(item.desc)}</textarea>
+      <div class="item-grid">
+        <div>
+          <label>Image path</label>
+          <input type="text" data-item-field="image" value="${esc(item.image)}" placeholder="food/.../dish.jpg">
+        </div>
+        <div>
+          <label>Badge (optional)</label>
+          <input type="text" data-item-field="badge" value="${esc(item.badge || "")}" placeholder="Signature, Popular…">
+        </div>
+      </div>
+      <div class="item-actions">
+        <button class="btn btn-sm btn-danger" type="button" data-remove-item>Remove Dish</button>
+      </div>
+    </div>
+  `;
+}
+
+function downloadMenu() {
+  menuData.categories.forEach(cat => {
+    cat.items.forEach(item => {
+      if (!item.badge) delete item.badge;
+    });
+  });
+  const blob = new Blob([JSON.stringify(menuData, null, 2)], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "menu.json";
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+async function saveMenu() {
+  const saveBtn = document.getElementById("saveBtn");
+  saveBtn.disabled = true;
+  setStatus("Saving…");
+
+  menuData.categories.forEach(cat => {
+    cat.items.forEach(item => {
+      if (!item.badge) delete item.badge;
+    });
+  });
+
+  if (useLocalAuth) {
+    setStatus("Live save needs Vercel API. Use Download menu.json and upload manually.", "err");
+    saveBtn.disabled = false;
+    return;
+  }
+
+  try {
+    const res = await fetch("/api/menu", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify(menuData),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data.error || "Save failed");
+    setStatus("Menu saved — live site updated.", "ok");
+  } catch (err) {
+    setStatus(err.message || "Could not save menu.", "err");
+  } finally {
+    saveBtn.disabled = false;
+  }
+}
+
+document.getElementById("loginBtn").addEventListener("click", async () => {
+  const pw = document.getElementById("password").value;
+  document.getElementById("loginErr").classList.add("hidden");
+  useLocalAuth = false;
+
+  try {
+    const res = await fetch("/api/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ password: pw }),
+    });
+
+    if (res.ok) {
+      sessionStorage.setItem(SESSION_KEY, "1");
+      initEditor();
+      return;
+    }
+
+    if (res.status === 503 && pw === LOCAL_ADMIN_PASSWORD) {
+      useLocalAuth = true;
+      sessionStorage.setItem(SESSION_KEY, "1");
+      initEditor();
+      setStatus("Local preview mode — use Download to export changes.", "err");
+      return;
+    }
+
+    document.getElementById("loginErr").classList.remove("hidden");
+  } catch {
+    if (pw === LOCAL_ADMIN_PASSWORD) {
+      useLocalAuth = true;
+      sessionStorage.setItem(SESSION_KEY, "1");
+      initEditor();
+      setStatus("Local preview mode — use Download to export changes.", "err");
+    } else {
+      document.getElementById("loginErr").classList.remove("hidden");
+    }
+  }
+});
+
+document.getElementById("password").addEventListener("keydown", e => {
+  if (e.key === "Enter") document.getElementById("loginBtn").click();
+});
+
+document.getElementById("logoutBtn").addEventListener("click", async () => {
+  try {
+    await fetch("/api/logout", { method: "POST", credentials: "include" });
+  } catch (_) {}
+  sessionStorage.removeItem(SESSION_KEY);
+  useLocalAuth = false;
+  setStatus("");
+  showLogin();
+});
+
+document.getElementById("downloadBtn").addEventListener("click", downloadMenu);
+document.getElementById("saveBtn").addEventListener("click", saveMenu);
+
+document.getElementById("addCatBtn").addEventListener("click", () => {
+  menuData.categories.push({
+    group: "New Category",
+    eyebrow: "",
+    intro: "",
+    items: []
+  });
+  renderCategories();
+  const cats = categoriesEl.querySelectorAll(".cat");
+  cats[cats.length - 1].classList.add("open");
+});
+
+async function initEditor() {
+  try {
+    await loadMenuData();
+    showEditor();
+    renderCategories();
+  } catch {
+    alert("Could not load content/menu.json. Make sure the site is running on a web server.");
+    sessionStorage.removeItem(SESSION_KEY);
+    showLogin();
+  }
+}
+
+if (isLoggedIn()) initEditor();
+else showLogin();
+</script>
+</body>
+</html>
