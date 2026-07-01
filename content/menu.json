@@ -196,39 +196,6 @@
           "image": "food/Sauce-20260701T024718Z-3-001/Sauce/Chili Citrus Glaze.png"
         }
       ]
-    },
-    {
-      "group": "LOIS",
-      "eyebrow": "To Eat",
-      "intro": "Heeyyy",
-      "items": [
-        {
-          "name": "lois meal",
-          "desc": "sweet",
-          "image": "food/uploads/1782879631336-purple-and-yellow-playful-for-community-board-games-event-family-game-night-flyer.png",
-          "badge": "Signature"
-        },
-        {
-          "name": "Lulaaby",
-          "desc": "",
-          "image": "food/uploads/1782879692958-imperial-tenderloin.png"
-        },
-        {
-          "name": "Ebe===",
-          "desc": "",
-          "image": "food/uploads/1782879722416-slow-braised-lamb-shank.png"
-        },
-        {
-          "name": "",
-          "desc": "",
-          "image": ""
-        },
-        {
-          "name": "yaayyy",
-          "desc": "",
-          "image": "food/uploads/1782879789961-the-monarch-t-bone.png"
-        }
-      ]
     }
   ]
 }
