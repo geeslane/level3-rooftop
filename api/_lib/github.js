@@ -80,8 +80,76 @@ async function saveMenuToGitHub(menuData) {
   return res.json();
 }
 
+async function getFileFromGitHub(filePath) {
+  const cfg = githubConfig();
+  if (!cfg) return null;
+
+  const url = `https://api.github.com/repos/${cfg.repo}/contents/${filePath}?ref=${cfg.branch}`;
+  const res = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${cfg.token}`,
+      Accept: "application/vnd.github+json",
+      "X-GitHub-Api-Version": "2022-11-28",
+    },
+  });
+
+  if (res.status === 404) return null;
+  if (!res.ok) return null;
+
+  const file = await res.json();
+  return { sha: file.sha, content: file.content };
+}
+
+function sanitizeFilename(name) {
+  return String(name)
+    .toLowerCase()
+    .replace(/\.[^.]+$/, (ext) => ext.toLowerCase())
+    .replace(/[^a-z0-9.-]/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "") || "image";
+}
+
+async function uploadImageToGitHub(filename, base64Content) {
+  const cfg = githubConfig();
+  if (!cfg) {
+    throw new Error("GitHub is not configured. Set GITHUB_TOKEN and GITHUB_REPO in Vercel.");
+  }
+
+  const ext = (filename.match(/\.[a-z0-9]+$/i) || [".jpg"])[0].toLowerCase();
+  const safeName = sanitizeFilename(filename).replace(/\.[^.]+$/, "") + ext;
+  const filePath = `food/uploads/${Date.now()}-${safeName}`;
+
+  const existing = await getFileFromGitHub(filePath);
+  const body = {
+    message: `Upload menu image: ${safeName}`,
+    content: base64Content,
+    branch: cfg.branch,
+  };
+  if (existing?.sha) body.sha = existing.sha;
+
+  const url = `https://api.github.com/repos/${cfg.repo}/contents/${filePath}`;
+  const res = await fetch(url, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${cfg.token}`,
+      Accept: "application/vnd.github+json",
+      "Content-Type": "application/json",
+      "X-GitHub-Api-Version": "2022-11-28",
+    },
+    body: JSON.stringify(body),
+  });
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.message || "Failed to upload image");
+  }
+
+  return { path: filePath };
+}
+
 module.exports = {
   getMenu,
   saveMenuToGitHub,
+  uploadImageToGitHub,
   githubConfig,
 };

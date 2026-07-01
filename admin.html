@@ -15,32 +15,46 @@ header{display:flex;align-items:center;justify-content:space-between;padding:1.2
 .logo{font-family:var(--font-display);font-size:0.95rem;letter-spacing:0.2em;color:var(--gold);text-decoration:none;}
 .wrap{max-width:900px;margin:0 auto;padding:2rem;}
 h1{font-family:var(--font-display);font-size:1.6rem;font-weight:400;margin-bottom:0.5rem;}
-.sub{color:rgba(255,255,255,0.45);font-size:0.9rem;line-height:1.6;margin-bottom:2rem;}
+.sub{color:rgba(255,255,255,0.45);font-size:0.9rem;line-height:1.6;margin-bottom:1.5rem;}
 .panel{background:var(--charcoal);border:1px solid rgba(255,255,255,0.08);padding:2rem;margin-bottom:1.5rem;}
 label{display:block;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;}
 input[type=text],input[type=password],textarea{width:100%;background:#111;border:1px solid rgba(255,255,255,0.12);color:var(--white);padding:0.75rem 1rem;font-family:var(--font-sans);font-size:0.9rem;margin-bottom:1rem;}
 textarea{min-height:80px;resize:vertical;}
 .btn{display:inline-block;padding:0.75rem 1.5rem;background:var(--burgundy);border:1px solid #C4394F;color:var(--white);font-family:var(--font-sans);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;text-decoration:none;}
 .btn:hover{opacity:0.9;}
+.btn:disabled{opacity:0.5;cursor:not-allowed;}
 .btn-ghost{background:transparent;border-color:rgba(255,255,255,0.2);}
 .btn-sm{padding:0.45rem 0.9rem;font-size:0.62rem;}
 .btn-danger{border-color:#8B1A28;background:#4A0A12;}
-.toolbar{display:flex;flex-wrap:wrap;gap:0.75rem;margin-bottom:1.5rem;}
-.notice{background:rgba(201,169,110,0.08);border:1px solid rgba(201,169,110,0.25);padding:1rem 1.25rem;font-size:0.85rem;line-height:1.65;color:rgba(255,255,255,0.65);margin-bottom:1.5rem;}
-.cat{border:1px solid rgba(255,255,255,0.08);margin-bottom:1rem;}
-.cat-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.25rem;background:#141414;cursor:pointer;}
+.toolbar{display:flex;flex-wrap:wrap;gap:0.75rem;margin-bottom:1rem;position:sticky;top:0;z-index:10;background:var(--black);padding:0.75rem 0;border-bottom:1px solid rgba(255,255,255,0.06);}
+.status{font-size:0.88rem;margin-bottom:1.25rem;padding:0.65rem 0;min-height:1.4rem;}
+.status.ok{color:#8ecf8e;}
+.status.err{color:#C4394F;}
+.cat{border:1px solid rgba(255,255,255,0.08);margin-bottom:1rem;scroll-margin-top:5rem;transition:border-color 0.4s,box-shadow 0.4s;}
+.cat.open{border-color:rgba(201,169,110,0.35);}
+.cat.cat-new{border-color:var(--gold);box-shadow:0 0 0 1px rgba(201,169,110,0.45);}
+.cat-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.25rem;background:#141414;cursor:pointer;user-select:none;}
 .cat-head h2{font-family:var(--font-serif);font-size:1.15rem;font-weight:500;}
+.cat-chevron{color:var(--gold);font-size:0.75rem;transition:transform 0.25s;}
+.cat.open .cat-chevron{transform:rotate(180deg);}
 .cat-body{padding:1.25rem;display:none;}
 .cat.open .cat-body{display:block;}
-.item{border-top:1px solid rgba(255,255,255,0.06);padding:1.25rem 0;}
+.item{border-top:1px solid rgba(255,255,255,0.06);padding:1.25rem 0;scroll-margin-top:5rem;}
+.item.item-new{background:rgba(201,169,110,0.04);margin:0 -1.25rem;padding-left:1.25rem;padding-right:1.25rem;}
 .item:first-child{border-top:none;padding-top:0;}
 .item-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 1rem;}
-.item-preview{width:100%;max-width:140px;aspect-ratio:4/3;object-fit:cover;margin-bottom:1rem;border:1px solid rgba(255,255,255,0.1);}
-.item-actions{display:flex;gap:0.5rem;margin-top:0.5rem;}
+.photo-box{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1rem;flex-wrap:wrap;}
+.photo-preview-wrap{width:120px;aspect-ratio:4/3;background:#111;border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.item-preview{width:100%;height:100%;object-fit:cover;display:block;}
+.photo-placeholder{font-size:0.7rem;color:rgba(255,255,255,0.3);text-align:center;padding:0.5rem;}
+.photo-actions{display:flex;flex-direction:column;gap:0.5rem;}
+.upload-label{cursor:pointer;margin:0;}
+.hidden-file{display:none;}
+.upload-hint{font-size:0.75rem;color:rgba(255,255,255,0.4);}
+.item-actions{display:flex;gap:0.5rem;margin-top:0.5rem;flex-wrap:wrap;}
 .err{color:#C4394F;font-size:0.85rem;margin-top:0.5rem;}
-.ok{color:#7cb87c;font-size:0.85rem;}
-.status{font-size:0.85rem;margin-bottom:1rem;min-height:1.25rem;}
 .hidden{display:none;}
+.empty-cats{text-align:center;padding:3rem 1rem;color:rgba(255,255,255,0.4);border:1px dashed rgba(255,255,255,0.12);}
 @media(max-width:700px){.item-grid{grid-template-columns:1fr;}.wrap{padding:1.25rem;}}
 </style>
 </head>
@@ -48,16 +62,15 @@ textarea{min-height:80px;resize:vertical;}
 
 <header>
   <a href="index.html" class="logo">LEVEL 3 ADMIN</a>
-  <div id="headerActions"></div>
 </header>
 
 <div class="wrap">
   <div id="loginView">
     <h1>Menu Admin</h1>
-    <p class="sub">Sign in to edit the restaurant menu. Click <strong>Save to site</strong> to publish changes immediately.</p>
+    <p class="sub">Sign in to edit the menu.</p>
     <div class="panel">
       <label for="password">Password</label>
-      <input type="password" id="password" placeholder="Enter admin password" autocomplete="current-password">
+      <input type="password" id="password" placeholder="Enter password" autocomplete="current-password">
       <p class="err hidden" id="loginErr">Incorrect password.</p>
       <button class="btn" type="button" id="loginBtn">Sign In</button>
     </div>
@@ -65,45 +78,39 @@ textarea{min-height:80px;resize:vertical;}
 
   <div id="editorView" class="hidden">
     <h1>Edit Menu</h1>
-    <p class="sub">Update dishes below, then click <strong>Save to site</strong>. Changes go live right away on the menu page.</p>
-
-    <div class="notice">
-      <strong>Save to site</strong> updates the live menu immediately (no file download needed).<br><br>
-      <strong>New photos:</strong> add images to the <code>food/</code> folder in GitHub first, then paste the path in the image field and save.<br><br>
-      <strong>Backup:</strong> use <em>Download menu.json</em> if you ever want a local copy.
-    </div>
-
-    <p class="status" id="statusMsg"></p>
+    <p class="sub">Make your changes, then click <strong>Save</strong>. Use <strong>+ Category</strong> or <strong>Add dish</strong> inside a category.</p>
 
     <div class="toolbar">
-      <button class="btn" type="button" id="saveBtn">Save to Site</button>
-      <button class="btn btn-ghost" type="button" id="downloadBtn">Download menu.json</button>
+      <button class="btn" type="button" id="saveBtn">Save</button>
       <button class="btn btn-ghost" type="button" id="addCatBtn">+ Category</button>
-      <a class="btn btn-ghost" href="menu.html" target="_blank">Preview Menu</a>
+      <a class="btn btn-ghost" href="menu.html" target="_blank">Preview</a>
       <button class="btn btn-ghost" type="button" id="logoutBtn">Sign Out</button>
     </div>
 
+    <p class="status" id="statusMsg"></p>
     <div id="categories"></div>
   </div>
 </div>
 
 <script>
-// Fallback password for local preview only (no API). On Vercel, use ADMIN_PASSWORD env var.
 const LOCAL_ADMIN_PASSWORD = "level3menu";
-
 const SESSION_KEY = "level3_menu_admin";
+const MAX_IMAGE_BYTES = 4 * 1024 * 1024;
+
 let menuData = { categories: [] };
 let useLocalAuth = false;
+let openCategories = new Set();
+let pendingFocus = null;
+let pendingMessage = "";
 
 const loginView = document.getElementById("loginView");
 const editorView = document.getElementById("editorView");
-const headerActions = document.getElementById("headerActions");
 const categoriesEl = document.getElementById("categories");
 const statusMsg = document.getElementById("statusMsg");
 
 function setStatus(msg, type) {
   statusMsg.textContent = msg;
-  statusMsg.className = "status" + (type === "err" ? " err" : type === "ok" ? " ok" : "");
+  statusMsg.className = "status" + (type ? " " + type : "");
 }
 
 function isLoggedIn() {
@@ -113,7 +120,6 @@ function isLoggedIn() {
 function showLogin() {
   loginView.classList.remove("hidden");
   editorView.classList.add("hidden");
-  headerActions.innerHTML = "";
 }
 
 function showEditor() {
@@ -145,39 +151,88 @@ function esc(str) {
     .replace(/>/g, "&gt;");
 }
 
+function encodeImagePath(path) {
+  return path.split("/").map(encodeURIComponent).join("/");
+}
+
+function itemTemplate(ci, ii, item) {
+  const isNew = pendingFocus?.type === "item" && pendingFocus.ci === ci && pendingFocus.ii === ii;
+  return `
+    <div class="item${isNew ? " item-new" : ""}" data-item data-ci="${ci}" data-ii="${ii}">
+      <label>Photo</label>
+      <div class="photo-box">
+        <div class="photo-preview-wrap">
+          ${item.image
+            ? `<img class="item-preview" src="${encodeImagePath(item.image)}" alt="" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'photo-placeholder',textContent:'No photo'}))">`
+            : `<div class="photo-placeholder">No photo</div>`}
+        </div>
+        <div class="photo-actions">
+          <label class="btn btn-sm btn-ghost upload-label">
+            ${item.image ? "Change photo" : "Upload photo"}
+            <input type="file" accept="image/jpeg,image/png,image/webp,image/jpg" class="hidden-file" data-upload>
+          </label>
+          <span class="upload-hint" data-upload-hint>${item.image ? "Photo ready" : "JPG or PNG, max 4 MB"}</span>
+        </div>
+      </div>
+      <label>Dish name</label>
+      <input type="text" data-item-field="name" value="${esc(item.name)}" placeholder="e.g. Golden Plantain Cups">
+      <label>Description</label>
+      <textarea data-item-field="desc" placeholder="Short description of the dish">${esc(item.desc)}</textarea>
+      <label>Badge <span style="text-transform:none;letter-spacing:0;color:rgba(255,255,255,0.35);">(optional)</span></label>
+      <input type="text" data-item-field="badge" value="${esc(item.badge || "")}" placeholder="Signature, Popular…">
+      <div class="item-actions">
+        <button class="btn btn-sm btn-danger" type="button" data-remove-item>Remove dish</button>
+      </div>
+    </div>
+  `;
+}
+
 function renderCategories() {
+  if (!menuData.categories.length) {
+    categoriesEl.innerHTML = `<div class="empty-cats">No categories yet. Click <strong>+ Category</strong> above to add one.</div>`;
+    return;
+  }
+
   categoriesEl.innerHTML = menuData.categories.map((cat, ci) => `
-    <div class="cat${ci === 0 ? " open" : ""}" data-ci="${ci}">
+    <div class="cat${openCategories.has(ci) ? " open" : ""}${pendingFocus?.type === "category" && pendingFocus.ci === ci ? " cat-new" : ""}" data-ci="${ci}">
       <div class="cat-head" data-toggle>
-        <h2>${esc(cat.group)} <span style="color:rgba(255,255,255,0.35);font-size:0.85rem;">(${cat.items.length} items)</span></h2>
-        <span style="color:var(--gold);font-size:0.75rem;">▼</span>
+        <h2>${esc(cat.group || "Untitled")} <span style="color:rgba(255,255,255,0.35);font-size:0.85rem;">(${cat.items.length} dish${cat.items.length === 1 ? "" : "es"})</span></h2>
+        <span class="cat-chevron">▼</span>
       </div>
       <div class="cat-body">
         <div class="item-grid">
           <div>
             <label>Category name</label>
-            <input type="text" data-field="group" value="${esc(cat.group)}">
+            <input type="text" data-field="group" value="${esc(cat.group)}" placeholder="e.g. Starters">
           </div>
           <div>
-            <label>Eyebrow</label>
-            <input type="text" data-field="eyebrow" value="${esc(cat.eyebrow)}">
+            <label>Subtitle</label>
+            <input type="text" data-field="eyebrow" value="${esc(cat.eyebrow)}" placeholder="e.g. To Begin">
           </div>
         </div>
-        <label>Intro</label>
-        <textarea data-field="intro">${esc(cat.intro)}</textarea>
+        <label>Description</label>
+        <textarea data-field="intro" placeholder="Short intro for this section">${esc(cat.intro)}</textarea>
         <div class="item-actions" style="margin-bottom:1.25rem;">
-          <button class="btn btn-sm" type="button" data-add-item>Add Dish</button>
-          <button class="btn btn-sm btn-danger" type="button" data-remove-cat>Remove Category</button>
+          <button class="btn btn-sm" type="button" data-add-item>+ Add dish</button>
+          <button class="btn btn-sm btn-danger" type="button" data-remove-cat>Remove category</button>
         </div>
         <div data-items>
-          ${cat.items.map((item, ii) => itemTemplate(ci, ii, item)).join("")}
+          ${cat.items.length
+            ? cat.items.map((item, ii) => itemTemplate(ci, ii, item)).join("")
+            : `<p style="color:rgba(255,255,255,0.35);font-size:0.85rem;margin-bottom:1rem;">No dishes yet — click <strong>Add dish</strong>.</p>`}
         </div>
       </div>
     </div>
   `).join("");
 
   categoriesEl.querySelectorAll("[data-toggle]").forEach(head => {
-    head.addEventListener("click", () => head.closest(".cat").classList.toggle("open"));
+    head.addEventListener("click", () => {
+      const cat = head.closest(".cat");
+      const ci = Number(cat.dataset.ci);
+      if (openCategories.has(ci)) openCategories.delete(ci);
+      else openCategories.add(ci);
+      cat.classList.toggle("open");
+    });
   });
 
   categoriesEl.querySelectorAll(".cat").forEach(catEl => {
@@ -188,90 +243,126 @@ function renderCategories() {
         menuData.categories[ci][input.dataset.field] = input.value;
         if (input.dataset.field === "group") {
           catEl.querySelector(".cat-head h2").innerHTML =
-            `${esc(input.value)} <span style="color:rgba(255,255,255,0.35);font-size:0.85rem;">(${menuData.categories[ci].items.length} items)</span>`;
+            `${esc(input.value || "Untitled")} <span style="color:rgba(255,255,255,0.35);font-size:0.85rem;">(${menuData.categories[ci].items.length} dish${menuData.categories[ci].items.length === 1 ? "" : "es"})</span>`;
         }
       });
     });
 
-    catEl.querySelector("[data-add-item]").addEventListener("click", () => {
+    catEl.querySelector("[data-add-item]")?.addEventListener("click", () => {
+      const ii = menuData.categories[ci].items.length;
       menuData.categories[ci].items.push({ name: "", desc: "", image: "" });
+      openCategories = new Set([ci]);
+      pendingFocus = { type: "item", ci, ii };
+      pendingMessage = "New dish added — fill in the details below.";
       renderCategories();
-      categoriesEl.querySelectorAll(".cat")[ci].classList.add("open");
     });
 
-    catEl.querySelector("[data-remove-cat]").addEventListener("click", () => {
+    catEl.querySelector("[data-remove-cat]")?.addEventListener("click", () => {
       if (!confirm(`Remove "${menuData.categories[ci].group}" and all its dishes?`)) return;
       menuData.categories.splice(ci, 1);
+      openCategories = new Set([Math.min(ci, menuData.categories.length - 1)].filter(i => i >= 0));
       renderCategories();
+      setStatus("Category removed. Click Save when ready.", "ok");
     });
 
     catEl.querySelectorAll("[data-item]").forEach(itemEl => {
       const ii = Number(itemEl.dataset.ii);
+
       itemEl.querySelectorAll("[data-item-field]").forEach(input => {
         input.addEventListener("input", () => {
           const field = input.dataset.itemField;
-          const value = input.value.trim();
-          if (field === "badge" && !value) {
+          if (field === "badge" && !input.value.trim()) {
             delete menuData.categories[ci].items[ii].badge;
           } else {
             menuData.categories[ci].items[ii][field] = input.value;
           }
-          if (field === "image") {
-            const img = itemEl.querySelector(".item-preview");
-            if (img) img.src = encodeImagePath(input.value);
-          }
         });
       });
-      itemEl.querySelector("[data-remove-item]").addEventListener("click", () => {
+
+      itemEl.querySelector("[data-upload]")?.addEventListener("change", async e => {
+        const file = e.target.files?.[0];
+        if (file) await handleImageUpload(file, ci, ii, itemEl);
+        e.target.value = "";
+      });
+
+      itemEl.querySelector("[data-remove-item]")?.addEventListener("click", () => {
         menuData.categories[ci].items.splice(ii, 1);
+        openCategories.add(ci);
         renderCategories();
-        categoriesEl.querySelectorAll(".cat")[ci].classList.add("open");
+        setStatus("Dish removed. Click Save when ready.", "ok");
       });
     });
   });
+
+  applyPendingFocus();
 }
 
-function encodeImagePath(path) {
-  return path.split("/").map(encodeURIComponent).join("/");
-}
+function applyPendingFocus() {
+  if (!pendingFocus) return;
 
-function itemTemplate(ci, ii, item) {
-  return `
-    <div class="item" data-item data-ci="${ci}" data-ii="${ii}">
-      ${item.image ? `<img class="item-preview" src="${encodeImagePath(item.image)}" alt="" onerror="this.style.display='none'">` : ""}
-      <label>Dish name</label>
-      <input type="text" data-item-field="name" value="${esc(item.name)}">
-      <label>Description</label>
-      <textarea data-item-field="desc">${esc(item.desc)}</textarea>
-      <div class="item-grid">
-        <div>
-          <label>Image path</label>
-          <input type="text" data-item-field="image" value="${esc(item.image)}" placeholder="food/.../dish.jpg">
-        </div>
-        <div>
-          <label>Badge (optional)</label>
-          <input type="text" data-item-field="badge" value="${esc(item.badge || "")}" placeholder="Signature, Popular…">
-        </div>
-      </div>
-      <div class="item-actions">
-        <button class="btn btn-sm btn-danger" type="button" data-remove-item>Remove Dish</button>
-      </div>
-    </div>
-  `;
-}
+  const message = pendingMessage;
+  pendingMessage = "";
 
-function downloadMenu() {
-  menuData.categories.forEach(cat => {
-    cat.items.forEach(item => {
-      if (!item.badge) delete item.badge;
-    });
+  requestAnimationFrame(() => {
+    if (pendingFocus.type === "category") {
+      const el = categoriesEl.querySelector(`[data-ci="${pendingFocus.ci}"]`);
+      el?.scrollIntoView({ behavior: "smooth", block: "start" });
+      el?.querySelector('[data-field="group"]')?.focus({ preventScroll: true });
+    } else if (pendingFocus.type === "item") {
+      const el = categoriesEl.querySelector(`[data-item][data-ci="${pendingFocus.ci}"][data-ii="${pendingFocus.ii}"]`);
+      el?.scrollIntoView({ behavior: "smooth", block: "center" });
+      el?.querySelector('[data-item-field="name"]')?.focus({ preventScroll: true });
+    }
+    if (message) setStatus(message, "ok");
+    pendingFocus = null;
   });
-  const blob = new Blob([JSON.stringify(menuData, null, 2)], { type: "application/json" });
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = "menu.json";
-  a.click();
-  URL.revokeObjectURL(a.href);
+}
+
+function readFileBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result.split(",")[1]);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+async function handleImageUpload(file, ci, ii, itemEl) {
+  const hint = itemEl.querySelector("[data-upload-hint]");
+
+  if (useLocalAuth) {
+    setStatus("Photo upload only works on the live site.", "err");
+    return;
+  }
+
+  if (file.size > MAX_IMAGE_BYTES) {
+    setStatus("Image must be under 4 MB.", "err");
+    return;
+  }
+
+  hint.textContent = "Uploading…";
+  setStatus("Uploading photo…");
+
+  try {
+    const content = await readFileBase64(file);
+    const res = await fetch("/api/upload", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ filename: file.name, content }),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data.error || "Upload failed");
+
+    menuData.categories[ci].items[ii].image = data.path;
+    openCategories.add(ci);
+    pendingFocus = { type: "item", ci, ii };
+    renderCategories();
+    setStatus("Photo uploaded. Click Save to publish.", "ok");
+  } catch (err) {
+    hint.textContent = "Upload failed — try again";
+    setStatus(err.message || "Could not upload photo.", "err");
+  }
 }
 
 async function saveMenu() {
@@ -281,12 +372,12 @@ async function saveMenu() {
 
   menuData.categories.forEach(cat => {
     cat.items.forEach(item => {
-      if (!item.badge) delete item.badge;
+      if (!item.badge?.trim()) delete item.badge;
     });
   });
 
   if (useLocalAuth) {
-    setStatus("Live save needs Vercel API. Use Download menu.json and upload manually.", "err");
+    setStatus("Saving only works on the live site.", "err");
     saveBtn.disabled = false;
     return;
   }
@@ -300,9 +391,9 @@ async function saveMenu() {
     });
     const data = await res.json().catch(() => ({}));
     if (!res.ok) throw new Error(data.error || "Save failed");
-    setStatus("Menu saved — live site updated.", "ok");
+    setStatus("Saved — your menu is now live.", "ok");
   } catch (err) {
-    setStatus(err.message || "Could not save menu.", "err");
+    setStatus(err.message || "Could not save.", "err");
   } finally {
     saveBtn.disabled = false;
   }
@@ -331,7 +422,6 @@ document.getElementById("loginBtn").addEventListener("click", async () => {
       useLocalAuth = true;
       sessionStorage.setItem(SESSION_KEY, "1");
       initEditor();
-      setStatus("Local preview mode — use Download to export changes.", "err");
       return;
     }
 
@@ -341,7 +431,6 @@ document.getElementById("loginBtn").addEventListener("click", async () => {
       useLocalAuth = true;
       sessionStorage.setItem(SESSION_KEY, "1");
       initEditor();
-      setStatus("Local preview mode — use Download to export changes.", "err");
     } else {
       document.getElementById("loginErr").classList.remove("hidden");
     }
@@ -362,28 +451,30 @@ document.getElementById("logoutBtn").addEventListener("click", async () => {
   showLogin();
 });
 
-document.getElementById("downloadBtn").addEventListener("click", downloadMenu);
 document.getElementById("saveBtn").addEventListener("click", saveMenu);
 
 document.getElementById("addCatBtn").addEventListener("click", () => {
+  const ci = menuData.categories.length;
   menuData.categories.push({
     group: "New Category",
     eyebrow: "",
     intro: "",
     items: []
   });
+  openCategories = new Set([ci]);
+  pendingFocus = { type: "category", ci };
+  pendingMessage = "New category added — name it and add dishes below.";
   renderCategories();
-  const cats = categoriesEl.querySelectorAll(".cat");
-  cats[cats.length - 1].classList.add("open");
 });
 
 async function initEditor() {
   try {
     await loadMenuData();
+    openCategories = new Set(menuData.categories.length ? [0] : []);
     showEditor();
     renderCategories();
   } catch {
-    alert("Could not load content/menu.json. Make sure the site is running on a web server.");
+    alert("Could not load the menu.");
     sessionStorage.removeItem(SESSION_KEY);
     showLogin();
   }
