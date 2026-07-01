@@ -197,6 +197,19 @@
           "image": "food/Sauce-20260701T024718Z-3-001/Sauce/Chili Citrus Glaze.png"
         }
       ]
+    },
+    {
+      "group": "LOIS",
+      "eyebrow": "To Eat",
+      "intro": "Heeyyy",
+      "items": [
+        {
+          "name": "lois meal",
+          "desc": "sweet",
+          "image": "",
+          "badge": "Signature"
+        }
+      ]
     }
   ]
 }
