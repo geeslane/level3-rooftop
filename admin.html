@@ -84,14 +84,11 @@ textarea{min-height:80px;resize:vertical;}
 <div class="wrap">
   <div id="loginView">
     <h1>Menu Admin</h1>
-    <p class="sub">Sign in with your admin password and GitHub token to edit the menu.</p>
+    <p class="sub">Sign in with your admin password to edit the menu.</p>
     <div class="panel">
       <label for="password">Password</label>
-      <input type="password" id="password" placeholder="Admin password" autocomplete="current-password">
-      <label for="githubToken">GitHub token</label>
-      <input type="password" id="githubToken" placeholder="Paste your GitHub personal access token" autocomplete="off">
-      <p style="font-size:0.8rem;color:rgba(255,255,255,0.4);line-height:1.6;margin:-0.5rem 0 1rem;">GitHub → Settings → Developer settings → Fine-grained token → Contents: Read and write on this repo. Stored only in this browser session.</p>
-      <p class="err hidden" id="loginErr">Incorrect password or missing token.</p>
+      <input type="password" id="password" placeholder="Enter password" autocomplete="current-password">
+      <p class="err hidden" id="loginErr">Incorrect password.</p>
       <button class="btn" type="button" id="loginBtn">Sign In</button>
     </div>
   </div>
@@ -118,9 +115,7 @@ textarea{min-height:80px;resize:vertical;}
   </div>
 </div>
 
-<script src="github-client.js"></script>
 <script>
-const ADMIN_PASSWORD = "level3menu";
 const SESSION_KEY = "level3_menu_admin";
 const MAX_IMAGE_BYTES = 4 * 1024 * 1024;
 
@@ -140,7 +135,7 @@ function setStatus(msg, type) {
 }
 
 function isLoggedIn() {
-  return sessionStorage.getItem(SESSION_KEY) === "1" && getGitHubToken();
+  return sessionStorage.getItem(SESSION_KEY) === "1";
 }
 
 function showLogin() {
@@ -154,8 +149,19 @@ function showEditor() {
 }
 
 async function loadMenuData() {
-  const data = await loadMenuFromRepo();
-  menuData = data.categories ? data : { categories: data };
+  try {
+    const res = await fetch("/api/menu");
+    if (res.ok) {
+      const data = await res.json();
+      menuData = data.categories ? data : { categories: data };
+      return;
+    }
+  } catch (_) {}
+
+  const res = await fetch("content/menu.json");
+  if (!res.ok) throw new Error("Could not load menu");
+  menuData = await res.json();
+  if (!menuData.categories) menuData = { categories: menuData };
 }
 
 function esc(str) {
@@ -379,7 +385,15 @@ async function handleImageUpload(file, ci, ii, itemEl) {
 
   try {
     const content = await readFileBase64(file);
-    const data = await uploadMenuImage(file.name, content);
+    const res = await fetch("/api/upload", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ filename: file.name, content }),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data.error || "Upload failed");
+
     menuData.categories[ci].items[ii].image = data.path;
     openCategories.add(ci);
     pendingFocus = { type: "item", ci, ii };
@@ -403,7 +417,14 @@ async function saveMenu() {
   });
 
   try {
-    await saveMenuToRepo(menuData);
+    const res = await fetch("/api/menu", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify(menuData),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data.error || "Save failed");
     setStatus("Saved — menu is live (may take a few seconds to appear).", "ok");
   } catch (err) {
     setStatus(err.message || "Could not save.", "err");
@@ -414,29 +435,39 @@ async function saveMenu() {
 
 document.getElementById("loginBtn").addEventListener("click", async () => {
   const pw = document.getElementById("password").value;
-  const token = document.getElementById("githubToken").value.trim();
   document.getElementById("loginErr").classList.add("hidden");
 
-  if (pw !== ADMIN_PASSWORD || !token) {
-    document.getElementById("loginErr").classList.remove("hidden");
-    return;
-  }
+  try {
+    const res = await fetch("/api/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ password: pw }),
+    });
 
-  setGitHubToken(token);
-  sessionStorage.setItem(SESSION_KEY, "1");
-  initEditor();
+    if (res.ok) {
+      sessionStorage.setItem(SESSION_KEY, "1");
+      initEditor();
+      return;
+    }
+
+    document.getElementById("loginErr").classList.remove("hidden");
+  } catch {
+    document.getElementById("loginErr").textContent = "Could not reach server. Try again on the live site.";
+    document.getElementById("loginErr").classList.remove("hidden");
+  }
 });
 
 document.getElementById("password").addEventListener("keydown", e => {
   if (e.key === "Enter") document.getElementById("loginBtn").click();
 });
-document.getElementById("githubToken").addEventListener("keydown", e => {
-  if (e.key === "Enter") document.getElementById("loginBtn").click();
-});
 
-document.getElementById("logoutBtn").addEventListener("click", () => {
-  setGitHubToken("");
+document.getElementById("logoutBtn").addEventListener("click", async () => {
+  try {
+    await fetch("/api/logout", { method: "POST", credentials: "include" });
+  } catch (_) {}
   sessionStorage.removeItem(SESSION_KEY);
+  document.getElementById("loginErr").textContent = "Incorrect password.";
   setStatus("");
   showLogin();
 });

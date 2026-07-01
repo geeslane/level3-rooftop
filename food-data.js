@@ -2,6 +2,15 @@ let FOOD_MENU = [];
 
 async function loadMenu() {
   try {
+    const res = await fetch("/api/menu");
+    if (res.ok) {
+      const data = await res.json();
+      FOOD_MENU = data.categories || data;
+      return FOOD_MENU;
+    }
+  } catch (_) {}
+
+  try {
     const url = `https://raw.githubusercontent.com/geeslane/level3-rooftop/main/content/menu.json?t=${Date.now()}`;
     const res = await fetch(url);
     if (res.ok) {
