@@ -26,32 +26,49 @@ textarea{min-height:80px;resize:vertical;}
 .btn-ghost{background:transparent;border-color:rgba(255,255,255,0.2);}
 .btn-sm{padding:0.45rem 0.9rem;font-size:0.62rem;}
 .btn-danger{border-color:#8B1A28;background:#4A0A12;}
-.toolbar{display:flex;flex-wrap:wrap;gap:0.75rem;margin-bottom:1rem;position:sticky;top:0;z-index:10;background:var(--black);padding:0.75rem 0;border-bottom:1px solid rgba(255,255,255,0.06);}
+.toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:0.75rem;margin-bottom:1rem;position:sticky;top:0;z-index:10;background:var(--black);padding:0.75rem 0;border-bottom:1px solid rgba(255,255,255,0.06);}
+.toolbar-left,.toolbar-right{display:flex;flex-wrap:wrap;gap:0.75rem;align-items:center;}
 .status{font-size:0.88rem;margin-bottom:1.25rem;padding:0.65rem 0;min-height:1.4rem;}
 .status.ok{color:#8ecf8e;}
 .status.err{color:#C4394F;}
-.cat{border:1px solid rgba(255,255,255,0.08);margin-bottom:1rem;scroll-margin-top:5rem;transition:border-color 0.4s,box-shadow 0.4s;}
+.cat{border:1px solid rgba(255,255,255,0.08);margin-bottom:1.25rem;scroll-margin-top:5rem;transition:border-color 0.4s,box-shadow 0.4s;border-radius:2px;overflow:hidden;}
 .cat.open{border-color:rgba(201,169,110,0.35);}
 .cat.cat-new{border-color:var(--gold);box-shadow:0 0 0 1px rgba(201,169,110,0.45);}
 .cat-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.25rem;background:#141414;cursor:pointer;user-select:none;}
 .cat-head h2{font-family:var(--font-serif);font-size:1.15rem;font-weight:500;}
-.cat-chevron{color:var(--gold);font-size:0.75rem;transition:transform 0.25s;}
+.cat-chevron{color:var(--gold);font-size:0.75rem;transition:transform 0.25s;flex-shrink:0;}
 .cat.open .cat-chevron{transform:rotate(180deg);}
-.cat-body{padding:1.25rem;display:none;}
+.cat-body{padding:0;display:none;}
 .cat.open .cat-body{display:block;}
-.item{border-top:1px solid rgba(255,255,255,0.06);padding:1.25rem 0;scroll-margin-top:5rem;}
-.item.item-new{background:rgba(201,169,110,0.04);margin:0 -1.25rem;padding-left:1.25rem;padding-right:1.25rem;}
-.item:first-child{border-top:none;padding-top:0;}
+.section{padding:1.25rem 1.25rem 0;}
+.section-label{font-size:0.62rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(201,169,110,0.2);}
+.section-dishes{background:rgba(255,255,255,0.02);padding:1.25rem;border-top:1px solid rgba(255,255,255,0.06);}
+.dishes-header{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1rem;flex-wrap:wrap;}
+.dishes-header h3{font-family:var(--font-serif);font-size:1rem;font-weight:500;color:rgba(255,255,255,0.85);}
+.dishes-empty{text-align:center;padding:1.5rem 1rem;color:rgba(255,255,255,0.35);font-size:0.88rem;border:1px dashed rgba(255,255,255,0.1);margin-bottom:1rem;}
+.dishes-footer{padding-top:0.5rem;margin-top:0.5rem;border-top:1px solid rgba(255,255,255,0.05);}
+.cat-footer{padding:1rem 1.25rem 1.25rem;border-top:1px solid rgba(255,255,255,0.06);background:rgba(74,10,18,0.15);}
+.cat-footer p{font-size:0.75rem;color:rgba(255,255,255,0.35);margin-bottom:0.75rem;}
+.item{background:#111;border:1px solid rgba(255,255,255,0.08);margin-bottom:1rem;scroll-margin-top:5rem;}
+.item.item-new{border-color:var(--gold);box-shadow:0 0 0 1px rgba(201,169,110,0.3);}
+.item-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0.75rem 1rem;background:#161616;border-bottom:1px solid rgba(255,255,255,0.06);}
+.item-head span{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.45);}
+.item-body{padding:1rem 1rem 0.25rem;}
 .item-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 1rem;}
 .photo-box{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1rem;flex-wrap:wrap;}
-.photo-preview-wrap{width:120px;aspect-ratio:4/3;background:#111;border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.photo-preview-wrap{width:120px;aspect-ratio:4/3;background:#0a0a0a;border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;}
 .item-preview{width:100%;height:100%;object-fit:cover;display:block;}
 .photo-placeholder{font-size:0.7rem;color:rgba(255,255,255,0.3);text-align:center;padding:0.5rem;}
 .photo-actions{display:flex;flex-direction:column;gap:0.5rem;}
 .upload-label{cursor:pointer;margin:0;}
 .hidden-file{display:none;}
 .upload-hint{font-size:0.75rem;color:rgba(255,255,255,0.4);}
-.item-actions{display:flex;gap:0.5rem;margin-top:0.5rem;flex-wrap:wrap;}
+.btn-add{background:rgba(201,169,110,0.12);border-color:var(--gold);color:var(--gold);}
+.btn-add:hover{background:rgba(201,169,110,0.2);}
+.btn-text{background:none;border:none;color:rgba(255,255,255,0.4);font-family:var(--font-sans);font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;padding:0.35rem 0;}
+.btn-text:hover{color:#C4394F;}
+.btn-block{display:block;width:100%;text-align:center;}
+.add-category-wrap{margin-top:1.5rem;padding-top:1.5rem;border-top:1px dashed rgba(255,255,255,0.1);text-align:center;}
 .err{color:#C4394F;font-size:0.85rem;margin-top:0.5rem;}
 .hidden{display:none;}
 .empty-cats{text-align:center;padding:3rem 1rem;color:rgba(255,255,255,0.4);border:1px dashed rgba(255,255,255,0.12);}
@@ -67,38 +84,47 @@ textarea{min-height:80px;resize:vertical;}
 <div class="wrap">
   <div id="loginView">
     <h1>Menu Admin</h1>
-    <p class="sub">Sign in to edit the menu.</p>
+    <p class="sub">Sign in with your admin password and GitHub token to edit the menu.</p>
     <div class="panel">
       <label for="password">Password</label>
-      <input type="password" id="password" placeholder="Enter password" autocomplete="current-password">
-      <p class="err hidden" id="loginErr">Incorrect password.</p>
+      <input type="password" id="password" placeholder="Admin password" autocomplete="current-password">
+      <label for="githubToken">GitHub token</label>
+      <input type="password" id="githubToken" placeholder="Paste your GitHub personal access token" autocomplete="off">
+      <p style="font-size:0.8rem;color:rgba(255,255,255,0.4);line-height:1.6;margin:-0.5rem 0 1rem;">GitHub → Settings → Developer settings → Fine-grained token → Contents: Read and write on this repo. Stored only in this browser session.</p>
+      <p class="err hidden" id="loginErr">Incorrect password or missing token.</p>
       <button class="btn" type="button" id="loginBtn">Sign In</button>
     </div>
   </div>
 
   <div id="editorView" class="hidden">
     <h1>Edit Menu</h1>
-    <p class="sub">Make your changes, then click <strong>Save</strong>. Use <strong>+ Category</strong> or <strong>Add dish</strong> inside a category.</p>
+    <p class="sub">Edit your menu below, then click <strong>Save</strong> when you're done.</p>
 
     <div class="toolbar">
-      <button class="btn" type="button" id="saveBtn">Save</button>
-      <button class="btn btn-ghost" type="button" id="addCatBtn">+ Category</button>
-      <a class="btn btn-ghost" href="menu.html" target="_blank">Preview</a>
-      <button class="btn btn-ghost" type="button" id="logoutBtn">Sign Out</button>
+      <div class="toolbar-left">
+        <button class="btn" type="button" id="saveBtn">Save</button>
+        <a class="btn btn-ghost" href="menu.html" target="_blank">Preview menu</a>
+      </div>
+      <div class="toolbar-right">
+        <button class="btn btn-ghost" type="button" id="logoutBtn">Sign Out</button>
+      </div>
     </div>
 
     <p class="status" id="statusMsg"></p>
     <div id="categories"></div>
+    <div class="add-category-wrap">
+      <button class="btn btn-add" type="button" id="addCatBtn">+ Add new category</button>
+    </div>
   </div>
 </div>
 
+<script src="github-client.js"></script>
 <script>
-const LOCAL_ADMIN_PASSWORD = "level3menu";
+const ADMIN_PASSWORD = "level3menu";
 const SESSION_KEY = "level3_menu_admin";
 const MAX_IMAGE_BYTES = 4 * 1024 * 1024;
 
 let menuData = { categories: [] };
-let useLocalAuth = false;
 let openCategories = new Set();
 let pendingFocus = null;
 let pendingMessage = "";
@@ -114,7 +140,7 @@ function setStatus(msg, type) {
 }
 
 function isLoggedIn() {
-  return sessionStorage.getItem(SESSION_KEY) === "1";
+  return sessionStorage.getItem(SESSION_KEY) === "1" && getGitHubToken();
 }
 
 function showLogin() {
@@ -128,19 +154,8 @@ function showEditor() {
 }
 
 async function loadMenuData() {
-  try {
-    const res = await fetch("/api/menu");
-    if (res.ok) {
-      menuData = await res.json();
-      if (!menuData.categories) menuData = { categories: menuData };
-      return;
-    }
-  } catch (_) {}
-
-  const res = await fetch("content/menu.json");
-  if (!res.ok) throw new Error("Could not load menu");
-  menuData = await res.json();
-  if (!menuData.categories) menuData = { categories: menuData };
+  const data = await loadMenuFromRepo();
+  menuData = data.categories ? data : { categories: data };
 }
 
 function esc(str) {
@@ -157,31 +172,35 @@ function encodeImagePath(path) {
 
 function itemTemplate(ci, ii, item) {
   const isNew = pendingFocus?.type === "item" && pendingFocus.ci === ci && pendingFocus.ii === ii;
+  const dishNum = ii + 1;
   return `
     <div class="item${isNew ? " item-new" : ""}" data-item data-ci="${ci}" data-ii="${ii}">
-      <label>Photo</label>
-      <div class="photo-box">
-        <div class="photo-preview-wrap">
-          ${item.image
-            ? `<img class="item-preview" src="${encodeImagePath(item.image)}" alt="" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'photo-placeholder',textContent:'No photo'}))">`
-            : `<div class="photo-placeholder">No photo</div>`}
-        </div>
-        <div class="photo-actions">
-          <label class="btn btn-sm btn-ghost upload-label">
-            ${item.image ? "Change photo" : "Upload photo"}
-            <input type="file" accept="image/jpeg,image/png,image/webp,image/jpg" class="hidden-file" data-upload>
-          </label>
-          <span class="upload-hint" data-upload-hint>${item.image ? "Photo ready" : "JPG or PNG, max 4 MB"}</span>
-        </div>
+      <div class="item-head">
+        <span>Dish ${dishNum}</span>
+        <button class="btn-text" type="button" data-remove-item>Remove</button>
       </div>
-      <label>Dish name</label>
-      <input type="text" data-item-field="name" value="${esc(item.name)}" placeholder="e.g. Golden Plantain Cups">
-      <label>Description</label>
-      <textarea data-item-field="desc" placeholder="Short description of the dish">${esc(item.desc)}</textarea>
-      <label>Badge <span style="text-transform:none;letter-spacing:0;color:rgba(255,255,255,0.35);">(optional)</span></label>
-      <input type="text" data-item-field="badge" value="${esc(item.badge || "")}" placeholder="Signature, Popular…">
-      <div class="item-actions">
-        <button class="btn btn-sm btn-danger" type="button" data-remove-item>Remove dish</button>
+      <div class="item-body">
+        <label>Photo</label>
+        <div class="photo-box">
+          <div class="photo-preview-wrap">
+            ${item.image
+              ? `<img class="item-preview" src="${encodeImagePath(item.image)}" alt="" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'photo-placeholder',textContent:'No photo'}))">`
+              : `<div class="photo-placeholder">No photo</div>`}
+          </div>
+          <div class="photo-actions">
+            <label class="btn btn-sm btn-ghost upload-label">
+              ${item.image ? "Change photo" : "Upload photo"}
+              <input type="file" accept="image/jpeg,image/png,image/webp,image/jpg" class="hidden-file" data-upload>
+            </label>
+            <span class="upload-hint" data-upload-hint>${item.image ? "Photo ready" : "JPG or PNG, max 4 MB"}</span>
+          </div>
+        </div>
+        <label>Dish name</label>
+        <input type="text" data-item-field="name" value="${esc(item.name)}" placeholder="e.g. Golden Plantain Cups">
+        <label>Description</label>
+        <textarea data-item-field="desc" placeholder="Short description of the dish">${esc(item.desc)}</textarea>
+        <label>Badge <span style="text-transform:none;letter-spacing:0;color:rgba(255,255,255,0.35);">(optional)</span></label>
+        <input type="text" data-item-field="badge" value="${esc(item.badge || "")}" placeholder="Signature, Popular…">
       </div>
     </div>
   `;
@@ -189,7 +208,7 @@ function itemTemplate(ci, ii, item) {
 
 function renderCategories() {
   if (!menuData.categories.length) {
-    categoriesEl.innerHTML = `<div class="empty-cats">No categories yet. Click <strong>+ Category</strong> above to add one.</div>`;
+    categoriesEl.innerHTML = `<div class="empty-cats">No categories yet. Click <strong>+ Add new category</strong> below to get started.</div>`;
     return;
   }
 
@@ -200,26 +219,38 @@ function renderCategories() {
         <span class="cat-chevron">▼</span>
       </div>
       <div class="cat-body">
-        <div class="item-grid">
-          <div>
-            <label>Category name</label>
-            <input type="text" data-field="group" value="${esc(cat.group)}" placeholder="e.g. Starters">
+        <div class="section">
+          <div class="section-label">Category details</div>
+          <div class="item-grid">
+            <div>
+              <label>Category name</label>
+              <input type="text" data-field="group" value="${esc(cat.group)}" placeholder="e.g. Starters">
+            </div>
+            <div>
+              <label>Subtitle</label>
+              <input type="text" data-field="eyebrow" value="${esc(cat.eyebrow)}" placeholder="e.g. To Begin">
+            </div>
           </div>
-          <div>
-            <label>Subtitle</label>
-            <input type="text" data-field="eyebrow" value="${esc(cat.eyebrow)}" placeholder="e.g. To Begin">
+          <label>Description</label>
+          <textarea data-field="intro" placeholder="Short intro for this section">${esc(cat.intro)}</textarea>
+        </div>
+
+        <div class="section-dishes">
+          <div class="dishes-header">
+            <h3>Dishes in this category</h3>
+            <button class="btn btn-sm btn-add" type="button" data-add-item>+ Add dish</button>
           </div>
+          <div data-items>
+            ${cat.items.length
+              ? cat.items.map((item, ii) => itemTemplate(ci, ii, item)).join("")
+              : `<div class="dishes-empty">No dishes yet. Click <strong>+ Add dish</strong> above to add one.</div>`}
+          </div>
+          ${cat.items.length ? `<div class="dishes-footer"><button class="btn btn-sm btn-add btn-block" type="button" data-add-item-bottom>+ Add another dish</button></div>` : ""}
         </div>
-        <label>Description</label>
-        <textarea data-field="intro" placeholder="Short intro for this section">${esc(cat.intro)}</textarea>
-        <div class="item-actions" style="margin-bottom:1.25rem;">
-          <button class="btn btn-sm" type="button" data-add-item>+ Add dish</button>
-          <button class="btn btn-sm btn-danger" type="button" data-remove-cat>Remove category</button>
-        </div>
-        <div data-items>
-          ${cat.items.length
-            ? cat.items.map((item, ii) => itemTemplate(ci, ii, item)).join("")
-            : `<p style="color:rgba(255,255,255,0.35);font-size:0.85rem;margin-bottom:1rem;">No dishes yet — click <strong>Add dish</strong>.</p>`}
+
+        <div class="cat-footer">
+          <p>Deleting a category removes all its dishes permanently.</p>
+          <button class="btn btn-sm btn-danger btn-block" type="button" data-remove-cat>Delete this category</button>
         </div>
       </div>
     </div>
@@ -238,6 +269,16 @@ function renderCategories() {
   categoriesEl.querySelectorAll(".cat").forEach(catEl => {
     const ci = Number(catEl.dataset.ci);
 
+    function addDish(e) {
+      e?.stopPropagation();
+      const ii = menuData.categories[ci].items.length;
+      menuData.categories[ci].items.push({ name: "", desc: "", image: "" });
+      openCategories = new Set([ci]);
+      pendingFocus = { type: "item", ci, ii };
+      pendingMessage = "New dish added — fill in the details below.";
+      renderCategories();
+    }
+
     catEl.querySelectorAll("[data-field]").forEach(input => {
       input.addEventListener("input", () => {
         menuData.categories[ci][input.dataset.field] = input.value;
@@ -248,21 +289,16 @@ function renderCategories() {
       });
     });
 
-    catEl.querySelector("[data-add-item]")?.addEventListener("click", () => {
-      const ii = menuData.categories[ci].items.length;
-      menuData.categories[ci].items.push({ name: "", desc: "", image: "" });
-      openCategories = new Set([ci]);
-      pendingFocus = { type: "item", ci, ii };
-      pendingMessage = "New dish added — fill in the details below.";
-      renderCategories();
-    });
+    catEl.querySelector("[data-add-item]")?.addEventListener("click", addDish);
+    catEl.querySelector("[data-add-item-bottom]")?.addEventListener("click", addDish);
 
-    catEl.querySelector("[data-remove-cat]")?.addEventListener("click", () => {
-      if (!confirm(`Remove "${menuData.categories[ci].group}" and all its dishes?`)) return;
+    catEl.querySelector("[data-remove-cat]")?.addEventListener("click", e => {
+      e.stopPropagation();
+      if (!confirm(`Delete "${menuData.categories[ci].group}" and all ${menuData.categories[ci].items.length} dish(es)?`)) return;
       menuData.categories.splice(ci, 1);
       openCategories = new Set([Math.min(ci, menuData.categories.length - 1)].filter(i => i >= 0));
       renderCategories();
-      setStatus("Category removed. Click Save when ready.", "ok");
+      setStatus("Category deleted. Click Save when ready.", "ok");
     });
 
     catEl.querySelectorAll("[data-item]").forEach(itemEl => {
@@ -285,7 +321,10 @@ function renderCategories() {
         e.target.value = "";
       });
 
-      itemEl.querySelector("[data-remove-item]")?.addEventListener("click", () => {
+      itemEl.querySelector("[data-remove-item]")?.addEventListener("click", e => {
+        e.stopPropagation();
+        const name = menuData.categories[ci].items[ii].name || `Dish ${ii + 1}`;
+        if (!confirm(`Remove "${name}"?`)) return;
         menuData.categories[ci].items.splice(ii, 1);
         openCategories.add(ci);
         renderCategories();
@@ -330,35 +369,22 @@ function readFileBase64(file) {
 async function handleImageUpload(file, ci, ii, itemEl) {
   const hint = itemEl.querySelector("[data-upload-hint]");
 
-  if (useLocalAuth) {
-    setStatus("Photo upload only works on the live site.", "err");
-    return;
-  }
-
   if (file.size > MAX_IMAGE_BYTES) {
     setStatus("Image must be under 4 MB.", "err");
     return;
   }
 
   hint.textContent = "Uploading…";
-  setStatus("Uploading photo…");
+  setStatus("Uploading photo to GitHub…");
 
   try {
     const content = await readFileBase64(file);
-    const res = await fetch("/api/upload", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-      body: JSON.stringify({ filename: file.name, content }),
-    });
-    const data = await res.json().catch(() => ({}));
-    if (!res.ok) throw new Error(data.error || "Upload failed");
-
+    const data = await uploadMenuImage(file.name, content);
     menuData.categories[ci].items[ii].image = data.path;
     openCategories.add(ci);
     pendingFocus = { type: "item", ci, ii };
     renderCategories();
-    setStatus("Photo uploaded. Click Save to publish.", "ok");
+    setStatus("Photo uploaded. Click Save to update the menu.", "ok");
   } catch (err) {
     hint.textContent = "Upload failed — try again";
     setStatus(err.message || "Could not upload photo.", "err");
@@ -368,7 +394,7 @@ async function handleImageUpload(file, ci, ii, itemEl) {
 async function saveMenu() {
   const saveBtn = document.getElementById("saveBtn");
   saveBtn.disabled = true;
-  setStatus("Saving…");
+  setStatus("Saving to GitHub…");
 
   menuData.categories.forEach(cat => {
     cat.items.forEach(item => {
@@ -376,22 +402,9 @@ async function saveMenu() {
     });
   });
 
-  if (useLocalAuth) {
-    setStatus("Saving only works on the live site.", "err");
-    saveBtn.disabled = false;
-    return;
-  }
-
   try {
-    const res = await fetch("/api/menu", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-      body: JSON.stringify(menuData),
-    });
-    const data = await res.json().catch(() => ({}));
-    if (!res.ok) throw new Error(data.error || "Save failed");
-    setStatus("Saved — your menu is now live.", "ok");
+    await saveMenuToRepo(menuData);
+    setStatus("Saved — menu is live (may take a few seconds to appear).", "ok");
   } catch (err) {
     setStatus(err.message || "Could not save.", "err");
   } finally {
@@ -401,52 +414,29 @@ async function saveMenu() {
 
 document.getElementById("loginBtn").addEventListener("click", async () => {
   const pw = document.getElementById("password").value;
+  const token = document.getElementById("githubToken").value.trim();
   document.getElementById("loginErr").classList.add("hidden");
-  useLocalAuth = false;
 
-  try {
-    const res = await fetch("/api/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-      body: JSON.stringify({ password: pw }),
-    });
-
-    if (res.ok) {
-      sessionStorage.setItem(SESSION_KEY, "1");
-      initEditor();
-      return;
-    }
-
-    if (res.status === 503 && pw === LOCAL_ADMIN_PASSWORD) {
-      useLocalAuth = true;
-      sessionStorage.setItem(SESSION_KEY, "1");
-      initEditor();
-      return;
-    }
-
+  if (pw !== ADMIN_PASSWORD || !token) {
     document.getElementById("loginErr").classList.remove("hidden");
-  } catch {
-    if (pw === LOCAL_ADMIN_PASSWORD) {
-      useLocalAuth = true;
-      sessionStorage.setItem(SESSION_KEY, "1");
-      initEditor();
-    } else {
-      document.getElementById("loginErr").classList.remove("hidden");
-    }
+    return;
   }
+
+  setGitHubToken(token);
+  sessionStorage.setItem(SESSION_KEY, "1");
+  initEditor();
 });
 
 document.getElementById("password").addEventListener("keydown", e => {
   if (e.key === "Enter") document.getElementById("loginBtn").click();
 });
+document.getElementById("githubToken").addEventListener("keydown", e => {
+  if (e.key === "Enter") document.getElementById("loginBtn").click();
+});
 
-document.getElementById("logoutBtn").addEventListener("click", async () => {
-  try {
-    await fetch("/api/logout", { method: "POST", credentials: "include" });
-  } catch (_) {}
+document.getElementById("logoutBtn").addEventListener("click", () => {
+  setGitHubToken("");
   sessionStorage.removeItem(SESSION_KEY);
-  useLocalAuth = false;
   setStatus("");
   showLogin();
 });
@@ -463,7 +453,7 @@ document.getElementById("addCatBtn").addEventListener("click", () => {
   });
   openCategories = new Set([ci]);
   pendingFocus = { type: "category", ci };
-  pendingMessage = "New category added — name it and add dishes below.";
+  pendingMessage = "New category added — fill in the details below.";
   renderCategories();
 });
 
