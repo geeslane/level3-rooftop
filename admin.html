@@ -19,6 +19,11 @@ h1{font-family:var(--font-display);font-size:1.6rem;font-weight:400;margin-botto
 .panel{background:var(--charcoal);border:1px solid rgba(255,255,255,0.08);padding:2rem;margin-bottom:1.5rem;}
 label{display:block;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;}
 input[type=text],input[type=password],textarea{width:100%;background:#111;border:1px solid rgba(255,255,255,0.12);color:var(--white);padding:0.75rem 1rem;font-family:var(--font-sans);font-size:0.9rem;margin-bottom:1rem;}
+.password-wrap{position:relative;margin-bottom:1rem;}
+.password-wrap input{margin-bottom:0;padding-right:2.75rem;}
+.password-toggle{position:absolute;right:0.75rem;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(255,255,255,0.4);cursor:pointer;padding:0.25rem;line-height:0;display:flex;align-items:center;justify-content:center;}
+.password-toggle:hover{color:var(--gold);}
+.password-toggle svg{width:1.15rem;height:1.15rem;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;}
 textarea{min-height:80px;resize:vertical;}
 .btn{display:inline-block;padding:0.75rem 1.5rem;background:var(--burgundy);border:1px solid #C4394F;color:var(--white);font-family:var(--font-sans);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;text-decoration:none;}
 .btn:hover{opacity:0.9;}
@@ -69,11 +74,6 @@ textarea{min-height:80px;resize:vertical;}
 .btn-text:hover{color:#C4394F;}
 .btn-block{display:block;width:100%;text-align:center;}
 .add-category-wrap{margin-top:1.5rem;padding-top:1.5rem;border-top:1px dashed rgba(255,255,255,0.1);text-align:center;}
-.publish-bar{margin-bottom:1.25rem;padding:1rem 1.25rem;background:var(--charcoal);border:1px solid rgba(255,255,255,0.08);}
-.publish-bar p{font-size:0.8rem;color:rgba(255,255,255,0.4);line-height:1.55;margin-bottom:0.75rem;}
-.publish-row{display:flex;gap:0.5rem;flex-wrap:wrap;align-items:flex-start;}
-.publish-row input{flex:1;min-width:200px;margin-bottom:0;}
-.token-ok{font-size:0.85rem;color:#8ecf8e;}
 .err{color:#C4394F;font-size:0.85rem;margin-top:0.5rem;}
 .hidden{display:none;}
 .empty-cats{text-align:center;padding:3rem 1rem;color:rgba(255,255,255,0.4);border:1px dashed rgba(255,255,255,0.12);}
@@ -92,7 +92,13 @@ textarea{min-height:80px;resize:vertical;}
     <p class="sub">Sign in with your admin password to edit the menu.</p>
     <div class="panel">
       <label for="password">Password</label>
-      <input type="password" id="password" placeholder="Enter password" autocomplete="current-password">
+      <div class="password-wrap">
+        <input type="password" id="password" placeholder="Enter password" autocomplete="current-password">
+        <button type="button" class="password-toggle" id="togglePassword" aria-label="Show password" aria-pressed="false">
+          <svg id="eyeShow" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+          <svg id="eyeHide" class="hidden" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.9 4.24A10.94 10.94 0 0 1 12 4c6.5 0 10 7 10 7a18.2 18.2 0 0 1-2.16 3.19"/><path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/><path d="M1 1l22 22"/><path d="M6.7 6.7C4.06 8.28 2.2 10.6 2 12s3.5 7 10 7a10.9 10.9 0 0 0 5.3-1.38"/></svg>
+        </button>
+      </div>
       <p class="err hidden" id="loginErr">Incorrect password.</p>
       <button class="btn" type="button" id="loginBtn">Sign In</button>
     </div>
@@ -112,18 +118,6 @@ textarea{min-height:80px;resize:vertical;}
       </div>
     </div>
 
-    <div class="publish-bar" id="publishBar">
-      <div id="tokenForm">
-        <label for="githubToken">GitHub token</label>
-        <p>Paste once to enable <strong>Save</strong> and photo uploads. Stored only in this browser session.</p>
-        <div class="publish-row">
-          <input type="password" id="githubToken" placeholder="github_pat_…" autocomplete="off">
-          <button class="btn btn-sm btn-add" type="button" id="saveTokenBtn">Connect</button>
-        </div>
-      </div>
-      <p id="tokenOk" class="token-ok hidden">GitHub connected — Save and uploads are enabled.</p>
-    </div>
-
     <p class="status" id="statusMsg"></p>
     <div id="categories"></div>
     <div class="add-category-wrap">
@@ -132,11 +126,7 @@ textarea{min-height:80px;resize:vertical;}
   </div>
 </div>
 
-<script src="github-client.js"></script>
 <script>
-// Set this to your admin password (same value you use to sign in).
-const ADMIN_PASSWORD = "level3menu";
-const SESSION_KEY = "level3_menu_admin";
 const MAX_IMAGE_BYTES = 4 * 1024 * 1024;
 
 let menuData = { categories: [] };
@@ -154,10 +144,6 @@ function setStatus(msg, type) {
   statusMsg.className = "status" + (type ? " " + type : "");
 }
 
-function isLoggedIn() {
-  return sessionStorage.getItem(SESSION_KEY) === "1";
-}
-
 function showLogin() {
   loginView.classList.remove("hidden");
   editorView.classList.add("hidden");
@@ -168,15 +154,20 @@ function showEditor() {
   editorView.classList.remove("hidden");
 }
 
-function updateTokenUI() {
-  const hasToken = !!getGitHubToken();
-  document.getElementById("tokenForm").classList.toggle("hidden", hasToken);
-  document.getElementById("tokenOk").classList.toggle("hidden", !hasToken);
-}
-
 async function loadMenuData() {
-  const data = await loadMenuFromRepo();
-  menuData = data.categories ? data : { categories: data };
+  try {
+    const res = await fetch("/api/menu", { credentials: "include" });
+    if (res.ok) {
+      const data = await res.json();
+      menuData = data.categories ? data : { categories: data };
+      return;
+    }
+  } catch (_) {}
+
+  const res = await fetch("content/menu.json");
+  if (!res.ok) throw new Error("Could not load menu");
+  menuData = await res.json();
+  if (!menuData.categories) menuData = { categories: menuData };
 }
 
 function esc(str) {
@@ -400,7 +391,15 @@ async function handleImageUpload(file, ci, ii, itemEl) {
 
   try {
     const content = await readFileBase64(file);
-    const data = await uploadMenuImage(file.name, content);
+    const res = await fetch("/api/upload", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ filename: file.name, content }),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data.error || "Upload failed");
+
     menuData.categories[ci].items[ii].image = data.path;
     openCategories.add(ci);
     pendingFocus = { type: "item", ci, ii };
@@ -424,7 +423,14 @@ async function saveMenu() {
   });
 
   try {
-    await saveMenuToRepo(menuData);
+    const res = await fetch("/api/menu", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify(menuData),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data.error || "Save failed");
     setStatus("Saved — menu is live (may take a few seconds to appear).", "ok");
   } catch (err) {
     setStatus(err.message || "Could not save.", "err");
@@ -433,16 +439,41 @@ async function saveMenu() {
   }
 }
 
-document.getElementById("loginBtn").addEventListener("click", () => {
+document.getElementById("loginBtn").addEventListener("click", async () => {
   const pw = document.getElementById("password").value;
+  const loginBtn = document.getElementById("loginBtn");
   const loginErr = document.getElementById("loginErr");
   loginErr.classList.add("hidden");
+  loginBtn.disabled = true;
 
-  if (pw === ADMIN_PASSWORD) {
-    sessionStorage.setItem(SESSION_KEY, "1");
-    initEditor();
-  } else {
+  try {
+    const res = await fetch("/api/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ password: pw }),
+    });
+    const data = await res.json().catch(() => ({}));
+
+    if (res.ok) {
+      document.getElementById("password").value = "";
+      initEditor();
+      return;
+    }
+
+    if (res.status === 404) {
+      loginErr.textContent = "Login API not found. Push the api/ folder and redeploy on Vercel.";
+    } else if (res.status === 503) {
+      loginErr.textContent = data.error || "ADMIN_PASSWORD is not set in Vercel environment variables.";
+    } else {
+      loginErr.textContent = data.error || "Incorrect password.";
+    }
     loginErr.classList.remove("hidden");
+  } catch {
+    loginErr.textContent = "Could not reach the server. Check your connection and try again.";
+    loginErr.classList.remove("hidden");
+  } finally {
+    loginBtn.disabled = false;
   }
 });
 
@@ -450,25 +481,21 @@ document.getElementById("password").addEventListener("keydown", e => {
   if (e.key === "Enter") document.getElementById("loginBtn").click();
 });
 
-document.getElementById("saveTokenBtn").addEventListener("click", () => {
-  const token = document.getElementById("githubToken").value.trim();
-  if (!token) {
-    setStatus("Paste a GitHub token first.", "err");
-    return;
-  }
-  setGitHubToken(token);
-  document.getElementById("githubToken").value = "";
-  updateTokenUI();
-  setStatus("GitHub connected.", "ok");
+document.getElementById("togglePassword").addEventListener("click", () => {
+  const input = document.getElementById("password");
+  const btn = document.getElementById("togglePassword");
+  const show = input.type === "password";
+  input.type = show ? "text" : "password";
+  document.getElementById("eyeShow").classList.toggle("hidden", show);
+  document.getElementById("eyeHide").classList.toggle("hidden", !show);
+  btn.setAttribute("aria-label", show ? "Hide password" : "Show password");
+  btn.setAttribute("aria-pressed", show ? "true" : "false");
 });
 
-document.getElementById("githubToken").addEventListener("keydown", e => {
-  if (e.key === "Enter") document.getElementById("saveTokenBtn").click();
-});
-
-document.getElementById("logoutBtn").addEventListener("click", () => {
-  setGitHubToken("");
-  sessionStorage.removeItem(SESSION_KEY);
+document.getElementById("logoutBtn").addEventListener("click", async () => {
+  try {
+    await fetch("/api/logout", { method: "POST", credentials: "include" });
+  } catch (_) {}
   setStatus("");
   showLogin();
 });
@@ -494,17 +521,24 @@ async function initEditor() {
     await loadMenuData();
     openCategories = new Set(menuData.categories.length ? [0] : []);
     showEditor();
-    updateTokenUI();
     renderCategories();
   } catch {
     alert("Could not load the menu.");
-    sessionStorage.removeItem(SESSION_KEY);
     showLogin();
   }
 }
 
-if (isLoggedIn()) initEditor();
-else showLogin();
+async function boot() {
+  try {
+    const res = await fetch("/api/login", { credentials: "include" });
+    if (res.ok) await initEditor();
+    else showLogin();
+  } catch {
+    showLogin();
+  }
+}
+
+boot();
 </script>
 </body>
 </html>
