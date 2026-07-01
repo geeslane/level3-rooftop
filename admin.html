@@ -69,6 +69,11 @@ textarea{min-height:80px;resize:vertical;}
 .btn-text:hover{color:#C4394F;}
 .btn-block{display:block;width:100%;text-align:center;}
 .add-category-wrap{margin-top:1.5rem;padding-top:1.5rem;border-top:1px dashed rgba(255,255,255,0.1);text-align:center;}
+.publish-bar{margin-bottom:1.25rem;padding:1rem 1.25rem;background:var(--charcoal);border:1px solid rgba(255,255,255,0.08);}
+.publish-bar p{font-size:0.8rem;color:rgba(255,255,255,0.4);line-height:1.55;margin-bottom:0.75rem;}
+.publish-row{display:flex;gap:0.5rem;flex-wrap:wrap;align-items:flex-start;}
+.publish-row input{flex:1;min-width:200px;margin-bottom:0;}
+.token-ok{font-size:0.85rem;color:#8ecf8e;}
 .err{color:#C4394F;font-size:0.85rem;margin-top:0.5rem;}
 .hidden{display:none;}
 .empty-cats{text-align:center;padding:3rem 1rem;color:rgba(255,255,255,0.4);border:1px dashed rgba(255,255,255,0.12);}
@@ -107,6 +112,18 @@ textarea{min-height:80px;resize:vertical;}
       </div>
     </div>
 
+    <div class="publish-bar" id="publishBar">
+      <div id="tokenForm">
+        <label for="githubToken">GitHub token</label>
+        <p>Paste once to enable <strong>Save</strong> and photo uploads. Stored only in this browser session.</p>
+        <div class="publish-row">
+          <input type="password" id="githubToken" placeholder="github_pat_…" autocomplete="off">
+          <button class="btn btn-sm btn-add" type="button" id="saveTokenBtn">Connect</button>
+        </div>
+      </div>
+      <p id="tokenOk" class="token-ok hidden">GitHub connected — Save and uploads are enabled.</p>
+    </div>
+
     <p class="status" id="statusMsg"></p>
     <div id="categories"></div>
     <div class="add-category-wrap">
@@ -115,7 +132,10 @@ textarea{min-height:80px;resize:vertical;}
   </div>
 </div>
 
+<script src="github-client.js"></script>
 <script>
+// Set this to your admin password (same value you use to sign in).
+const ADMIN_PASSWORD = "level3menu";
 const SESSION_KEY = "level3_menu_admin";
 const MAX_IMAGE_BYTES = 4 * 1024 * 1024;
 
@@ -148,20 +168,15 @@ function showEditor() {
   editorView.classList.remove("hidden");
 }
 
-async function loadMenuData() {
-  try {
-    const res = await fetch("/api/menu");
-    if (res.ok) {
-      const data = await res.json();
-      menuData = data.categories ? data : { categories: data };
-      return;
-    }
-  } catch (_) {}
+function updateTokenUI() {
+  const hasToken = !!getGitHubToken();
+  document.getElementById("tokenForm").classList.toggle("hidden", hasToken);
+  document.getElementById("tokenOk").classList.toggle("hidden", !hasToken);
+}
 
-  const res = await fetch("content/menu.json");
-  if (!res.ok) throw new Error("Could not load menu");
-  menuData = await res.json();
-  if (!menuData.categories) menuData = { categories: menuData };
+async function loadMenuData() {
+  const data = await loadMenuFromRepo();
+  menuData = data.categories ? data : { categories: data };
 }
 
 function esc(str) {
@@ -385,15 +400,7 @@ async function handleImageUpload(file, ci, ii, itemEl) {
 
   try {
     const content = await readFileBase64(file);
-    const res = await fetch("/api/upload", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-      body: JSON.stringify({ filename: file.name, content }),
-    });
-    const data = await res.json().catch(() => ({}));
-    if (!res.ok) throw new Error(data.error || "Upload failed");
-
+    const data = await uploadMenuImage(file.name, content);
     menuData.categories[ci].items[ii].image = data.path;
     openCategories.add(ci);
     pendingFocus = { type: "item", ci, ii };
@@ -417,14 +424,7 @@ async function saveMenu() {
   });
 
   try {
-    const res = await fetch("/api/menu", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-      body: JSON.stringify(menuData),
-    });
-    const data = await res.json().catch(() => ({}));
-    if (!res.ok) throw new Error(data.error || "Save failed");
+    await saveMenuToRepo(menuData);
     setStatus("Saved — menu is live (may take a few seconds to appear).", "ok");
   } catch (err) {
     setStatus(err.message || "Could not save.", "err");
@@ -433,28 +433,16 @@ async function saveMenu() {
   }
 }
 
-document.getElementById("loginBtn").addEventListener("click", async () => {
+document.getElementById("loginBtn").addEventListener("click", () => {
   const pw = document.getElementById("password").value;
-  document.getElementById("loginErr").classList.add("hidden");
+  const loginErr = document.getElementById("loginErr");
+  loginErr.classList.add("hidden");
 
-  try {
-    const res = await fetch("/api/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-      body: JSON.stringify({ password: pw }),
-    });
-
-    if (res.ok) {
-      sessionStorage.setItem(SESSION_KEY, "1");
-      initEditor();
-      return;
-    }
-
-    document.getElementById("loginErr").classList.remove("hidden");
-  } catch {
-    document.getElementById("loginErr").textContent = "Could not reach server. Try again on the live site.";
-    document.getElementById("loginErr").classList.remove("hidden");
+  if (pw === ADMIN_PASSWORD) {
+    sessionStorage.setItem(SESSION_KEY, "1");
+    initEditor();
+  } else {
+    loginErr.classList.remove("hidden");
   }
 });
 
@@ -462,12 +450,25 @@ document.getElementById("password").addEventListener("keydown", e => {
   if (e.key === "Enter") document.getElementById("loginBtn").click();
 });
 
-document.getElementById("logoutBtn").addEventListener("click", async () => {
-  try {
-    await fetch("/api/logout", { method: "POST", credentials: "include" });
-  } catch (_) {}
+document.getElementById("saveTokenBtn").addEventListener("click", () => {
+  const token = document.getElementById("githubToken").value.trim();
+  if (!token) {
+    setStatus("Paste a GitHub token first.", "err");
+    return;
+  }
+  setGitHubToken(token);
+  document.getElementById("githubToken").value = "";
+  updateTokenUI();
+  setStatus("GitHub connected.", "ok");
+});
+
+document.getElementById("githubToken").addEventListener("keydown", e => {
+  if (e.key === "Enter") document.getElementById("saveTokenBtn").click();
+});
+
+document.getElementById("logoutBtn").addEventListener("click", () => {
+  setGitHubToken("");
   sessionStorage.removeItem(SESSION_KEY);
-  document.getElementById("loginErr").textContent = "Incorrect password.";
   setStatus("");
   showLogin();
 });
@@ -493,6 +494,7 @@ async function initEditor() {
     await loadMenuData();
     openCategories = new Set(menuData.categories.length ? [0] : []);
     showEditor();
+    updateTokenUI();
     renderCategories();
   } catch {
     alert("Could not load the menu.");
