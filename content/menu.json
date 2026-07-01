@@ -197,6 +197,89 @@
           "image": "food/Sauce-20260701T024718Z-3-001/Sauce/Chili Citrus Glaze.png"
         }
       ]
+    },
+    {
+      "group": "Stellar",
+      "eyebrow": "",
+      "intro": "hello!",
+      "items": [
+        {
+          "name": "",
+          "desc": "",
+          "image": ""
+        },
+        {
+          "name": "",
+          "desc": "",
+          "image": ""
+        }
+      ]
+    },
+    {
+      "group": "New Category",
+      "eyebrow": "",
+      "intro": "",
+      "items": []
+    },
+    {
+      "group": "New Category",
+      "eyebrow": "",
+      "intro": "",
+      "items": []
+    },
+    {
+      "group": "New Category",
+      "eyebrow": "",
+      "intro": "",
+      "items": []
+    },
+    {
+      "group": "New Category",
+      "eyebrow": "",
+      "intro": "",
+      "items": []
+    },
+    {
+      "group": "New Category",
+      "eyebrow": "",
+      "intro": "",
+      "items": []
+    },
+    {
+      "group": "New Category",
+      "eyebrow": "",
+      "intro": "",
+      "items": []
+    },
+    {
+      "group": "New Category",
+      "eyebrow": "",
+      "intro": "",
+      "items": []
+    },
+    {
+      "group": "New Category",
+      "eyebrow": "",
+      "intro": "",
+      "items": []
+    },
+    {
+      "group": "New Category",
+      "eyebrow": "",
+      "intro": "",
+      "items": []
+    },
+    {
+      "group": "New Category",
+      "eyebrow": "",
+      "intro": "",
+      "items": []
+    },
+    {
+      "group": "New Category",
+      "eyebrow": "",
+      "intro": "",
+      "items": []
     }
   ]
 }
