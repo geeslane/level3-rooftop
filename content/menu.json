@@ -8,8 +8,7 @@
         {
           "name": "Golden Plantain Cups",
           "desc": "Crisp plantain cups filled with smoked barbecue chicken, finished with roasted sweet pepper glaze.",
-          "image": "food/Starters -20260701T024731Z-3-001/Starters/Golden Plantain Cups_.jpg",
-          "badge": "Signature"
+          "image": "food/Starters -20260701T024731Z-3-001/Starters/Golden Plantain Cups_.jpg"
         },
         {
           "name": "Crispy Calamari",
@@ -199,87 +198,17 @@
       ]
     },
     {
-      "group": "Stellar",
-      "eyebrow": "",
-      "intro": "hello!",
+      "group": "LOIS",
+      "eyebrow": "To Eat",
+      "intro": "Heeyyy",
       "items": [
         {
-          "name": "",
-          "desc": "",
-          "image": ""
-        },
-        {
-          "name": "",
-          "desc": "",
-          "image": ""
+          "name": "lois meal",
+          "desc": "sweet",
+          "image": "",
+          "badge": "Signature"
         }
       ]
-    },
-    {
-      "group": "New Category",
-      "eyebrow": "",
-      "intro": "",
-      "items": []
-    },
-    {
-      "group": "New Category",
-      "eyebrow": "",
-      "intro": "",
-      "items": []
-    },
-    {
-      "group": "New Category",
-      "eyebrow": "",
-      "intro": "",
-      "items": []
-    },
-    {
-      "group": "New Category",
-      "eyebrow": "",
-      "intro": "",
-      "items": []
-    },
-    {
-      "group": "New Category",
-      "eyebrow": "",
-      "intro": "",
-      "items": []
-    },
-    {
-      "group": "New Category",
-      "eyebrow": "",
-      "intro": "",
-      "items": []
-    },
-    {
-      "group": "New Category",
-      "eyebrow": "",
-      "intro": "",
-      "items": []
-    },
-    {
-      "group": "New Category",
-      "eyebrow": "",
-      "intro": "",
-      "items": []
-    },
-    {
-      "group": "New Category",
-      "eyebrow": "",
-      "intro": "",
-      "items": []
-    },
-    {
-      "group": "New Category",
-      "eyebrow": "",
-      "intro": "",
-      "items": []
-    },
-    {
-      "group": "New Category",
-      "eyebrow": "",
-      "intro": "",
-      "items": []
     }
   ]
 }
