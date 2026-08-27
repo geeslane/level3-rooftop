@@ -69,14 +69,27 @@
       "items": [
         {
           "name": "Chili Salmon Alfredo",
-          "desc": "Creamy parmesan Alfredo tossed with pasta ribbons and finished with chili-glazed salmon.",
+          "desc": "Creamy parmesan Alfredo tossed with pasta ribbons and finished with chili-glazed salmon.\n",
           "image": "food/Pasta-20260701T024725Z-3-001/Pasta/Chili Salmon Alfredo_.png",
-          "badge": "Chef's Pick"
+          "badge": "NGN 57,500"
         },
         {
           "name": "Penne Arrabbiata",
           "desc": "Penne pasta in spicy tomato sauce with beef meatballs, parmesan and fresh herbs.",
-          "image": "food/Pasta-20260701T024725Z-3-001/Pasta/Penne Arrabbiata.jpg"
+          "image": "food/Pasta-20260701T024725Z-3-001/Pasta/Penne Arrabbiata.jpg",
+          "badge": "NGN 28,000"
+        },
+        {
+          "name": "Seafood Pasta",
+          "desc": "A luxurious blend of premium seafood and perfectly cooked pasta, finished in a rich, aromatic sauce infused with herbs and garlic. Elegantly paired with a complimentary glass of house wine\n",
+          "image": "food/uploads/1787798214476-1787793517292.png",
+          "badge": "NGN 45,000"
+        },
+        {
+          "name": "Stir-fried pasta",
+          "desc": "Dente pasta wok-tossed with tender strips of seasoned chicken, vibrant fresh vegetables and aromatic herbs in a savoury house stir-fry sauce,\n",
+          "image": "food/uploads/1787798275763-1787793522176.png",
+          "badge": "NGN 29,000"
         }
       ]
     },
