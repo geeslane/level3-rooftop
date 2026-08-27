@@ -271,6 +271,25 @@
           "badge": "NGN 4000"
         }
       ]
+    },
+    {
+      "group": "DESSERTS",
+      "eyebrow": "Sweet Indulgence",
+      "intro": "Served warm, offering the perfect balance of crisp texture and indulgent sweetness.",
+      "items": [
+        {
+          "name": "Creme Catalana",
+          "desc": "A silky Spanish-style vanilla custard infused with citrus and warm spices, finished with a crisp caramelized sugar crust for the perfect crack and crunch.\n",
+          "image": "food/uploads/1787800377721-aa2ea199b03d05b2b9f3289cf42abf94.jpg",
+          "badge": "NGN 9000"
+        },
+        {
+          "name": "Churros with Chocolate Dip",
+          "desc": "Golden, cinnamon-sugar dusted churros served warm with a rich chocolate dipping sauce, offering the perfect balance of crisp texture and indulgent sweetness.\n",
+          "image": "food/uploads/1787800502848-d926258ce5679b28d046e5afd5907902.jpg",
+          "badge": "NGN 9500"
+        }
+      ]
     }
   ]
 }
