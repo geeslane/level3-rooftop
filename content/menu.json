@@ -102,33 +102,37 @@
           "name": "24 Karat Tomahawk",
           "desc": "1000g grilled tomahawk immersed in smoked brown butter, finished with edible gold and tableside cognac flambé.",
           "image": "food/Grills-20260701T024723Z-3-001/Grills/24 karat Tomahawk_.jpg",
-          "badge": "Showstopper"
+          "badge": "NGN 139,000"
         },
         {
           "name": "The Monarch T-Bone",
           "desc": "Open air grilled T-bone steak finished with rosemary butter and red wine reduction.",
-          "image": "food/Grills-20260701T024723Z-3-001/Grills/The Monarch T-Bone.png"
+          "image": "food/Grills-20260701T024723Z-3-001/Grills/The Monarch T-Bone.png",
+          "badge": "NGN 49,500"
         },
         {
-          "name": "Imperial Tenderloin",
-          "desc": "Premium beef tenderloin with charred broccoli and peppercorn jus.",
-          "image": "food/Grills-20260701T024723Z-3-001/Grills/Imperial tenderloin.png"
+          "name": "Grilled Pork Ribs",
+          "desc": "Slow-cooked until irresistibly tender, then flame-grilled to perfection and finished with a rich, smoky glaze.",
+          "image": "food/uploads/1787799070296-529e8f61fb5de13bf987e4911f417b41.jpg",
+          "badge": "NGN 72,500"
         },
         {
           "name": "Level 3 Signature Flambé",
           "desc": "Sizzling grilled lamb chops glazed in smoked butter, finished with tableside cognac flambé.",
           "image": "food/Grills-20260701T024723Z-3-001/Grills/Level 3 signature flambles.png",
-          "badge": "Signature"
+          "badge": "NGN 82,000"
         },
         {
           "name": "Sirloin Steak Bites",
           "desc": "Chargrilled sirloin bites with creamy mashed potatoes, sautéed vegetables and red wine jus.",
-          "image": "food/Grills-20260701T024723Z-3-001/Grills/Sir loin steak bites.png"
+          "image": "food/Grills-20260701T024723Z-3-001/Grills/Sir loin steak bites.png",
+          "badge": "NGN 35,000"
         },
         {
           "name": "Slow-Braised Lamb Shank",
           "desc": "400g braised lamb shank over creamy potato purée with peppercorn jus.",
-          "image": "food/Grills-20260701T024723Z-3-001/Grills/Slow braised lamb shank.png"
+          "image": "food/Grills-20260701T024723Z-3-001/Grills/Slow braised lamb shank.png",
+          "badge": "NGN 67,500"
         }
       ]
     },
