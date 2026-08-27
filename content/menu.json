@@ -307,6 +307,30 @@
           "desc": "",
           "image": "food/uploads/1787801294930-f59e4b30c52e863c67929613338b7d62.jpg",
           "badge": "NGN 750,000"
+        },
+        {
+          "name": "Glenfiddich 23yr",
+          "desc": "",
+          "image": "food/uploads/1787801462969-7323d6ef7a42dfb97b9230b35cdee468.jpg",
+          "badge": "NGN 1,300,000"
+        },
+        {
+          "name": "Glenfiddich 26y",
+          "desc": "",
+          "image": "food/uploads/1787801487509-e35283bfba09d9aa85e436f7fd93e14f.jpg",
+          "badge": "NGN 2,500,000"
+        },
+        {
+          "name": "Glenfiddich 30yr",
+          "desc": "",
+          "image": "food/uploads/1787801516021-7aa25354b592e7ddb7af0ce099679d4c.jpg",
+          "badge": "NGN 8,000,000"
+        },
+        {
+          "name": "Johnnie Walker blue label",
+          "desc": "",
+          "image": "",
+          "badge": "NGN 900,000"
         }
       ]
     }
