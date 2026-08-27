@@ -290,6 +290,25 @@
           "badge": "NGN 9500"
         }
       ]
+    },
+    {
+      "group": "LEVEL 3 DRINK",
+      "eyebrow": "Excellence in a glass",
+      "intro": "",
+      "items": [
+        {
+          "name": "Glenfiddich 18yr",
+          "desc": "",
+          "image": "food/uploads/1787800855731-1787793685859.png",
+          "badge": "NGN 350,000"
+        },
+        {
+          "name": "Glenfiddich 21yr",
+          "desc": "",
+          "image": "",
+          "badge": "NGN 750,000"
+        }
+      ]
     }
   ]
 }
