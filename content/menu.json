@@ -200,17 +200,32 @@
         {
           "name": "Truffle Parmesan Frites",
           "desc": "Crispy hand-cut fries tossed with truffle oil, parmesan, and fresh herbs.",
-          "image": "food/Side dish-20260701T024714Z-3-001/Side dish/Truffle Parmesan Frites_.jpg"
+          "image": "food/Side dish-20260701T024714Z-3-001/Side dish/Truffle Parmesan Frites_.jpg",
+          "badge": "NGN 10,000"
         },
         {
           "name": "Smoky Party Jollof",
           "desc": "Long-grain rice slow-cooked in a rich, smoky tomato and pepper base.",
-          "image": "food/Side dish-20260701T024714Z-3-001/Side dish/Smoky Party Jollof _.png"
+          "image": "food/Side dish-20260701T024714Z-3-001/Side dish/Smoky Party Jollof _.png",
+          "badge": "NGN 7000"
         },
         {
           "name": "Butter-Steamed Jasmine Rice",
           "desc": "Fragrant jasmine rice steamed with butter for a light, silky finish.",
-          "image": "food/Side dish-20260701T024714Z-3-001/Side dish/Butter Steamed Jasmine rice.jpg"
+          "image": "food/Side dish-20260701T024714Z-3-001/Side dish/Butter Steamed Jasmine rice.jpg",
+          "badge": "NGN 5000"
+        },
+        {
+          "name": "Fried Plantain Baton",
+          "desc": "Golden strips of ripe plantain, expertly fried to achieve a delicate balance of caramelized sweetness and crisp edges. Soft on the inside and lightly crisp on the outside.",
+          "image": "food/uploads/1787800006243-1787793586036.png",
+          "badge": "NGN 6000"
+        },
+        {
+          "name": " Butter Potato Wedges",
+          "desc": "Thick-cut potato wedges roasted and finished with rich butter, fresh herbs, and a touch of seasoning. Crispy on the outside, fluffy on the inside, and packed with savory flavor, they serve as the perfect accompaniment to premium grills and signature mains.\n",
+          "image": "food/uploads/1787800068711-1787793610748.png",
+          "badge": "NGN 6000"
         }
       ]
     },
