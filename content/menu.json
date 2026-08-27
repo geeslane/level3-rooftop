@@ -221,28 +221,39 @@
       "items": [
         {
           "name": "Smoked Pepper Jus",
-          "desc": "Rich, smoky pepper jus with depth and warmth — perfect for steaks and grills.",
-          "image": "food/Sauce-20260701T024718Z-3-001/Sauce/Smoked Pepper Jus_.png"
+          "desc": "Rich, smoky pepper jus with depth and warmth,  perfect for steaks and grills.",
+          "image": "food/Sauce-20260701T024718Z-3-001/Sauce/Smoked Pepper Jus_.png",
+          "badge": "NGN 3000"
         },
         {
           "name": "Peppercorn Sauce",
           "desc": "Creamy cracked peppercorn sauce with a bold, aromatic finish.",
-          "image": "food/Sauce-20260701T024718Z-3-001/Sauce/Peppercorn sauce_.jpg"
+          "image": "food/Sauce-20260701T024718Z-3-001/Sauce/Peppercorn sauce_.jpg",
+          "badge": "NGN 3000"
         },
         {
           "name": "Creamy Mushroom Sauce",
           "desc": "Silky mushroom reduction with herbs — an elegant companion to tender cuts.",
-          "image": "food/Sauce-20260701T024718Z-3-001/Sauce/Creamy Mushroom sauce.png"
+          "image": "food/Sauce-20260701T024718Z-3-001/Sauce/Creamy Mushroom sauce.png",
+          "badge": "NGN 5000"
         },
         {
           "name": "Red Wine Reduction",
           "desc": "Classic red wine glaze, slow-reduced for depth and glossy richness.",
-          "image": "food/Sauce-20260701T024718Z-3-001/Sauce/Red Wine Reduction.png"
+          "image": "food/Sauce-20260701T024718Z-3-001/Sauce/Red Wine Reduction.png",
+          "badge": "NGN 5500"
         },
         {
           "name": "Chili Citrus Glaze",
           "desc": "Bright citrus notes balanced with gentle heat — a vibrant finishing glaze.",
-          "image": "food/Sauce-20260701T024718Z-3-001/Sauce/Chili Citrus Glaze.png"
+          "image": "food/Sauce-20260701T024718Z-3-001/Sauce/Chili Citrus Glaze.png",
+          "badge": "NGN 3000"
+        },
+        {
+          "name": " Tzatziki Sauce",
+          "desc": "A refreshing Mediterranean classic crafted from creamy Greek yogurt, crisp cucumber, fresh herbs, garlic, and a hint of citrus. Light, cool, and perfectly balanced, it pairs beautifully with grilled meats, seafood, and vegetables, adding a vibrant touch to every bite.\n",
+          "image": "food/uploads/1787799724833-1787793538101.png",
+          "badge": "NGN 4000"
         }
       ]
     }
