@@ -169,13 +169,26 @@
         {
           "name": "Thai Coconut Curry",
           "desc": "Slow simmered chicken curry in coconut cream with vegetables and steamed jasmine rice.",
-          "image": "food/Poultry -20260701T024721Z-3-001/Poultry/Tai coconut curry_.png"
+          "image": "food/Poultry -20260701T024721Z-3-001/Poultry/Tai coconut curry_.png",
+          "badge": "NGN 25,000"
         },
         {
           "name": "Crispy Chicken Lava",
           "desc": "Golden fried chicken breast covered with mozzarella, spicy arrabbiata sauce and French fries.",
           "image": "food/Poultry -20260701T024721Z-3-001/Poultry/Crispy chicken lava.jpg",
-          "badge": "Favourite"
+          "badge": "NGN 24,500"
+        },
+        {
+          "name": "Whole Grilled Chicken",
+          "desc": "whole Grilled chicken flame-grilled and stuffed with fragrant jollof rice, creating a satisfying fusion of smoky, savory, and subtly spiced flavors.\n",
+          "image": "food/uploads/1787799331601-1787793522579.png",
+          "badge": "NGN 44,500"
+        },
+        {
+          "name": "Half Grilled Chicken",
+          "desc": "Tender half chicken flame-grilled and paired with fragrant jollof rice, creating a satisfying fusion of smoky, savory, and subtly spiced flavors.\n",
+          "image": "food/uploads/1787799406886-1787793533382.png",
+          "badge": "NGN 29,200"
         }
       ]
     },
