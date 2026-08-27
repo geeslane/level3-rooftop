@@ -7,23 +7,33 @@
       "items": [
         {
           "name": "Golden Plantain Cups",
-          "desc": "Crisp plantain cups filled with smoked barbecue chicken, finished with roasted sweet pepper glaze.",
-          "image": "food/Starters -20260701T024731Z-3-001/Starters/Golden Plantain Cups_.jpg"
+          "desc": "Crisp plantain cups filled with smoked barbecue chicken, finished with roasted sweet pepper glaze.\n",
+          "image": "food/Starters -20260701T024731Z-3-001/Starters/Golden Plantain Cups_.jpg",
+          "badge": "NGN 11,000"
         },
         {
           "name": "Crispy Calamari",
           "desc": "Buttermilk calamari rings served with dynamite sauce and charred lemon.",
-          "image": "food/Starters -20260701T024731Z-3-001/Starters/Crispy Calamari_.jpg"
+          "image": "food/Starters -20260701T024731Z-3-001/Starters/Crispy Calamari_.jpg",
+          "badge": "NGN 19,000"
         },
         {
           "name": "Tempura Prawns",
-          "desc": "Lightly battered king prawns served with spicy Japanese mayo.",
-          "image": "food/Starters -20260701T024731Z-3-001/Starters/Tempura Prawns_.jpg"
+          "desc": "Lightly battered king prawns served with spicy Japanese mayo.\n",
+          "image": "food/Starters -20260701T024731Z-3-001/Starters/Tempura Prawns_.jpg",
+          "badge": "NGN 20,000"
         },
         {
           "name": "Tomato Bruschetta",
           "desc": "Toasted artisan bread topped with basil tomato concassé, olive oil, and shaved parmesan.",
-          "image": "food/Starters -20260701T024731Z-3-001/Starters/Tomato Bruschetta.jpg"
+          "image": "food/Starters -20260701T024731Z-3-001/Starters/Tomato Bruschetta.jpg",
+          "badge": "NGN 12, 500"
+        },
+        {
+          "name": "Spicy Barbecue Wings",
+          "desc": "Premium chicken wings marinated in a smoky-spiced barbecue glaze, flame-grilled to perfection, and served with our signature house sauce and chips.\n",
+          "image": "food/uploads/1787797928708-1787793481986.png",
+          "badge": "NGN 11,000"
         }
       ]
     },
@@ -34,14 +44,21 @@
       "items": [
         {
           "name": "Emerald Chicken Salad",
-          "desc": "Shredded chicken, avocado, Chinese cabbage, carrot ribbons, sesame seed, lettuce, soft egg and bell peppers — finished with house mayo dressing.",
+          "desc": "Shredded chicken, avocado, Chinese cabbage, carrot ribbons, sesame seed, lettuce, soft egg, and bell peppers finished with house  mayo dressing.",
           "image": "food/Salads-20260701T024729Z-3-001/Salads/Emerald Chicken Salad_.jpg",
-          "badge": "Favourite"
+          "badge": "NGN 15,500"
         },
         {
           "name": "Garden Harvest Salad",
-          "desc": "Beetroot, cucumber ribbons, pickled onions, almond crumble, baby lettuce, carrots and citrus lemon vinaigrette.",
-          "image": "food/Salads-20260701T024729Z-3-001/Salads/Garden Harvest.png"
+          "desc": "Beetroot, cucumber ribbons, pickled onions, almond crumble, baby lettuce, carrots, and citrus lemon vinaigrette.\n",
+          "image": "food/Salads-20260701T024729Z-3-001/Salads/Garden Harvest.png",
+          "badge": "NGN 13,000"
+        },
+        {
+          "name": "Shrimp Salad",
+          "desc": "Spicy grilled shrimp paired with fresh greens and ripe avocado, complemented by vibrant chimichurri and a light drizzle of house mayonnaise.\n",
+          "image": "food/uploads/1787797893120-1787793513997.png",
+          "badge": "NGN 12,000"
         }
       ]
     },
