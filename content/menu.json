@@ -385,6 +385,28 @@
           "desc": "",
           "image": "food/uploads/1787892596359-screenshot-20260827-022348-google.jpg",
           "badge": "NGN 750,000"
+        },
+        {
+          "name": "Veuve clicquot brut",
+          "desc": "",
+          "image": "food/uploads/1787894167658-545f357187e0b1f4e95020a290d3ef06.jpg",
+          "badge": "NGN 300,000"
+        },
+        {
+          "name": "Veuve clicquot-rich",
+          "desc": "",
+          "image": "food/uploads/1787894173691-screenshot-20260827-022326-google.jpg",
+          "badge": "NGN 350,000"
+        },
+        {
+          "name": "Laurent perrier-brut",
+          "desc": "",
+          "image": ""
+        },
+        {
+          "name": "Laurent Perrier demi sec",
+          "desc": "",
+          "image": ""
         }
       ]
     }
