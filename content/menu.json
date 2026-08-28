@@ -353,13 +353,14 @@
         {
           "name": "Hennessy vsop",
           "desc": "",
-          "image": "",
+          "image": "food/uploads/1787892206068-4afdad102e125cd89232b5d7d9ec0c0b.jpg",
           "badge": "NGN 300,000"
         },
         {
-          "name": "Hennessy vsop",
+          "name": "Hennessy XO",
           "desc": "",
-          "image": ""
+          "image": "food/uploads/1787892246973-5d620875f36f427fc3c076a67ee61c6a.jpg",
+          "badge": "NGN 850,000"
         }
       ]
     }
