@@ -288,6 +288,12 @@
           "desc": "Golden, cinnamon-sugar dusted churros served warm with a rich chocolate dipping sauce, offering the perfect balance of crisp texture and indulgent sweetness.\n",
           "image": "food/uploads/1787800502848-d926258ce5679b28d046e5afd5907902.jpg",
           "badge": "NGN 9500"
+        },
+        {
+          "name": "Level 3 Signature Dessert",
+          "desc": "White chocolate mousse layered with cookie crumble, finished with berries and delicate garnish\n",
+          "image": "food/uploads/1788010901173-1788010772312.png",
+          "badge": "NGN 15,000"
         }
       ]
     },
