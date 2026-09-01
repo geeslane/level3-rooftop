@@ -563,6 +563,36 @@
           "badge": "NGN 80,000"
         }
       ]
+    },
+    {
+      "group": "WINE",
+      "eyebrow": "LEVEL 3 DRINK",
+      "intro": "",
+      "items": [
+        {
+          "name": "Kopke(Ruby/tawny) sweet",
+          "desc": "",
+          "image": "food/uploads/1788297896135-907a919ba1d8fc48529d06f19fcb78d1.jpg",
+          "badge": "NGN 60,000"
+        },
+        {
+          "name": "Nedeburg sour",
+          "desc": "",
+          "image": "food/uploads/1788297941587-screenshot-20260827-022610-google.jpg",
+          "badge": "NGN 60,000"
+        },
+        {
+          "name": "Agor wine sweet",
+          "desc": "",
+          "image": "food/uploads/1788297969092-975a74052fe18127b5a4345777829905.jpg",
+          "badge": "NGN 50,000"
+        },
+        {
+          "name": "",
+          "desc": "",
+          "image": ""
+        }
+      ]
     }
   ]
 }
