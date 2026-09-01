@@ -532,6 +532,43 @@
           "badge": "NGN 250,000"
         }
       ]
+    },
+    {
+      "group": "TEQUILA",
+      "eyebrow": "LEVEL 3 DRINK",
+      "intro": "",
+      "items": [
+        {
+          "name": "Casmgios resporados",
+          "desc": "",
+          "image": "",
+          "badge": "NGN 400,000"
+        },
+        {
+          "name": "Clase azul",
+          "desc": "",
+          "image": "food/uploads/1788296907081-screenshot-20260827-022720-google.jpg",
+          "badge": "NGN 800,000"
+        },
+        {
+          "name": "Don Julio 1942",
+          "desc": "",
+          "image": "food/uploads/1788297076109-screenshot-20260827-022702-google.jpg",
+          "badge": "NGN 900,000"
+        },
+        {
+          "name": "Don Julio resporados",
+          "desc": "",
+          "image": "",
+          "badge": "NGN 400,000"
+        },
+        {
+          "name": "818 resporados",
+          "desc": "",
+          "image": "food/uploads/1788297053655-screenshot-20260827-022642-google.jpg",
+          "badge": "NGN 400,000"
+        }
+      ]
     }
   ]
 }
