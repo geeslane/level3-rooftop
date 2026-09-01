@@ -482,6 +482,36 @@
           "desc": "",
           "image": "food/uploads/1788295851740-1ac4e45a78351989fa4bd8315d8ef2c8.jpg",
           "badge": "NGN 400,000"
+        },
+        {
+          "name": "Fercullen 21yr",
+          "desc": "",
+          "image": "food/uploads/1788295982774-8e9ffb1c61cb3406680084fcea53ad83.jpg",
+          "badge": "NGN 700,000"
+        },
+        {
+          "name": "Fercullen 15yr",
+          "desc": "",
+          "image": "food/uploads/1788296005366-6dbb00fb8bb901588f861c07e14d3cfa.jpg",
+          "badge": "NGN 250,000"
+        },
+        {
+          "name": "Macallan rare cask",
+          "desc": "",
+          "image": "food/uploads/1788296123676-fee6ae04932129818be96a4a2ecd4cc0.jpg",
+          "badge": "NGN 800,000"
+        },
+        {
+          "name": "Macallan earth",
+          "desc": "",
+          "image": "food/uploads/1788296077164-3d6d9a437fa15480e597ca8ef24501fa.jpg",
+          "badge": "NGN 600,000"
+        },
+        {
+          "name": "Macallan 15yr",
+          "desc": "",
+          "image": "food/uploads/1788296181379-658de2c041ae7e0577c371ae0c1ddc53.jpg",
+          "badge": "NGN 450,000"
         }
       ]
     }
