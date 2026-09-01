@@ -588,9 +588,16 @@
           "badge": "NGN 50,000"
         },
         {
-          "name": "",
+          "name": "Les jamells sweet",
           "desc": "",
-          "image": ""
+          "image": "food/uploads/1788298059815-screenshot-20260827-022540-google.jpg",
+          "badge": "NGN 50,000"
+        },
+        {
+          "name": "Ruby sweet",
+          "desc": "",
+          "image": "food/uploads/1788298090716-screenshot-20260829-130618-google.jpg",
+          "badge": "NGN 50,000"
         }
       ]
     }
