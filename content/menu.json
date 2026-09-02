@@ -564,6 +564,19 @@
           "badge": "NGN 50,000"
         }
       ]
+    },
+    {
+      "group": "BRANDY",
+      "eyebrow": "LEVEL 3 DRINK",
+      "intro": "",
+      "items": [
+        {
+          "name": "Hennessy vsop",
+          "desc": "",
+          "image": "",
+          "badge": "NGN 300,000"
+        }
+      ]
     }
   ]
 }
