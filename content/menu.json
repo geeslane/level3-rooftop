@@ -331,6 +331,42 @@
           "desc": "",
           "image": "food/uploads/1788005526133-309fcee81dedbbc01c9ab79a188a68c0-1.jpg",
           "badge": "NGN 320,000"
+        },
+        {
+          "name": "Moet brut",
+          "desc": "",
+          "image": "",
+          "badge": "NGN 250,000"
+        },
+        {
+          "name": "Moet rose",
+          "desc": "",
+          "image": "",
+          "badge": "NGN 300,000"
+        },
+        {
+          "name": "Moet ice",
+          "desc": "",
+          "image": "",
+          "badge": "NGN 300,000"
+        },
+        {
+          "name": "Dom perignon",
+          "desc": "",
+          "image": "",
+          "badge": "NGN 1,350,000"
+        },
+        {
+          "name": "Ace of spades brut",
+          "desc": "",
+          "image": "",
+          "badge": "NGN 1,500,000"
+        },
+        {
+          "name": "Cristal brut",
+          "desc": "",
+          "image": "",
+          "badge": "NGN 1,200,000"
         }
       ]
     },
