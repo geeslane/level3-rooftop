@@ -613,6 +613,25 @@
           "badge": "NGN 750,000"
         }
       ]
+    },
+    {
+      "group": "Food Platter",
+      "eyebrow": "More deliciousness",
+      "intro": "",
+      "items": [
+        {
+          "name": "The Kings Platter",
+          "desc": "",
+          "image": "food/uploads/1791221049588-platter-1.jpg",
+          "badge": "N259,000"
+        },
+        {
+          "name": "Classic Platter",
+          "desc": "",
+          "image": "food/uploads/1791221431027-image.jpg",
+          "badge": "N113,000"
+        }
+      ]
     }
   ]
 }
